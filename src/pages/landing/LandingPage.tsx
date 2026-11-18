@@ -69,14 +69,14 @@ export const LandingPage: React.FC = () => {
       {/* Dynamic Animated Navbar (Transforms into a spacious, well-proportioned floating capsule upon scroll) */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
-          isScrolled ? 'pt-6 sm:pt-8 px-4 pointer-events-none' : 'pt-0 px-0'
+          isScrolled ? 'pt-3 sm:pt-7 px-3 sm:px-6 pointer-events-none' : 'pt-0 px-0'
         }`}
       >
         <nav
           className={`mx-auto flex items-center justify-between transition-all duration-500 ease-out ${
             isScrolled
-              ? 'pointer-events-auto max-w-4xl lg:max-w-5xl bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-[#142B50]/8 rounded-full px-6 sm:px-8 h-16 sm:h-17'
-              : 'w-full bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] shadow-none rounded-none px-6 sm:px-10 h-20'
+              ? 'pointer-events-auto max-w-4xl lg:max-w-5xl bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-[#142B50]/8 rounded-full px-4 sm:px-8 h-15 sm:h-17'
+              : 'w-full bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] shadow-none rounded-none px-4 sm:px-10 h-16 sm:h-20'
           }`}
         >
           {/* School Brand Identity (Pure Typography) */}
@@ -86,13 +86,13 @@ export const LandingPage: React.FC = () => {
           >
             <span
               className={`font-black tracking-tight text-[#142B50] block transition-all duration-500 whitespace-nowrap ${
-                isScrolled ? 'text-base sm:text-lg' : 'text-lg sm:text-xl'
+                isScrolled ? 'text-sm sm:text-lg' : 'text-base sm:text-xl'
               }`}
             >
               SMA TECHSOE
             </span>
             {!isScrolled && (
-              <span className="text-[10px] text-slate-500 font-semibold tracking-wider uppercase block -mt-0.5 whitespace-nowrap">
+              <span className="text-[10px] text-slate-500 font-semibold tracking-wider uppercase block -mt-0.5 whitespace-nowrap hidden xs:block">
                 LMS & Portal Akademik Resmi
               </span>
             )}
@@ -145,64 +145,62 @@ export const LandingPage: React.FC = () => {
             </Button>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger (Touch-friendly 44x44px target) */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`md:hidden rounded-full text-slate-600 hover:bg-slate-100 cursor-pointer transition-colors ${
-              isScrolled ? 'p-1.5' : 'p-2'
-            }`}
+            className="md:hidden rounded-full text-slate-700 hover:bg-slate-100/80 active:bg-slate-200 cursor-pointer transition-colors w-11 h-11 flex items-center justify-center shrink-0"
             aria-label="Menu navigasi sekolah"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </nav>
 
-        {/* Mobile dropdown menu */}
+        {/* Mobile dropdown menu (Comfortable 44px touch targets) */}
         {mobileMenuOpen && (
           <div
             className={`md:hidden transition-all duration-300 ${
               isScrolled
-                ? 'pointer-events-auto max-w-4xl lg:max-w-5xl mx-auto mt-2.5 bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-xl p-4 space-y-3'
-                : 'border-t border-slate-200 bg-white px-4 py-4 space-y-3 shadow-md'
+                ? 'pointer-events-auto max-w-4xl lg:max-w-5xl mx-auto mt-2 bg-white/98 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-2xl p-4 space-y-1'
+                : 'border-t border-slate-200 bg-white/98 backdrop-blur-xl px-4 py-3 space-y-1 shadow-lg'
             }`}
           >
             <a
               href="#pintu-portal"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-xs font-semibold text-slate-700 py-1.5"
+              className="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#142B50] hover:bg-slate-100 active:bg-slate-200 transition-colors"
             >
               Pintu Masuk Civitas
             </a>
             <a
               href="#program"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-xs font-semibold text-slate-700 py-1.5"
+              className="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#142B50] hover:bg-slate-100 active:bg-slate-200 transition-colors"
             >
               Program Akademik
             </a>
             <a
               href="#perpustakaan"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-xs font-semibold text-slate-700 py-1.5"
+              className="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#142B50] hover:bg-slate-100 active:bg-slate-200 transition-colors"
             >
               Perpustakaan Buku
             </a>
             <a
               href="#pengumuman"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-xs font-semibold text-slate-700 py-1.5"
+              className="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#142B50] hover:bg-slate-100 active:bg-slate-200 transition-colors"
             >
               Warta & Agenda
             </a>
             <a
               href="#kontak"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-xs font-semibold text-slate-700 py-1.5"
+              className="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#142B50] hover:bg-slate-100 active:bg-slate-200 transition-colors"
             >
               Kontak Kampus
             </a>
-            <div className="pt-2 flex flex-col gap-2">
+            <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
               <Button
                 variant="outline"
                 size="sm"
@@ -210,7 +208,7 @@ export const LandingPage: React.FC = () => {
                   setMobileMenuOpen(false);
                   navigate('/login');
                 }}
-                className="w-full justify-center"
+                className="w-full justify-center min-h-[44px] rounded-xl text-xs font-semibold"
               >
                 Pilih Role Demo
               </Button>
@@ -221,7 +219,7 @@ export const LandingPage: React.FC = () => {
                   setMobileMenuOpen(false);
                   handleQuickLogin('siswa', '/student/dashboard');
                 }}
-                className="w-full justify-center"
+                className="w-full justify-center min-h-[44px] rounded-xl text-xs font-bold"
               >
                 Masuk Portal Belajar
               </Button>
@@ -230,8 +228,8 @@ export const LandingPage: React.FC = () => {
         )}
       </header>
 
-      {/* Hero Section: Selamat Datang di SMA Techsoe */}
-      <section className="relative overflow-hidden pt-32 pb-20 lg:pt-36 lg:pb-28 bg-gradient-to-b from-[#F5F7FB] via-white to-white border-b border-[#E2E8F0]">
+      {/* Hero Section: Selamat Datang di SMA Techsoe (Responsive mobile-friendly spacing) */}
+      <section className="relative overflow-hidden pt-24 sm:pt-32 pb-14 sm:pb-20 lg:pt-36 lg:pb-28 bg-gradient-to-b from-[#F5F7FB] via-white to-white border-b border-[#E2E8F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-[#EAF0F8] text-[#142B50] px-3.5 py-1.5 rounded-full text-xs font-bold mb-5 border border-blue-200/60">

@@ -180,7 +180,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
       {/* Sidebar container */}
       <aside
         className={cn(
-          'fixed top-0 bottom-0 left-0 z-40 w-64 bg-[#142B50] text-white flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 border-r border-[#0D1B33]',
+          'fixed top-0 bottom-0 left-0 z-40 w-64 max-w-[80vw] bg-[#142B50] text-white flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 border-r border-[#0D1B33]',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
@@ -197,7 +197,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
           <button
             type="button"
             onClick={onCloseMobile}
-            className="p-1 rounded-md text-white/70 hover:text-white hover:bg-white/10 lg:hidden cursor-pointer"
+            className="w-10 h-10 flex items-center justify-center rounded-lg text-white/80 hover:text-white hover:bg-white/10 active:bg-white/20 lg:hidden cursor-pointer shrink-0"
             aria-label="Tutup menu sidebar"
           >
             <X className="w-5 h-5" aria-hidden="true" />

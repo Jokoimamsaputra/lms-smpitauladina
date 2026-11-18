@@ -288,12 +288,13 @@ export const AttendancePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 w-full sm:w-auto">
             <Button
               variant="outline"
               size="sm"
               onClick={() => setIsStudentLeaveModalOpen(true)}
               leftIcon={<FileText className="w-4 h-4" />}
+              className="flex-1 sm:flex-initial justify-center min-h-[40px]"
             >
               {isStudent ? 'Ajukan Izin / Sakit' : 'Kirim Surat Izin Ananda'}
             </Button>
@@ -302,6 +303,7 @@ export const AttendancePage: React.FC = () => {
               size="sm"
               onClick={() => triggerToast('Kartu rekapitulasi presensi siswa berhasil diunduh.')}
               leftIcon={<Download className="w-4 h-4 text-[#142B50]" />}
+              className="flex-1 sm:flex-initial justify-center min-h-[40px]"
             >
               Unduh Rekap Presensi
             </Button>
@@ -641,12 +643,13 @@ export const AttendancePage: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 w-full sm:w-auto">
           <Button
             variant="outline"
             size="sm"
             onClick={() => triggerToast('Simulasi ekspor laporan presensi (.xlsx) berhasil diunduh.')}
             leftIcon={<Download className="w-4 h-4" />}
+            className="flex-1 sm:flex-initial justify-center min-h-[40px]"
           >
             Export Laporan Presensi
           </Button>
@@ -655,6 +658,7 @@ export const AttendancePage: React.FC = () => {
             size="sm"
             onClick={() => setActiveTab('mandiri')}
             leftIcon={<Clock className="w-4 h-4 text-[#142B50]" />}
+            className="flex-1 sm:flex-initial justify-center min-h-[40px]"
           >
             Absen Mandiri ({currentTime})
           </Button>
@@ -734,8 +738,8 @@ export const AttendancePage: React.FC = () => {
         )}
       </div>
 
-      {/* Tabs Navigation (Guru does not see teacher roster tab) */}
-      <div className="border-b border-slate-200 bg-white rounded-t-xl px-4 flex items-center gap-2 overflow-x-auto">
+      {/* Tabs Navigation (Touch-friendly horizontal scrollbar) */}
+      <div className="border-b border-slate-200 bg-white rounded-t-xl px-2 sm:px-4 flex items-center gap-1 sm:gap-2 overflow-x-auto scrollbar-none">
         {(isAdminOrPrincipal
           ? [
               { id: 'siswa', label: 'Presensi Siswa per Kelas', icon: <Users className="w-4 h-4" /> },
@@ -753,7 +757,7 @@ export const AttendancePage: React.FC = () => {
             key={tab.id}
             type="button"
             onClick={() => setActiveTab(tab.id as any)}
-            className={`flex items-center gap-2 py-3.5 px-4 text-xs font-semibold border-b-2 whitespace-nowrap cursor-pointer transition-colors ${
+            className={`flex items-center gap-2 py-3 px-3 sm:px-4 text-xs font-semibold border-b-2 whitespace-nowrap cursor-pointer transition-colors min-h-[44px] shrink-0 ${
               activeTab === tab.id
                 ? 'border-[#142B50] text-[#142B50]'
                 : 'border-transparent text-slate-500 hover:text-slate-800'

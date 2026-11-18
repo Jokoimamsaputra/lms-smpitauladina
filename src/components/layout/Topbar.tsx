@@ -65,7 +65,7 @@ export const Topbar: React.FC<TopbarProps> = ({ onToggleMobileSidebar }) => {
           <button
             type="button"
             onClick={onToggleMobileSidebar}
-            className="p-2 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 lg:hidden cursor-pointer"
+            className="w-10 h-10 flex items-center justify-center rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 active:bg-slate-200 lg:hidden cursor-pointer shrink-0"
             aria-label="Buka navigasi menu"
           >
             <Menu className="w-5 h-5" aria-hidden="true" />
