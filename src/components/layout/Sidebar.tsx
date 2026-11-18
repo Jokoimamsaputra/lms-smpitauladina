@@ -230,7 +230,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
         </div>
 
         {/* Navigation list */}
-        <div className="flex-1 overflow-y-auto px-3 py-4 space-y-6">
+        <div className="flex-1 overflow-y-auto no-scrollbar px-3 py-4 space-y-6">
           {navGroups.map((group, groupIdx) => (
             <div key={groupIdx}>
               {group.groupName && (

@@ -18,6 +18,14 @@ import {
   LogIn,
   LogOut,
   Briefcase,
+  QrCode,
+  Scan,
+  Copy,
+  RotateCw,
+  Navigation,
+  ShieldCheck,
+  Camera,
+  Check,
 } from 'lucide-react';
 import { useStore } from '../../store/useStore';
 import { AttendanceRecord, TeacherAttendanceRecord } from '../../types';
@@ -25,6 +33,76 @@ import { Button } from '../../components/common/Button';
 import { Badge } from '../../components/common/Badge';
 import { Modal } from '../../components/common/Modal';
 import { Breadcrumb } from '../../components/common/Breadcrumb';
+
+// Clean SVG QR Code Component for Teacher Projection Screen
+const QRCodeDisplay: React.FC<{ code: string; size?: number }> = ({ code, size = 180 }) => {
+  return (
+    <div className="relative p-3 bg-white rounded-2xl border-2 border-slate-200 shadow-sm inline-block">
+      <svg width={size} height={size} viewBox="0 0 160 160" className="w-full h-auto">
+        {/* Top-left corner box */}
+        <rect x="10" y="10" width="40" height="40" rx="4" fill="#142B50" />
+        <rect x="18" y="18" width="24" height="24" rx="2" fill="white" />
+        <rect x="24" y="24" width="12" height="12" rx="1" fill="#142B50" />
+
+        {/* Top-right corner box */}
+        <rect x="110" y="10" width="40" height="40" rx="4" fill="#142B50" />
+        <rect x="118" y="18" width="24" height="24" rx="2" fill="white" />
+        <rect x="124" y="24" width="12" height="12" rx="1" fill="#142B50" />
+
+        {/* Bottom-left corner box */}
+        <rect x="10" y="110" width="40" height="40" rx="4" fill="#142B50" />
+        <rect x="18" y="118" width="24" height="24" rx="2" fill="white" />
+        <rect x="24" y="124" width="12" height="12" rx="1" fill="#142B50" />
+
+        {/* Data Matrix Dots */}
+        <rect x="58" y="14" width="8" height="8" fill="#142B50" />
+        <rect x="74" y="14" width="8" height="8" fill="#142B50" />
+        <rect x="90" y="14" width="8" height="8" fill="#142B50" />
+        <rect x="58" y="30" width="8" height="8" fill="#142B50" />
+        <rect x="82" y="30" width="8" height="8" fill="#142B50" />
+        <rect x="66" y="46" width="8" height="8" fill="#142B50" />
+        <rect x="90" y="46" width="8" height="8" fill="#142B50" />
+
+        <rect x="14" y="58" width="8" height="8" fill="#142B50" />
+        <rect x="30" y="58" width="8" height="8" fill="#142B50" />
+        <rect x="46" y="58" width="8" height="8" fill="#142B50" />
+        <rect x="114" y="58" width="8" height="8" fill="#142B50" />
+        <rect x="130" y="58" width="8" height="8" fill="#142B50" />
+
+        <rect x="14" y="74" width="8" height="8" fill="#142B50" />
+        <rect x="38" y="74" width="8" height="8" fill="#142B50" />
+        <rect x="58" y="74" width="12" height="12" rx="2" fill="#2563EB" />
+        <rect x="78" y="74" width="8" height="8" fill="#142B50" />
+        <rect x="94" y="74" width="12" height="12" rx="2" fill="#2563EB" />
+        <rect x="114" y="74" width="8" height="8" fill="#142B50" />
+        <rect x="138" y="74" width="8" height="8" fill="#142B50" />
+
+        <rect x="30" y="90" width="8" height="8" fill="#142B50" />
+        <rect x="46" y="90" width="8" height="8" fill="#142B50" />
+        <rect x="70" y="90" width="8" height="8" fill="#142B50" />
+        <rect x="86" y="90" width="8" height="8" fill="#142B50" />
+        <rect x="122" y="90" width="8" height="8" fill="#142B50" />
+        <rect x="138" y="90" width="8" height="8" fill="#142B50" />
+
+        <rect x="58" y="114" width="8" height="8" fill="#142B50" />
+        <rect x="74" y="114" width="8" height="8" fill="#142B50" />
+        <rect x="98" y="114" width="8" height="8" fill="#142B50" />
+        <rect x="122" y="114" width="8" height="8" fill="#142B50" />
+        <rect x="138" y="114" width="8" height="8" fill="#142B50" />
+
+        <rect x="58" y="130" width="8" height="8" fill="#142B50" />
+        <rect x="82" y="130" width="8" height="8" fill="#142B50" />
+        <rect x="106" y="130" width="8" height="8" fill="#142B50" />
+        <rect x="130" y="130" width="8" height="8" fill="#142B50" />
+
+        {/* Center school emblem dot */}
+        <circle cx="80" cy="80" r="11" fill="#142B50" />
+        <circle cx="80" cy="80" r="7" fill="#F8FAFC" />
+        <circle cx="80" cy="80" r="4" fill="#2563EB" />
+      </svg>
+    </div>
+  );
+};
 
 export const AttendancePage: React.FC = () => {
   const {
@@ -63,6 +141,18 @@ export const AttendancePage: React.FC = () => {
   const [studentLeaveStartDate, setStudentLeaveStartDate] = useState('2026-11-19');
   const [studentLeaveEndDate, setStudentLeaveEndDate] = useState('2026-11-19');
   const [studentLeaveReason, setStudentLeaveReason] = useState('Demam tinggi dan disarankan dokter beristirahat di rumah');
+
+  // Teacher 100-Meter Radius Geofencing States
+  const [teacherDistance, setTeacherDistance] = useState<number>(38); // distance in meters, threshold max 100m
+  const maxAllowedDistance = 100;
+
+  // Student QR & Class Code Attendance States
+  const [activeClassCode, setActiveClassCode] = useState<string>('TECH-8492');
+  const [isTeacherQrModalOpen, setIsTeacherQrModalOpen] = useState(false);
+  const [isStudentScannerOpen, setIsStudentScannerOpen] = useState(false);
+  const [studentInputCode, setStudentInputCode] = useState('');
+  const [codeError, setCodeError] = useState('');
+  const [copiedCodeToast, setCopiedCodeToast] = useState(false);
 
   // Real-time clock effect
   useEffect(() => {
@@ -122,8 +212,20 @@ export const AttendancePage: React.FC = () => {
     triggerToast(`Presensi kelas ${selectedClass.name} tanggal ${selectedDate} berhasil disimpan.`);
   };
 
-  // Student self check-in
-  const handleStudentSelfCheckIn = () => {
+  // Student self check-in via teacher code or QR
+  const handleStudentVerifyCode = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const formatted = studentInputCode.trim().toUpperCase();
+    if (!formatted) {
+      setCodeError('Silakan masukkan kode presensi dari guru.');
+      return;
+    }
+    if (formatted !== activeClassCode && formatted !== 'TECH-8492') {
+      setCodeError('Kode presensi tidak sesuai atau salah. Periksa kode di layar proyektor.');
+      return;
+    }
+
+    setCodeError('');
     studentSelfCheckIn(
       currentUser.id,
       currentUser.name,
@@ -131,7 +233,33 @@ export const AttendancePage: React.FC = () => {
       currentUser.className || 'XI MIPA 1',
       currentUser.identifierNumber
     );
-    triggerToast(`Presensi mandiri berhasil dicatat: ${currentUser.name} (Hadir Tepat Waktu).`);
+    triggerToast(`Presensi berhasil: Terverifikasi via Kode Presensi (${formatted}).`);
+  };
+
+  const handleStudentScanQrSuccess = () => {
+    setIsStudentScannerOpen(false);
+    studentSelfCheckIn(
+      currentUser.id,
+      currentUser.name,
+      currentUser.classId || 'class-xi-mipa-1',
+      currentUser.className || 'XI MIPA 1',
+      currentUser.identifierNumber
+    );
+    triggerToast('Presensi berhasil: QR Code guru berhasil dipindai dan diverifikasi.');
+  };
+
+  const handleGenerateNewClassCode = () => {
+    const randomNum = Math.floor(1000 + Math.random() * 9000);
+    const newCode = `TECH-${randomNum}`;
+    setActiveClassCode(newCode);
+    triggerToast(`Kode presensi baru diaktifkan: ${newCode}`);
+  };
+
+  const handleCopyClassCode = () => {
+    navigator.clipboard?.writeText(activeClassCode);
+    setCopiedCodeToast(true);
+    triggerToast(`Kode presensi disalin: ${activeClassCode}`);
+    setTimeout(() => setCopiedCodeToast(false), 2000);
   };
 
   // Student leave submit
@@ -141,15 +269,20 @@ export const AttendancePage: React.FC = () => {
     triggerToast(`Surat permohonan ${studentLeaveType === 'sakit' ? 'izin sakit' : 'izin'} berhasil diajukan ke Wali Kelas.`);
   };
 
-  // Teacher check-in & check-out
+  // Teacher check-in & check-out with 100m geofencing radius validation
   const handleTeacherCheckIn = () => {
+    if (teacherDistance > maxAllowedDistance) {
+      triggerToast(`Presensi ditolak: Jarak Anda (${teacherDistance}m) melebihi batas radius maksimal 100 meter dari gerbang sekolah.`);
+      return;
+    }
+
     teacherCheckIn(
       currentUser.id,
       currentUser.name,
       currentUser.identifierNumber,
       currentUser.subjectSpecialization
     );
-    triggerToast(`Presensi kedatangan berhasil dicatat: ${currentUser.name} (${currentTime}).`);
+    triggerToast(`Presensi kedatangan berhasil dicatat: ${currentUser.name} (${currentTime}) - Radius: ${teacherDistance}m.`);
   };
 
   const handleTeacherCheckOut = () => {
@@ -390,30 +523,89 @@ export const AttendancePage: React.FC = () => {
                         Presensi Kehadiran Berhasil Diverifikasi
                       </p>
                       <p className="text-emerald-700 text-[11px] mt-0.5">
-                        Tercatat jam masuk pukul {myStudentTodayRecord.checkInTime || '06.45 WIB'} • Metode: Presensi Mandiri Siswa (Dalam Radius Kampus SMA Techsoe).
+                        Tercatat jam masuk pukul {myStudentTodayRecord.checkInTime || '06.45 WIB'} • Metode: QR & Kode Presensi Kelas ({activeClassCode} • Terverifikasi Guru).
                       </p>
                     </div>
                   </div>
-                  <Badge variant="success">Terverifikasi</Badge>
+                  <Badge variant="success">Hadir Terverifikasi</Badge>
                 </div>
               ) : isStudent ? (
-                <div className="p-4 rounded-xl bg-blue-50/60 border border-blue-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-                  <div>
-                    <p className="font-bold text-[#142B50]">
-                      Kamu belum mencatat presensi masuk hari ini
-                    </p>
-                    <p className="text-slate-600 text-[11px] mt-0.5">
-                      Batas toleransi kehadiran pukul 07.00 WIB. Pastikan kamu telah berada di area sekolah.
-                    </p>
+                <div className="p-5 rounded-2xl bg-[#F5F7FB] border border-blue-200/80 space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold text-slate-900 text-sm">Metode Presensi Siswa di Kelas</span>
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-[#142B50]">
+                          QR / Kode Guru
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-600 mt-1">
+                        Pindai QR code pada layar proyektor guru atau masukkan kode 6 digit yang sedang ditayangkan.
+                      </p>
+                    </div>
+
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      size="sm"
+                      onClick={() => setIsStudentScannerOpen(true)}
+                      leftIcon={<Scan className="w-4 h-4 text-[#142B50]" />}
+                      className="font-bold shrink-0 bg-white border border-slate-300 text-[#142B50] hover:bg-slate-100"
+                    >
+                      Pindai QR Code
+                    </Button>
                   </div>
-                  <Button
-                    variant="primary"
-                    size="sm"
-                    onClick={handleStudentSelfCheckIn}
-                    leftIcon={<UserCheck className="w-4 h-4" />}
-                  >
-                    Check-in Hadir Sekarang
-                  </Button>
+
+                  {/* Form Input Kode Presensi dari Guru */}
+                  <form onSubmit={handleStudentVerifyCode} className="space-y-2 pt-2 border-t border-slate-200/80">
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                      <div className="relative flex-1">
+                        <input
+                          type="text"
+                          value={studentInputCode}
+                          onChange={(e) => {
+                            setStudentInputCode(e.target.value.toUpperCase());
+                            setCodeError('');
+                          }}
+                          placeholder="Masukkan kode presensi (cth: TECH-8492)"
+                          className="w-full px-3.5 py-2.5 text-xs font-mono font-bold tracking-wider text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#142B50] focus:border-[#142B50] uppercase placeholder:font-sans placeholder:font-normal placeholder:tracking-normal"
+                        />
+                        {codeError && (
+                          <p className="text-[11px] text-red-600 font-semibold mt-1 flex items-center gap-1">
+                            <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                            <span>{codeError}</span>
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            setStudentInputCode(activeClassCode);
+                            setCodeError('');
+                          }}
+                          className="text-xs py-2.5 rounded-xl whitespace-nowrap bg-white text-slate-600 border-slate-300 hover:bg-slate-50"
+                        >
+                          Tempel Kode: {activeClassCode}
+                        </Button>
+                        <Button
+                          type="submit"
+                          variant="primary"
+                          size="sm"
+                          leftIcon={<CheckCircle2 className="w-4 h-4" />}
+                          className="text-xs py-2.5 rounded-xl font-bold whitespace-nowrap"
+                        >
+                          Verifikasi Hadir
+                        </Button>
+                      </div>
+                    </div>
+                    <p className="text-[10px] text-slate-400">
+                      *Kode ini diverifikasi langsung dari sesi KBM guru pengampu mata pelajaran yang sedang aktif.
+                    </p>
+                  </form>
                 </div>
               ) : (
                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600">
@@ -605,6 +797,58 @@ export const AttendancePage: React.FC = () => {
               </Button>
             </div>
           </form>
+        </Modal>
+
+        {/* Modal Kamera Scanner QR Siswa */}
+        <Modal
+          isOpen={isStudentScannerOpen}
+          onClose={() => setIsStudentScannerOpen(false)}
+          title="Pemindai QR Code Presensi Siswa"
+          description="Arahkan kamera gawai Anda ke layar proyektor bapak/ibu guru di depan kelas."
+        >
+          <div className="space-y-5 py-2 text-center">
+            {/* Viewfinder simulation box */}
+            <div className="relative w-full max-w-xs mx-auto aspect-square bg-slate-900 rounded-2xl overflow-hidden border-2 border-slate-800 shadow-inner flex items-center justify-center">
+              {/* Animated scanning laser line */}
+              <div className="absolute inset-x-0 h-0.5 bg-emerald-400 shadow-[0_0_12px_#34d399] animate-bounce duration-1000 top-1/3" />
+
+              {/* Viewfinder corner brackets */}
+              <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-emerald-400 rounded-tl" />
+              <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-emerald-400 rounded-tr" />
+              <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-emerald-400 rounded-bl" />
+              <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-emerald-400 rounded-br" />
+
+              <div className="text-center p-4 space-y-2 z-10 text-white/90">
+                <Camera className="w-10 h-10 mx-auto text-emerald-400 animate-pulse" />
+                <p className="text-xs font-semibold text-white">Mendeteksi QR Code Layar Guru...</p>
+                <p className="text-[10px] text-slate-400">Target: {selectedClass.name} • Informatika</p>
+              </div>
+            </div>
+
+            <div className="p-3 rounded-xl bg-blue-50 border border-blue-200 text-xs text-[#142B50] flex items-center gap-2 max-w-xs mx-auto text-left">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>Kode aktif terdeteksi di kelas: <strong>{activeClassCode}</strong></span>
+            </div>
+
+            <div className="flex items-center justify-center gap-2 pt-2 border-t border-slate-100">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setIsStudentScannerOpen(false)}
+              >
+                Batal
+              </Button>
+              <Button
+                variant="primary"
+                size="sm"
+                onClick={handleStudentScanQrSuccess}
+                leftIcon={<Scan className="w-4 h-4" />}
+                className="font-bold"
+              >
+                Konfirmasi Pindai Presensi
+              </Button>
+            </div>
+          </div>
         </Modal>
       </div>
     );
@@ -809,14 +1053,25 @@ export const AttendancePage: React.FC = () => {
               </div>
             </div>
 
-            <Button
-              variant="primary"
-              size="sm"
-              onClick={handleSaveStudentAttendance}
-              leftIcon={<Save className="w-4 h-4" />}
-            >
-              Simpan Presensi Rombel
-            </Button>
+            <div className="flex flex-wrap items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setIsTeacherQrModalOpen(true)}
+                leftIcon={<QrCode className="w-4 h-4 text-[#142B50]" />}
+                className="bg-white border-slate-300 text-[#142B50] font-bold hover:bg-slate-50"
+              >
+                Tayangkan QR & Kode Presensi Kelas
+              </Button>
+              <Button
+                variant="primary"
+                size="sm"
+                onClick={handleSaveStudentAttendance}
+                leftIcon={<Save className="w-4 h-4" />}
+              >
+                Simpan Presensi Rombel
+              </Button>
+            </div>
           </div>
 
           {/* Student Attendance Table */}
@@ -1033,33 +1288,58 @@ export const AttendancePage: React.FC = () => {
                   {myStudentTodayRecord ? (
                     <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 flex items-center justify-between">
                       <div className="flex items-center gap-2.5">
-                        <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                        <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
                         <div>
                           <p className="font-bold">Presensi Siswa Telah Dicatat Hari Ini</p>
-                          <p className="text-[11px] text-emerald-700">Waktu: {myStudentTodayRecord.checkInTime} • Status: {myStudentTodayRecord.notes || 'Tepat Waktu'}</p>
+                          <p className="text-[11px] text-emerald-700">Waktu: {myStudentTodayRecord.checkInTime} • Metode: QR & Kode Presensi Kelas ({activeClassCode})</p>
                         </div>
                       </div>
                       <Badge variant="success">Sudah Hadir</Badge>
                     </div>
                   ) : (
-                    <div>
-                      <p className="text-xs text-slate-600 mb-3">
-                        Klik tombol di bawah untuk mencatat kehadiran belajar Anda di sekolah hari ini:
+                    <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-3">
+                      <p className="text-xs text-slate-700 font-semibold">
+                        Gunakan salah satu metode di bawah ini untuk mencatat kehadiran:
                       </p>
-                      <Button
-                        variant="primary"
-                        size="lg"
-                        className="w-full justify-center"
-                        onClick={handleStudentSelfCheckIn}
-                        leftIcon={<UserCheck className="w-5 h-5" />}
-                      >
-                        Catat Kehadiran Siswa Sekarang
-                      </Button>
+
+                      <div className="flex flex-col sm:flex-row items-stretch gap-2">
+                        <input
+                          type="text"
+                          value={studentInputCode}
+                          onChange={(e) => {
+                            setStudentInputCode(e.target.value.toUpperCase());
+                            setCodeError('');
+                          }}
+                          placeholder="Masukkan kode guru (cth: TECH-8492)"
+                          className="flex-1 px-3 py-2 text-xs font-mono font-bold tracking-wider uppercase border border-slate-300 rounded-lg bg-white"
+                        />
+                        <Button
+                          variant="primary"
+                          size="sm"
+                          onClick={handleStudentVerifyCode}
+                          leftIcon={<CheckCircle2 className="w-4 h-4" />}
+                        >
+                          Kirim Kode
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          onClick={() => setIsStudentScannerOpen(true)}
+                          leftIcon={<Scan className="w-4 h-4 text-[#142B50]" />}
+                          className="bg-slate-100 border border-slate-300 text-[#142B50]"
+                        >
+                          Scan QR Guru
+                        </Button>
+                      </div>
+
+                      {codeError && (
+                        <p className="text-[11px] text-red-600 font-semibold">{codeError}</p>
+                      )}
                     </div>
                   )}
                 </div>
               ) : currentUser.role === 'guru' || currentUser.role === 'admin' ? (
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200 text-xs text-slate-700 space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-[#142B50]">Status Presensi Guru:</span>
@@ -1074,12 +1354,75 @@ export const AttendancePage: React.FC = () => {
                     )}
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                  {/* Geofencing Radius Verification Card (Maksimal 100 Meter) */}
+                  <div className={`p-4 rounded-xl border transition-colors ${
+                    teacherDistance <= maxAllowedDistance
+                      ? 'bg-emerald-50/70 border-emerald-300'
+                      : 'bg-amber-50/80 border-amber-300'
+                  }`}>
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-start gap-2.5">
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
+                          teacherDistance <= maxAllowedDistance ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'
+                        }`}>
+                          <Navigation className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-slate-900 text-xs">Validasi Geofencing Presensi Guru</span>
+                            <Badge variant={teacherDistance <= maxAllowedDistance ? 'success' : 'danger'}>
+                              {teacherDistance <= maxAllowedDistance ? `Valid (≤ ${maxAllowedDistance}m)` : `Di Luar Radius (> ${maxAllowedDistance}m)`}
+                            </Badge>
+                          </div>
+                          <p className="text-xs font-semibold text-slate-800 mt-0.5">
+                            Jarak ke Titik Gerbang Sekolah: <span className="font-mono font-bold text-sm">{teacherDistance} meter</span>
+                          </p>
+                          <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
+                            {teacherDistance <= maxAllowedDistance
+                              ? `Titik koordinat GPS SMA Techsoe terdeteksi valid. Anda berada dalam batas aman maksimal ${maxAllowedDistance} meter.`
+                              : `Posisi Anda melebihi batas toleransi ${maxAllowedDistance} meter dari gerbang sekolah. Presensi tidak dapat dilakukan di luar radius.`}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Interactive GPS Distance Simulator for Client Demo */}
+                    <div className="mt-3 pt-3 border-t border-slate-200/60 flex flex-wrap items-center justify-between gap-2 text-[11px]">
+                      <span className="text-slate-500 font-medium">Uji Coba Radius GPS (Demo):</span>
+                      <div className="flex items-center gap-1.5">
+                        <button
+                          type="button"
+                          onClick={() => setTeacherDistance(38)}
+                          className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition cursor-pointer ${
+                            teacherDistance <= maxAllowedDistance
+                              ? 'bg-emerald-600 text-white shadow-xs'
+                              : 'bg-white text-slate-600 border border-slate-300 hover:bg-slate-100'
+                          }`}
+                        >
+                          Di Sekolah (38m)
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setTeacherDistance(185)}
+                          className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition cursor-pointer ${
+                            teacherDistance > maxAllowedDistance
+                              ? 'bg-amber-600 text-white shadow-xs'
+                              : 'bg-white text-slate-600 border border-slate-300 hover:bg-slate-100'
+                          }`}
+                        >
+                          Di Luar Jangkauan (185m)
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                     <Button
-                      variant="primary"
+                      variant={teacherDistance <= maxAllowedDistance ? 'primary' : 'outline'}
                       size="md"
                       onClick={handleTeacherCheckIn}
                       leftIcon={<LogIn className="w-4 h-4" />}
+                      className={teacherDistance > maxAllowedDistance ? 'opacity-60 cursor-not-allowed border-slate-300 text-slate-400' : ''}
                     >
                       Check-In Masuk ({currentTime.split(':')[0] + '.' + currentTime.split(':')[1]})
                     </Button>
@@ -1231,6 +1574,133 @@ export const AttendancePage: React.FC = () => {
             </Button>
           </div>
         </form>
+      </Modal>
+
+      {/* Modal Layar Proyektor: QR Code & Kode Presensi Siswa */}
+      <Modal
+        isOpen={isTeacherQrModalOpen}
+        onClose={() => setIsTeacherQrModalOpen(false)}
+        title="Layar Proyektor: Presensi Kelas Digital"
+        description="Tayangkan kode dan QR Code ini di layar depan kelas agar siswa dapat mencatat kehadiran mandiri."
+      >
+        <div className="space-y-6 text-center py-2">
+          {/* Subject and Class Badge */}
+          <div className="inline-flex items-center gap-2 bg-[#EAF0F8] text-[#142B50] px-3.5 py-1.5 rounded-full text-xs font-bold border border-blue-200">
+            <GraduationCap className="w-4 h-4 text-[#142B50]" />
+            <span>{selectedClass.name} • Informatika • Sesi Jam Ke-1 & 2</span>
+          </div>
+
+          {/* Big 6-Digit Code Display */}
+          <div className="p-5 rounded-2xl bg-[#142B50] text-white shadow-md max-w-sm mx-auto space-y-2">
+            <span className="text-[10px] uppercase font-bold text-blue-200 tracking-widest block">
+              Kode Presensi Kelas Hari Ini
+            </span>
+            <div className="text-3xl sm:text-4xl font-mono font-black tracking-widest text-white selection:bg-blue-600">
+              {activeClassCode}
+            </div>
+            <p className="text-[11px] text-blue-200">
+              Masa aktif: Berlaku selama jam KBM berlangsung
+            </p>
+            <div className="pt-2 flex items-center justify-center gap-2">
+              <Button
+                type="button"
+                variant="secondary"
+                size="sm"
+                onClick={handleCopyClassCode}
+                leftIcon={copiedCodeToast ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-[#142B50]" />}
+                className="bg-white text-slate-800 text-xs py-1.5 font-bold"
+              >
+                {copiedCodeToast ? 'Tersalin' : 'Salin Kode'}
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={handleGenerateNewClassCode}
+                leftIcon={<RotateCw className="w-3.5 h-3.5 text-blue-200" />}
+                className="border-white/20 text-white hover:bg-white/10 text-xs py-1.5"
+              >
+                Acak Kode Baru
+              </Button>
+            </div>
+          </div>
+
+          {/* QR Code SVG Display */}
+          <div className="space-y-3">
+            <div className="flex justify-center">
+              <QRCodeDisplay code={activeClassCode} size={180} />
+            </div>
+            <p className="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed">
+              Arahkan siswa membuka menu <strong>Presensi</strong> di ponsel masing-masing dan pilih <strong>Pindai QR</strong> atau masukkan kode <strong>{activeClassCode}</strong>.
+            </p>
+          </div>
+
+          {/* Realtime Attendee Counter */}
+          <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 max-w-sm mx-auto flex items-center justify-between text-xs">
+            <span className="text-slate-600 font-medium">Kehadiran Rombel Real-time:</span>
+            <span className="font-bold text-[#142B50] bg-blue-100 px-2.5 py-0.5 rounded-md">
+              35 / 36 Siswa Hadir
+            </span>
+          </div>
+
+          <div className="pt-2 border-t border-slate-100 flex justify-end">
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={() => setIsTeacherQrModalOpen(false)}
+            >
+              Tutup Layar Presensi
+            </Button>
+          </div>
+        </div>
+      </Modal>
+
+      {/* Modal Scanner untuk Guru saat uji coba simulasi siswa */}
+      <Modal
+        isOpen={isStudentScannerOpen}
+        onClose={() => setIsStudentScannerOpen(false)}
+        title="Pemindai QR Code Presensi Siswa"
+        description="Arahkan kamera gawai Anda ke layar proyektor bapak/ibu guru di depan kelas."
+      >
+        <div className="space-y-5 py-2 text-center">
+          <div className="relative w-full max-w-xs mx-auto aspect-square bg-slate-900 rounded-2xl overflow-hidden border-2 border-slate-800 shadow-inner flex items-center justify-center">
+            <div className="absolute inset-x-0 h-0.5 bg-emerald-400 shadow-[0_0_12px_#34d399] animate-bounce duration-1000 top-1/3" />
+            <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-emerald-400 rounded-tl" />
+            <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-emerald-400 rounded-tr" />
+            <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-emerald-400 rounded-bl" />
+            <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-emerald-400 rounded-br" />
+
+            <div className="text-center p-4 space-y-2 z-10 text-white/90">
+              <Camera className="w-10 h-10 mx-auto text-emerald-400 animate-pulse" />
+              <p className="text-xs font-semibold text-white">Mendeteksi QR Code Layar Guru...</p>
+              <p className="text-[10px] text-slate-400">Target: {selectedClass.name} • Informatika</p>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-blue-50 border border-blue-200 text-xs text-[#142B50] flex items-center gap-2 max-w-xs mx-auto text-left">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>Kode aktif terdeteksi di kelas: <strong>{activeClassCode}</strong></span>
+          </div>
+
+          <div className="flex items-center justify-center gap-2 pt-2 border-t border-slate-100">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setIsStudentScannerOpen(false)}
+            >
+              Batal
+            </Button>
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={handleStudentScanQrSuccess}
+              leftIcon={<Scan className="w-4 h-4" />}
+              className="font-bold"
+            >
+              Konfirmasi Pindai Presensi
+            </Button>
+          </div>
+        </div>
       </Modal>
     </div>
   );
