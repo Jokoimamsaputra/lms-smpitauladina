@@ -16,6 +16,9 @@ import {
   Bell,
   X,
   HelpCircle,
+  Calendar,
+  HeartHandshake,
+  ClipboardList,
 } from 'lucide-react';
 import { useStore } from '../../store/useStore';
 import { UserRole } from '../../types';
@@ -60,6 +63,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
             ],
           },
           {
+            groupName: 'Operasional & BK',
+            items: [
+              { label: 'Jurnal Mengajar Guru', href: '/teacher/journal', icon: <ClipboardList className="w-4 h-4" /> },
+              { label: 'Jadwal KBM Mingguan', href: '/schedule', icon: <Calendar className="w-4 h-4" /> },
+              { label: 'Bimbingan Konseling & Prestasi', href: '/counseling', icon: <HeartHandshake className="w-4 h-4" /> },
+            ],
+          },
+          {
             groupName: 'Perpustakaan & AI',
             items: [
               { label: 'Katalog Buku Nasional', href: '/books', icon: <Library className="w-4 h-4" />, badge: 'Resmi' },
@@ -90,6 +101,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
             ],
           },
           {
+            groupName: 'Operasional Harian',
+            items: [
+              { label: 'Jurnal Mengajar Harian', href: '/teacher/journal', icon: <ClipboardList className="w-4 h-4" />, badge: 'Wajib' },
+              { label: 'Jadwal Mengajar KBM', href: '/schedule', icon: <Calendar className="w-4 h-4" /> },
+              { label: 'Bimbingan Konseling & Disiplin', href: '/counseling', icon: <HeartHandshake className="w-4 h-4" /> },
+              { label: 'Presensi Guru & Siswa', href: '/attendance', icon: <CalendarCheck2 className="w-4 h-4" /> },
+            ],
+          },
+          {
             groupName: 'Pembelajaran & AI',
             items: [
               { label: 'AI Teaching Copilot', href: '/ai/teaching', icon: <Sparkles className="w-4 h-4" />, badge: 'AI' },
@@ -103,7 +123,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
               { label: 'Ujian CBT', href: '/exams', icon: <FileText className="w-4 h-4" /> },
               { label: 'Bank Soal', href: '/question-bank', icon: <HelpCircle className="w-4 h-4" /> },
               { label: 'Gradebook & Rapor', href: '/gradebook', icon: <GraduationCap className="w-4 h-4" /> },
-              { label: 'Presensi Guru & Siswa', href: '/attendance', icon: <CalendarCheck2 className="w-4 h-4" /> },
             ],
           },
         ];
@@ -117,16 +136,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
             ],
           },
           {
-            groupName: 'Sumber Belajar & AI',
+            groupName: 'Jadwal & Sumber Belajar',
             items: [
+              { label: 'Jadwal Pelajaran Mingguan', href: '/schedule', icon: <Calendar className="w-4 h-4" /> },
               { label: 'AI Learning Assistant', href: '/ai/assistant', icon: <Sparkles className="w-4 h-4" />, badge: 'Tutor' },
               { label: 'Buku Digital Nasional', href: '/books', icon: <Library className="w-4 h-4" /> },
             ],
           },
           {
-            groupName: 'Aktivitas Saya',
+            groupName: 'Aktivitas & Prestasi',
             items: [
               { label: 'Presensi Kehadiran', href: '/attendance', icon: <CalendarCheck2 className="w-4 h-4" /> },
+              { label: 'Prestasi & Konseling BK', href: '/counseling', icon: <HeartHandshake className="w-4 h-4" /> },
               { label: 'Tugas Saya', href: '/assignments', icon: <FileCheck2 className="w-4 h-4" /> },
               { label: 'Ujian & Kuis CBT', href: '/exams', icon: <FileText className="w-4 h-4" /> },
               { label: 'Hasil Belajar & Rapor', href: '/reports', icon: <GraduationCap className="w-4 h-4" /> },
@@ -141,7 +162,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
             items: [
               { label: 'Executive Dashboard', href: '/principal/dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
               { label: 'Learning Analytics', href: '/analytics', icon: <BarChart3 className="w-4 h-4" /> },
-              { label: 'Monitoring Kelas', href: '/virtual-classes', icon: <BookOpen className="w-4 h-4" /> },
+              { label: 'Monitoring KBM Kelas', href: '/virtual-classes', icon: <BookOpen className="w-4 h-4" /> },
+              { label: 'Supervisi Jurnal Guru', href: '/teacher/journal', icon: <ClipboardList className="w-4 h-4" /> },
+              { label: 'Jadwal KBM Sekolah', href: '/schedule', icon: <Calendar className="w-4 h-4" /> },
+              { label: 'Bimbingan Konseling & Prestasi', href: '/counseling', icon: <HeartHandshake className="w-4 h-4" /> },
               { label: 'Monitoring Kehadiran', href: '/attendance', icon: <CalendarCheck2 className="w-4 h-4" /> },
               { label: 'Rapor Mutu Sekolah', href: '/reports', icon: <GraduationCap className="w-4 h-4" /> },
               { label: 'Katalog Kurikulum', href: '/books', icon: <Library className="w-4 h-4" /> },
@@ -154,6 +178,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
           {
             items: [
               { label: 'Dashboard Anak', href: '/parent/dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
+              { label: 'Jadwal Pelajaran Anak', href: '/schedule', icon: <Calendar className="w-4 h-4" /> },
+              { label: 'Disiplin & Prestasi Anak', href: '/counseling', icon: <HeartHandshake className="w-4 h-4" /> },
               { label: 'Nilai & Hasil Belajar', href: '/reports', icon: <GraduationCap className="w-4 h-4" /> },
               { label: 'Aktivitas & Tugas', href: '/assignments', icon: <FileCheck2 className="w-4 h-4" /> },
               { label: 'Kehadiran Anak', href: '/attendance', icon: <CalendarCheck2 className="w-4 h-4" /> },

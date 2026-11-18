@@ -66,33 +66,33 @@ export const LandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-slate-800">
-      {/* Dynamic Animated Navbar (Transforms into a spacious, well-proportioned floating capsule upon scroll) */}
+      {/* Dynamic Animated Navbar (Transforms into an expansive, wide, luxury floating capsule upon scroll) */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
-          isScrolled ? 'pt-3 sm:pt-7 px-3 sm:px-6 pointer-events-none' : 'pt-0 px-0'
+          isScrolled ? 'pt-3 sm:pt-5 px-2 sm:px-4 pointer-events-none' : 'pt-0 px-0'
         }`}
       >
         <nav
           className={`mx-auto flex items-center justify-between transition-all duration-500 ease-out ${
             isScrolled
-              ? 'pointer-events-auto max-w-4xl lg:max-w-5xl bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-[#142B50]/8 rounded-full px-4 sm:px-8 h-15 sm:h-17'
-              : 'w-full bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] shadow-none rounded-none px-4 sm:px-10 h-16 sm:h-20'
+              ? 'pointer-events-auto w-[96%] xl:w-[95%] max-w-[1500px] bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-[#142B50]/10 rounded-full px-6 sm:px-10 lg:px-12 h-16 sm:h-20'
+              : 'w-full bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] shadow-none rounded-none px-6 sm:px-12 lg:px-16 h-20 sm:h-24'
           }`}
         >
           {/* School Brand Identity (Pure Typography) */}
           <div
-            className="flex flex-col cursor-pointer select-none"
+            className="flex flex-col cursor-pointer select-none shrink-0"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <span
               className={`font-black tracking-tight text-[#142B50] block transition-all duration-500 whitespace-nowrap ${
-                isScrolled ? 'text-sm sm:text-lg' : 'text-base sm:text-xl'
+                isScrolled ? 'text-base sm:text-xl' : 'text-lg sm:text-2xl'
               }`}
             >
               SMA TECHSOE
             </span>
             {!isScrolled && (
-              <span className="text-[10px] text-slate-500 font-semibold tracking-wider uppercase block -mt-0.5 whitespace-nowrap hidden xs:block">
+              <span className="text-[10px] sm:text-xs text-slate-500 font-semibold tracking-wider uppercase block -mt-0.5 whitespace-nowrap hidden xs:block">
                 LMS & Portal Akademik Resmi
               </span>
             )}
@@ -100,46 +100,42 @@ export const LandingPage: React.FC = () => {
 
           {/* Desktop Links */}
           <div
-            className={`hidden md:flex items-center text-xs font-semibold text-slate-600 transition-all duration-500 ${
-              isScrolled ? 'gap-4 lg:gap-6' : 'gap-6 lg:gap-8'
+            className={`hidden md:flex items-center text-xs lg:text-sm font-semibold text-slate-600 transition-all duration-500 ${
+              isScrolled ? 'gap-5 lg:gap-8' : 'gap-6 lg:gap-10'
             }`}
           >
-            <a href="#pintu-portal" className="hover:text-[#142B50] transition-colors py-1 px-2 rounded-full hover:bg-slate-100/70">
+            <a href="#pintu-portal" className="hover:text-[#142B50] transition-colors py-1.5 px-3 rounded-full hover:bg-slate-100/80">
               Civitas
             </a>
-            <a href="#program" className="hover:text-[#142B50] transition-colors py-1 px-2 rounded-full hover:bg-slate-100/70">
+            <a href="#program" className="hover:text-[#142B50] transition-colors py-1.5 px-3 rounded-full hover:bg-slate-100/80">
               Akademik
             </a>
-            <a href="#perpustakaan" className="hover:text-[#142B50] transition-colors py-1 px-2 rounded-full hover:bg-slate-100/70">
+            <a href="#perpustakaan" className="hover:text-[#142B50] transition-colors py-1.5 px-3 rounded-full hover:bg-slate-100/80">
               Perpustakaan
             </a>
-            <a href="#pengumuman" className="hover:text-[#142B50] transition-colors py-1 px-2 rounded-full hover:bg-slate-100/70">
+            <a href="#pengumuman" className="hover:text-[#142B50] transition-colors py-1.5 px-3 rounded-full hover:bg-slate-100/80">
               Agenda
             </a>
-            <a href="#kontak" className="hover:text-[#142B50] transition-colors py-1 px-2 rounded-full hover:bg-slate-100/70">
+            <a href="#kontak" className="hover:text-[#142B50] transition-colors py-1.5 px-3 rounded-full hover:bg-slate-100/80">
               Kontak
             </a>
           </div>
 
           {/* Header Action Button */}
-          <div className="hidden sm:flex items-center gap-2.5">
+          <div className="hidden sm:flex items-center gap-3 shrink-0">
             <button
               type="button"
               onClick={() => navigate('/login')}
-              className={`text-xs font-semibold transition-colors cursor-pointer ${
-                isScrolled
-                  ? 'text-slate-500 hover:text-[#142B50] px-3 py-1.5 rounded-full hover:bg-slate-100'
-                  : 'text-slate-600 hover:text-[#142B50] px-3 py-1.5 rounded-lg hover:bg-slate-100'
-              }`}
+              className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-[#142B50] px-3.5 py-2 rounded-full hover:bg-slate-100 transition-colors cursor-pointer"
             >
               Role Demo
             </button>
             <Button
               variant="primary"
-              size="sm"
-              className={isScrolled ? 'rounded-full text-xs px-4 py-2 shadow-sm' : 'rounded-xl text-xs px-4 py-2'}
+              size="md"
+              className={isScrolled ? 'rounded-full text-xs sm:text-sm px-5 py-2.5 shadow-sm' : 'rounded-xl text-xs sm:text-sm px-5 py-2.5'}
               onClick={() => handleQuickLogin('siswa', '/student/dashboard')}
-              rightIcon={<ArrowRight className="w-3.5 h-3.5" />}
+              rightIcon={<ArrowRight className="w-4 h-4" />}
             >
               Masuk Portal
             </Button>
@@ -161,7 +157,7 @@ export const LandingPage: React.FC = () => {
           <div
             className={`md:hidden transition-all duration-300 ${
               isScrolled
-                ? 'pointer-events-auto max-w-4xl lg:max-w-5xl mx-auto mt-2 bg-white/98 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-2xl p-4 space-y-1'
+                ? 'pointer-events-auto w-[96%] xl:w-[95%] max-w-[1500px] mx-auto mt-2 bg-white/98 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-2xl p-4 space-y-1'
                 : 'border-t border-slate-200 bg-white/98 backdrop-blur-xl px-4 py-3 space-y-1 shadow-lg'
             }`}
           >

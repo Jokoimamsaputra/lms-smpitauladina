@@ -18,6 +18,11 @@ import {
   AIGeneratedItem,
   SchoolProfile,
   DiscussionComment,
+  TeacherJournal,
+  CounselingSession,
+  StudentViolation,
+  StudentAchievement,
+  ScheduleItem,
 } from '../types';
 import {
   INITIAL_USERS,
@@ -34,6 +39,11 @@ import {
   INITIAL_NOTIFICATIONS,
   INITIAL_SCHOOL_PROFILE,
   INITIAL_AI_CHAT_STUDENT,
+  INITIAL_TEACHER_JOURNALS,
+  INITIAL_COUNSELING_SESSIONS,
+  INITIAL_VIOLATIONS,
+  INITIAL_ACHIEVEMENTS,
+  INITIAL_SCHEDULES,
 } from '../data/mockData';
 
 interface AppState {
@@ -112,6 +122,32 @@ interface AppState {
   aiGeneratedItems: AIGeneratedItem[];
   addAIGeneratedItem: (item: Omit<AIGeneratedItem, 'id' | 'createdAt'>) => void;
 
+  // Teacher Journals
+  journals: TeacherJournal[];
+  addJournal: (journal: Omit<TeacherJournal, 'id'>) => void;
+  updateJournal: (id: string, updates: Partial<TeacherJournal>) => void;
+  deleteJournal: (id: string) => void;
+
+  // Counseling (BK)
+  counselingSessions: CounselingSession[];
+  addCounselingSession: (session: Omit<CounselingSession, 'id'>) => void;
+  deleteCounselingSession: (id: string) => void;
+
+  // Disciplinary Violations
+  violations: StudentViolation[];
+  addViolation: (violation: Omit<StudentViolation, 'id'>) => void;
+  deleteViolation: (id: string) => void;
+
+  // Student Achievements
+  achievements: StudentAchievement[];
+  addAchievement: (achievement: Omit<StudentAchievement, 'id'>) => void;
+  deleteAchievement: (id: string) => void;
+
+  // Schedules
+  schedules: ScheduleItem[];
+  addSchedule: (schedule: Omit<ScheduleItem, 'id'>) => void;
+  deleteSchedule: (id: string) => void;
+
   // Global Reset
   resetToDefaultData: () => void;
 }
@@ -162,6 +198,11 @@ export const useStore = create<AppState>((set, get) => ({
       createdAt: '2026-11-17T10:00:00Z',
     },
   ],
+  journals: savedData?.journals || INITIAL_TEACHER_JOURNALS,
+  counselingSessions: savedData?.counselingSessions || INITIAL_COUNSELING_SESSIONS,
+  violations: savedData?.violations || INITIAL_VIOLATIONS,
+  achievements: savedData?.achievements || INITIAL_ACHIEVEMENTS,
+  schedules: savedData?.schedules || INITIAL_SCHEDULES,
 
   switchRole: (role: UserRole) => {
     const matched = get().users.find((u) => u.role === role);
@@ -567,6 +608,82 @@ Apakah kamu ingin kita coba kerjakan satu latihan soal terkait topik ini bersama
     saveState(get());
   },
 
+  addJournal: (journal) => {
+    const id = `jrn-${Date.now()}`;
+    set((state) => ({
+      journals: [{ ...journal, id }, ...state.journals],
+    }));
+    saveState(get());
+  },
+  updateJournal: (id, updates) => {
+    set((state) => ({
+      journals: state.journals.map((j) => (j.id === id ? { ...j, ...updates } : j)),
+    }));
+    saveState(get());
+  },
+  deleteJournal: (id) => {
+    set((state) => ({
+      journals: state.journals.filter((j) => j.id !== id),
+    }));
+    saveState(get());
+  },
+
+  addCounselingSession: (session) => {
+    const id = `cs-${Date.now()}`;
+    set((state) => ({
+      counselingSessions: [{ ...session, id }, ...state.counselingSessions],
+    }));
+    saveState(get());
+  },
+  deleteCounselingSession: (id) => {
+    set((state) => ({
+      counselingSessions: state.counselingSessions.filter((c) => c.id !== id),
+    }));
+    saveState(get());
+  },
+
+  addViolation: (violation) => {
+    const id = `viol-${Date.now()}`;
+    set((state) => ({
+      violations: [{ ...violation, id }, ...state.violations],
+    }));
+    saveState(get());
+  },
+  deleteViolation: (id) => {
+    set((state) => ({
+      violations: state.violations.filter((v) => v.id !== id),
+    }));
+    saveState(get());
+  },
+
+  addAchievement: (achievement) => {
+    const id = `ach-${Date.now()}`;
+    set((state) => ({
+      achievements: [{ ...achievement, id }, ...state.achievements],
+    }));
+    saveState(get());
+  },
+  deleteAchievement: (id) => {
+    set((state) => ({
+      achievements: state.achievements.filter((a) => a.id !== id),
+    }));
+    saveState(get());
+  },
+
+  addSchedule: (schedule) => {
+    const id = `sch-${Date.now()}`;
+    set((state) => ({
+      schedules: [...state.schedules, { ...schedule, id }],
+    }));
+    saveState(get());
+  },
+  deleteSchedule: (id) => {
+    set((state) => ({
+      schedules: state.schedules.filter((s) => s.id !== id),
+    }));
+    saveState(get());
+  },
+
   resetToDefaultData: () => {
     localStorage.removeItem(STORAGE_KEY);
     set({
@@ -599,6 +716,11 @@ Apakah kamu ingin kita coba kerjakan satu latihan soal terkait topik ini bersama
           createdAt: '2026-11-17T10:00:00Z',
         },
       ],
+      journals: INITIAL_TEACHER_JOURNALS,
+      counselingSessions: INITIAL_COUNSELING_SESSIONS,
+      violations: INITIAL_VIOLATIONS,
+      achievements: INITIAL_ACHIEVEMENTS,
+      schedules: INITIAL_SCHEDULES,
     });
   },
 }));
@@ -624,6 +746,11 @@ function saveState(state: AppState) {
       notifications: state.notifications,
       aiStudentMessages: state.aiStudentMessages,
       aiGeneratedItems: state.aiGeneratedItems,
+      journals: state.journals,
+      counselingSessions: state.counselingSessions,
+      violations: state.violations,
+      achievements: state.achievements,
+      schedules: state.schedules,
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
   } catch (err) {

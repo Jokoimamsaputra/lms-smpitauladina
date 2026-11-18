@@ -12,6 +12,9 @@ import {
   Library,
   GraduationCap,
   CalendarCheck2,
+  Calendar,
+  HeartHandshake,
+  Trophy,
 } from 'lucide-react';
 import { useStore } from '../../store/useStore';
 import { StatCard } from '../../components/common/StatCard';
@@ -57,6 +60,24 @@ export const StudentDashboard: React.FC = () => {
               leftIcon={<Sparkles className="w-4 h-4" />}
             >
               Tanya AI Learning Tutor
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="bg-white/10 text-white border-white/20 hover:bg-white/20"
+              onClick={() => navigate('/schedule')}
+              leftIcon={<Calendar className="w-4 h-4" />}
+            >
+              Jadwal Pelajaran
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="bg-white/10 text-white border-white/20 hover:bg-white/20"
+              onClick={() => navigate('/counseling')}
+              leftIcon={<Trophy className="w-4 h-4" />}
+            >
+              Prestasi & Konseling BK
             </Button>
             <Button
               variant="outline"

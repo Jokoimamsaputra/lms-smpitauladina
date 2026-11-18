@@ -41,6 +41,11 @@ import { LearningAnalyticsPage } from './pages/analytics/LearningAnalyticsPage';
 import { NotificationPage } from './pages/notifications/NotificationPage';
 import { SettingsPage } from './pages/settings/SettingsPage';
 
+// School Operational Pages (Adopted from lms-techsoe-sdn9 for real daily school use)
+import { TeacherJournalPage } from './pages/journal/TeacherJournalPage';
+import { CounselingPage } from './pages/counseling/CounselingPage';
+import { SchedulePage } from './pages/schedule/SchedulePage';
+
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
@@ -94,6 +99,11 @@ export const App: React.FC = () => {
           <Route path="/reports" element={<DigitalReportPage />} />
           <Route path="/attendance" element={<AttendancePage />} />
           <Route path="/analytics" element={<LearningAnalyticsPage />} />
+
+          {/* School Operations: Jurnal Mengajar, BK & Prestasi, Jadwal KBM */}
+          <Route path="/teacher/journal" element={<TeacherJournalPage />} />
+          <Route path="/counseling" element={<CounselingPage />} />
+          <Route path="/schedule" element={<SchedulePage />} />
 
           {/* Notifications & Settings */}
           <Route path="/notifications" element={<NotificationPage />} />

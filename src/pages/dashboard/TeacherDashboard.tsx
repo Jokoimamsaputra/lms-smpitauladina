@@ -11,6 +11,9 @@ import {
   PlusCircle,
   FileText,
   CalendarCheck2,
+  ClipboardList,
+  Calendar,
+  HeartHandshake,
 } from 'lucide-react';
 import { useStore } from '../../store/useStore';
 import { StatCard } from '../../components/common/StatCard';
@@ -70,6 +73,33 @@ export const TeacherDashboard: React.FC = () => {
               variant="outline"
               size="sm"
               className="bg-white/10 text-white border-white/20 hover:bg-white/20"
+              onClick={() => navigate('/teacher/journal')}
+              leftIcon={<ClipboardList className="w-4 h-4" />}
+            >
+              Jurnal Mengajar Harian
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="bg-white/10 text-white border-white/20 hover:bg-white/20"
+              onClick={() => navigate('/schedule')}
+              leftIcon={<Calendar className="w-4 h-4" />}
+            >
+              Jadwal Mengajar KBM
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="bg-white/10 text-white border-white/20 hover:bg-white/20"
+              onClick={() => navigate('/counseling')}
+              leftIcon={<HeartHandshake className="w-4 h-4" />}
+            >
+              Bimbingan Konseling & Prestasi
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="bg-white/10 text-white border-white/20 hover:bg-white/20"
               onClick={() => navigate('/attendance')}
               leftIcon={<CalendarCheck2 className="w-4 h-4" />}
             >
@@ -121,7 +151,13 @@ export const TeacherDashboard: React.FC = () => {
               <Clock className="w-4 h-4 text-[#142B50]" />
               <span>Jadwal Mengajar Hari Ini</span>
             </h2>
-            <Badge variant="primary">Senin</Badge>
+            <button
+              type="button"
+              onClick={() => navigate('/schedule')}
+              className="text-xs text-[#142B50] font-bold hover:underline"
+            >
+              Lihat Kalender KBM →
+            </button>
           </div>
 
           <div className="space-y-3">

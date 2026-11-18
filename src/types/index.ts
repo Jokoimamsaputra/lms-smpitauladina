@@ -267,3 +267,79 @@ export interface SchoolProfile {
   activeAcademicYear: string;
   activeSemester: 'Ganjil' | 'Genap';
 }
+
+export interface TeacherJournal {
+  id: string;
+  teacherId: string;
+  teacherName: string;
+  classId: string;
+  className: string;
+  subjectId: string;
+  subjectName: string;
+  journalDate: string; // YYYY-MM-DD
+  dayName: string;
+  periodTime: string; // e.g. "Jam 1-2 (07.15 - 08.45)"
+  materialTopic: string;
+  activityDescription: string;
+  learningMedia: string;
+  presentCount: number;
+  absentCount: number;
+  attendanceNotes: string;
+  notes?: string;
+  status: 'selesai' | 'tertunda';
+}
+
+export interface CounselingSession {
+  id: string;
+  studentId: string;
+  studentName: string;
+  className: string;
+  counselorName: string;
+  date: string;
+  category: 'akademik' | 'karir_kuliah' | 'pribadi' | 'sosial';
+  issueSummary: string;
+  agreementFollowUp: string;
+  status: 'selesai' | 'terjadwal' | 'butuh_tindak_lanjut';
+  isConfidential: boolean;
+}
+
+export interface StudentViolation {
+  id: string;
+  studentId: string;
+  studentName: string;
+  className: string;
+  date: string;
+  violationType: string;
+  category: 'ringan' | 'sedang' | 'berat';
+  points: number;
+  sanctionFollowUp: string;
+  reportedBy: string;
+  status: 'tuntas' | 'dalam_pembinaan';
+}
+
+export interface StudentAchievement {
+  id: string;
+  studentId: string;
+  studentName: string;
+  className: string;
+  date: string;
+  title: string;
+  category: 'akademik' | 'olahraga' | 'seni_budaya' | 'teknologi';
+  level: 'sekolah' | 'kota_kab' | 'provinsi' | 'nasional' | 'internasional';
+  rank: string;
+  organizer: string;
+  certificateNumber?: string;
+}
+
+export interface ScheduleItem {
+  id: string;
+  day: 'Senin' | 'Selasa' | 'Rabu' | 'Kamis' | 'Jumat';
+  period: string; // e.g. "07.15 - 08.45 (Jam 1-2)"
+  classId: string;
+  className: string;
+  subjectId: string;
+  subjectName: string;
+  teacherId: string;
+  teacherName: string;
+  room: string;
+}
