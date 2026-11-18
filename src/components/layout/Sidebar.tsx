@@ -272,6 +272,23 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
           ))}
         </div>
 
+        {/* Client Demo Tour Shortcut */}
+        <div className="px-3 py-2 border-t border-white/10">
+          <NavLink
+            to="/about-lms"
+            onClick={onCloseMobile}
+            className="flex items-center justify-between px-3 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-blue-100 text-xs font-bold transition group"
+          >
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-amber-300" />
+              <span>Tour Fitur LMS</span>
+            </div>
+            <span className="text-[10px] bg-amber-400/20 text-amber-300 px-1.5 py-0.5 rounded font-bold">
+              Demo
+            </span>
+          </NavLink>
+        </div>
+
         {/* User Info footer */}
         <div className="p-4 border-t border-white/10 bg-[#0D1B33]/50">
           <div className="flex items-center gap-3">

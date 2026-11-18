@@ -119,6 +119,13 @@ export const LandingPage: React.FC = () => {
             <a href="#kontak" className="hover:text-[#142B50] transition-colors py-1 px-2.5 rounded-full hover:bg-slate-200/60">
               Kontak
             </a>
+            <button
+              type="button"
+              onClick={() => navigate('/about-lms')}
+              className="hover:text-[#142B50] transition-colors py-1 px-2.5 rounded-full hover:bg-slate-200/60 cursor-pointer"
+            >
+              Tentang LMS
+            </button>
           </div>
 
           {/* Header Action Button */}
@@ -196,6 +203,16 @@ export const LandingPage: React.FC = () => {
             >
               Kontak Kampus
             </a>
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                navigate('/about-lms');
+              }}
+              className="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#142B50] hover:bg-slate-100 active:bg-slate-200 transition-colors w-full text-left cursor-pointer"
+            >
+              Tentang LMS
+            </button>
             <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
               <Button
                 variant="outline"
@@ -249,16 +266,15 @@ export const LandingPage: React.FC = () => {
                 rightIcon={<ArrowRight className="w-4 h-4" />}
                 className="w-full sm:w-auto"
               >
-                Masuk Portal Siswa
+                Masuk Portal Belajar
               </Button>
               <Button
-                variant="secondary"
+                variant="outline"
                 size="lg"
-                onClick={() => navigate('/books')}
-                leftIcon={<Library className="w-4 h-4 text-[#142B50]" />}
-                className="w-full sm:w-auto"
+                onClick={() => navigate('/about-lms')}
+                className="w-full sm:w-auto bg-white/90 hover:bg-white text-[#142B50] font-semibold border-slate-300"
               >
-                Katalog Buku Digital Sekolah
+                Katalog Solusi & Fitur LMS
               </Button>
             </div>
           </div>
@@ -284,7 +300,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-emerald-600">94.5%</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">94.5%</div>
               <p className="text-xs font-semibold text-slate-500 mt-1">Rata-rata Presensi</p>
               <span className="text-[10px] text-slate-400 block mt-0.5">Disiplin Sekolah Unggul</span>
             </div>
@@ -311,7 +327,7 @@ export const LandingPage: React.FC = () => {
             {/* Gateway 1: Siswa */}
             <div className="p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] hover:border-[#142B50] hover:shadow-md transition-all flex flex-col justify-between group">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-blue-100 text-[#142B50] flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-slate-200/80 text-[#142B50] flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
                   <GraduationCap className="w-6 h-6" />
                 </div>
                 <h3 className="text-base font-bold text-slate-900">Portal Siswa</h3>
@@ -341,7 +357,7 @@ export const LandingPage: React.FC = () => {
             {/* Gateway 2: Guru */}
             <div className="p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] hover:border-[#142B50] hover:shadow-md transition-all flex flex-col justify-between group">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-slate-200/80 text-[#142B50] flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
                   <BookOpen className="w-6 h-6" />
                 </div>
                 <h3 className="text-base font-bold text-slate-900">Portal Guru Pengampu</h3>
@@ -371,7 +387,7 @@ export const LandingPage: React.FC = () => {
             {/* Gateway 3: Orang Tua */}
             <div className="p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] hover:border-[#142B50] hover:shadow-md transition-all flex flex-col justify-between group">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-rose-100 text-rose-800 flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-slate-200/80 text-[#142B50] flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
                   <Users className="w-6 h-6" />
                 </div>
                 <h3 className="text-base font-bold text-slate-900">Portal Orang Tua / Wali</h3>
@@ -401,7 +417,7 @@ export const LandingPage: React.FC = () => {
             {/* Gateway 4: Kepala Sekolah & Pimpinan */}
             <div className="p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] hover:border-[#142B50] hover:shadow-md transition-all flex flex-col justify-between group">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-slate-200/80 text-[#142B50] flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
                   <Award className="w-6 h-6" />
                 </div>
                 <h3 className="text-base font-bold text-slate-900">Pimpinan & Manajemen</h3>
@@ -485,8 +501,8 @@ export const LandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-800 text-[11px] font-bold px-3 py-1 rounded-full mb-3 border border-blue-200">
-                <Library className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-1.5 bg-slate-100 text-slate-800 text-[11px] font-bold px-3 py-1 rounded-full mb-3 border border-slate-200">
+                <Library className="w-3.5 h-3.5 text-[#142B50]" />
                 <span>Perpustakaan Literasi Digital</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-snug">
@@ -498,15 +514,15 @@ export const LandingPage: React.FC = () => {
 
               <div className="mt-6 space-y-2.5 text-xs text-slate-700">
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#142B50] shrink-0" />
                   <span>Koleksi resmi terstandar SD, SMP, SMA, dan SMK.</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#142B50] shrink-0" />
                   <span>Digital Book Reader dengan navigasi bab dan penanda bacaan.</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#142B50] shrink-0" />
                   <span>Tersedia secara gratis untuk seluruh warga sekolah.</span>
                 </div>
               </div>
@@ -550,7 +566,7 @@ export const LandingPage: React.FC = () => {
                 className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#142B50] transition-colors flex items-center justify-between cursor-pointer"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-14 bg-emerald-700 rounded text-white font-bold text-xs flex items-center justify-center shrink-0">
+                  <div className="w-10 h-14 bg-[#142B50] rounded text-white font-bold text-xs flex items-center justify-center shrink-0">
                     MAT
                   </div>
                   <div>
@@ -566,7 +582,7 @@ export const LandingPage: React.FC = () => {
                 className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#142B50] transition-colors flex items-center justify-between cursor-pointer"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-14 bg-purple-700 rounded text-white font-bold text-xs flex items-center justify-center shrink-0">
+                  <div className="w-10 h-14 bg-[#142B50] rounded text-white font-bold text-xs flex items-center justify-center shrink-0">
                     FIS
                   </div>
                   <div>
@@ -643,14 +659,9 @@ export const LandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 rounded-xl bg-white/15 text-white flex items-center justify-center font-bold text-sm">
-                  TS
-                </div>
-                <div>
-                  <span className="font-bold text-base text-white block">SMA TECHSOE</span>
-                  <span className="text-[10px] text-blue-200">Terakreditasi A (Unggul)</span>
-                </div>
+              <div className="mb-4">
+                <span className="font-bold text-lg text-white block tracking-tight">SMA TECHSOE</span>
+                <span className="text-[10px] text-blue-200">Terakreditasi A (Unggul)</span>
               </div>
               <p className="text-xs text-blue-200 leading-relaxed max-w-sm">
                 Membina generasi cendekia yang berakhlak mulia, menguasai ilmu pengetahuan, dan siap bersaing di kancah global.

@@ -45,6 +45,7 @@ import { SettingsPage } from './pages/settings/SettingsPage';
 import { TeacherJournalPage } from './pages/journal/TeacherJournalPage';
 import { CounselingPage } from './pages/counseling/CounselingPage';
 import { SchedulePage } from './pages/schedule/SchedulePage';
+import { AboutLMSPage } from './pages/about/AboutLMSPage';
 
 export const App: React.FC = () => {
   return (
@@ -53,6 +54,8 @@ export const App: React.FC = () => {
         {/* Public & Landing Pages */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/about-lms" element={<AboutLMSPage />} />
+        <Route path="/features" element={<AboutLMSPage />} />
 
         {/* Fullscreen Dedicated Viewers */}
         <Route path="/reader/:bookId" element={<DigitalReaderPage />} />
