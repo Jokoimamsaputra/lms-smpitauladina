@@ -23,6 +23,7 @@ import {
 import { useStore } from '../../store/useStore';
 import { Button } from '../../components/common/Button';
 import { Badge } from '../../components/common/Badge';
+import { RevealOnScroll } from '../../components/common/RevealOnScroll';
 
 export const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -281,29 +282,37 @@ export const LandingPage: React.FC = () => {
 
           {/* School Fact Figures */}
           <div className="mt-14 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">1.248</div>
-              <p className="text-xs font-semibold text-slate-500 mt-1">Siswa Aktif</p>
-              <span className="text-[10px] text-slate-400 block mt-0.5">36 Rombel (Fase E & F)</span>
-            </div>
+            <RevealOnScroll delay={0} className="h-full">
+              <div className="h-full bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">1.248</div>
+                <p className="text-xs font-semibold text-slate-500 mt-1">Siswa Aktif</p>
+                <span className="text-[10px] text-slate-400 block mt-0.5">36 Rombel (Fase E & F)</span>
+              </div>
+            </RevealOnScroll>
 
-            <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">86</div>
-              <p className="text-xs font-semibold text-slate-500 mt-1">Guru & Tenaga Pendidik</p>
-              <span className="text-[10px] text-slate-400 block mt-0.5">Kualifikasi S1 & S2</span>
-            </div>
+            <RevealOnScroll delay={90} className="h-full">
+              <div className="h-full bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">86</div>
+                <p className="text-xs font-semibold text-slate-500 mt-1">Guru & Tenaga Pendidik</p>
+                <span className="text-[10px] text-slate-400 block mt-0.5">Kualifikasi S1 & S2</span>
+              </div>
+            </RevealOnScroll>
 
-            <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">320+</div>
-              <p className="text-xs font-semibold text-slate-500 mt-1">Koleksi Buku Teks Resmi</p>
-              <span className="text-[10px] text-slate-400 block mt-0.5">Kurikulum Merdeka RI</span>
-            </div>
+            <RevealOnScroll delay={180} className="h-full">
+              <div className="h-full bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">320+</div>
+                <p className="text-xs font-semibold text-slate-500 mt-1">Koleksi Buku Teks Resmi</p>
+                <span className="text-[10px] text-slate-400 block mt-0.5">Kurikulum Merdeka RI</span>
+              </div>
+            </RevealOnScroll>
 
-            <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">94.5%</div>
-              <p className="text-xs font-semibold text-slate-500 mt-1">Rata-rata Presensi</p>
-              <span className="text-[10px] text-slate-400 block mt-0.5">Disiplin Sekolah Unggul</span>
-            </div>
+            <RevealOnScroll delay={270} className="h-full">
+              <div className="h-full bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">94.5%</div>
+                <p className="text-xs font-semibold text-slate-500 mt-1">Rata-rata Presensi</p>
+                <span className="text-[10px] text-slate-400 block mt-0.5">Disiplin Sekolah Unggul</span>
+              </div>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -325,124 +334,132 @@ export const LandingPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Gateway 1: Siswa */}
-            <div className="p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] hover:border-[#142B50] hover:shadow-md transition-all flex flex-col justify-between group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-slate-200/80 text-[#142B50] flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
-                  <GraduationCap className="w-6 h-6" />
+            <RevealOnScroll delay={0} className="h-full">
+              <div className="h-full p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] hover:border-[#142B50] hover:shadow-md transition-all flex flex-col justify-between group">
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-slate-200/80 text-[#142B50] flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
+                    <GraduationCap className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-base font-bold text-slate-900">Portal Siswa</h3>
+                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                    Akses materi kelas virtual, pengumpulan tugas harian, buku digital Kurikulum Merdeka, ujian CBT, dan tutor belajar interaktif.
+                  </p>
+                  <div className="mt-4 pt-3 border-t border-slate-200/60 text-[11px] text-slate-500 space-y-1">
+                    <p>• Materi & Tugas Terstruktur</p>
+                    <p>• Ujian Online (CBT) Real-time</p>
+                    <p>• Rapor & Hasil Belajar</p>
+                  </div>
                 </div>
-                <h3 className="text-base font-bold text-slate-900">Portal Siswa</h3>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                  Akses materi kelas virtual, pengumpulan tugas harian, buku digital Kurikulum Merdeka, ujian CBT, dan tutor belajar interaktif.
-                </p>
-                <div className="mt-4 pt-3 border-t border-slate-200/60 text-[11px] text-slate-500 space-y-1">
-                  <p>• Materi & Tugas Terstruktur</p>
-                  <p>• Ujian Online (CBT) Real-time</p>
-                  <p>• Rapor & Hasil Belajar</p>
-                </div>
-              </div>
 
-              <div className="mt-6 pt-2">
-                <Button
-                  variant="primary"
-                  size="sm"
-                  className="w-full justify-between"
-                  onClick={() => handleQuickLogin('siswa', '/student/dashboard')}
-                  rightIcon={<ChevronRight className="w-4 h-4" />}
-                >
-                  Masuk sebagai Siswa
-                </Button>
+                <div className="mt-6 pt-2">
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    className="w-full justify-between"
+                    onClick={() => handleQuickLogin('siswa', '/student/dashboard')}
+                    rightIcon={<ChevronRight className="w-4 h-4" />}
+                  >
+                    Masuk sebagai Siswa
+                  </Button>
+                </div>
               </div>
-            </div>
+            </RevealOnScroll>
 
             {/* Gateway 2: Guru */}
-            <div className="p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] hover:border-[#142B50] hover:shadow-md transition-all flex flex-col justify-between group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-slate-200/80 text-[#142B50] flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
-                  <BookOpen className="w-6 h-6" />
+            <RevealOnScroll delay={100} className="h-full">
+              <div className="h-full p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] hover:border-[#142B50] hover:shadow-md transition-all flex flex-col justify-between group">
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-slate-200/80 text-[#142B50] flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
+                    <BookOpen className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-base font-bold text-slate-900">Portal Guru Pengampu</h3>
+                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                    Kelola jadwal mengajar, publikasi materi, asisten pembuatan modul ajar & soal ujian, koreksi tugas, serta input nilai buku rapor.
+                  </p>
+                  <div className="mt-4 pt-3 border-t border-slate-200/60 text-[11px] text-slate-500 space-y-1">
+                    <p>• Penyusunan Modul Ajar Cepat</p>
+                    <p>• Penilaian & Feedback Tugas</p>
+                    <p>• Gradebook & Presensi Kelas</p>
+                  </div>
                 </div>
-                <h3 className="text-base font-bold text-slate-900">Portal Guru Pengampu</h3>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                  Kelola jadwal mengajar, publikasi materi, asisten pembuatan modul ajar & soal ujian, koreksi tugas, serta input nilai buku rapor.
-                </p>
-                <div className="mt-4 pt-3 border-t border-slate-200/60 text-[11px] text-slate-500 space-y-1">
-                  <p>• Penyusunan Modul Ajar Cepat</p>
-                  <p>• Penilaian & Feedback Tugas</p>
-                  <p>• Gradebook & Presensi Kelas</p>
-                </div>
-              </div>
 
-              <div className="mt-6 pt-2">
-                <Button
-                  variant="primary"
-                  size="sm"
-                  className="w-full justify-between"
-                  onClick={() => handleQuickLogin('guru', '/teacher/dashboard')}
-                  rightIcon={<ChevronRight className="w-4 h-4" />}
-                >
-                  Masuk sebagai Guru
-                </Button>
+                <div className="mt-6 pt-2">
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    className="w-full justify-between"
+                    onClick={() => handleQuickLogin('guru', '/teacher/dashboard')}
+                    rightIcon={<ChevronRight className="w-4 h-4" />}
+                  >
+                    Masuk sebagai Guru
+                  </Button>
+                </div>
               </div>
-            </div>
+            </RevealOnScroll>
 
             {/* Gateway 3: Orang Tua */}
-            <div className="p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] hover:border-[#142B50] hover:shadow-md transition-all flex flex-col justify-between group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-slate-200/80 text-[#142B50] flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
-                  <Users className="w-6 h-6" />
+            <RevealOnScroll delay={200} className="h-full">
+              <div className="h-full p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] hover:border-[#142B50] hover:shadow-md transition-all flex flex-col justify-between group">
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-slate-200/80 text-[#142B50] flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
+                    <Users className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-base font-bold text-slate-900">Portal Orang Tua / Wali</h3>
+                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                    Pantau kehadiran harian putra-putri, rekapitulasi nilai rapor tengah semester, jadwal ujian, serta komunikasi langsung wali kelas.
+                  </p>
+                  <div className="mt-4 pt-3 border-t border-slate-200/60 text-[11px] text-slate-500 space-y-1">
+                    <p>• Rekapitulasi Presensi Anak</p>
+                    <p>• Pantauan Capaian Nilai</p>
+                    <p>• Informasi & Undangan Sekolah</p>
+                  </div>
                 </div>
-                <h3 className="text-base font-bold text-slate-900">Portal Orang Tua / Wali</h3>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                  Pantau kehadiran harian putra-putri, rekapitulasi nilai rapor tengah semester, jadwal ujian, serta komunikasi langsung wali kelas.
-                </p>
-                <div className="mt-4 pt-3 border-t border-slate-200/60 text-[11px] text-slate-500 space-y-1">
-                  <p>• Rekapitulasi Presensi Anak</p>
-                  <p>• Pantauan Capaian Nilai</p>
-                  <p>• Informasi & Undangan Sekolah</p>
-                </div>
-              </div>
 
-              <div className="mt-6 pt-2">
-                <Button
-                  variant="primary"
-                  size="sm"
-                  className="w-full justify-between"
-                  onClick={() => handleQuickLogin('orangtua', '/parent/dashboard')}
-                  rightIcon={<ChevronRight className="w-4 h-4" />}
-                >
-                  Masuk sebagai Orang Tua
-                </Button>
+                <div className="mt-6 pt-2">
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    className="w-full justify-between"
+                    onClick={() => handleQuickLogin('orangtua', '/parent/dashboard')}
+                    rightIcon={<ChevronRight className="w-4 h-4" />}
+                  >
+                    Masuk sebagai Orang Tua
+                  </Button>
+                </div>
               </div>
-            </div>
+            </RevealOnScroll>
 
             {/* Gateway 4: Kepala Sekolah & Pimpinan */}
-            <div className="p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] hover:border-[#142B50] hover:shadow-md transition-all flex flex-col justify-between group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-slate-200/80 text-[#142B50] flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
-                  <Award className="w-6 h-6" />
+            <RevealOnScroll delay={300} className="h-full">
+              <div className="h-full p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] hover:border-[#142B50] hover:shadow-md transition-all flex flex-col justify-between group">
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-slate-200/80 text-[#142B50] flex items-center justify-center font-bold text-base mb-4 group-hover:scale-105 transition-transform">
+                    <Award className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-base font-bold text-slate-900">Pimpinan & Manajemen</h3>
+                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                    Executive dashboard pemantauan efektivitas pembelajaran sekolah, analitik kehadiran, capaian mutu akademik, dan administrasi pengguna.
+                  </p>
+                  <div className="mt-4 pt-3 border-t border-slate-200/60 text-[11px] text-slate-500 space-y-1">
+                    <p>• Learning Analytics Sekolah</p>
+                    <p>• Monitoring Mutu & Kurikulum</p>
+                    <p>• Manajemen Pengguna & Rombel</p>
+                  </div>
                 </div>
-                <h3 className="text-base font-bold text-slate-900">Pimpinan & Manajemen</h3>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                  Executive dashboard pemantauan efektivitas pembelajaran sekolah, analitik kehadiran, capaian mutu akademik, dan administrasi pengguna.
-                </p>
-                <div className="mt-4 pt-3 border-t border-slate-200/60 text-[11px] text-slate-500 space-y-1">
-                  <p>• Learning Analytics Sekolah</p>
-                  <p>• Monitoring Mutu & Kurikulum</p>
-                  <p>• Manajemen Pengguna & Rombel</p>
-                </div>
-              </div>
 
-              <div className="mt-6 pt-2">
-                <Button
-                  variant="primary"
-                  size="sm"
-                  className="w-full justify-between"
-                  onClick={() => handleQuickLogin('kepala', '/principal/dashboard')}
-                  rightIcon={<ChevronRight className="w-4 h-4" />}
-                >
-                  Masuk Pimpinan / Admin
-                </Button>
+                <div className="mt-6 pt-2">
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    className="w-full justify-between"
+                    onClick={() => handleQuickLogin('kepala', '/principal/dashboard')}
+                    rightIcon={<ChevronRight className="w-4 h-4" />}
+                  >
+                    Masuk Pimpinan / Admin
+                  </Button>
+                </div>
               </div>
-            </div>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -463,35 +480,41 @@ export const LandingPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-              <div className="w-10 h-10 rounded-lg bg-[#EAF0F8] text-[#142B50] flex items-center justify-center mb-4">
-                <FileText className="w-5 h-5" />
+            <RevealOnScroll delay={0} className="h-full">
+              <div className="h-full bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div className="w-10 h-10 rounded-lg bg-[#EAF0F8] text-[#142B50] flex items-center justify-center mb-4">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-slate-900 text-sm">Kurikulum Merdeka (Fase E & F)</h3>
+                <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                  Penerapan pembelajaran diferensiasi dengan mata pelajaran peminatan mendalam seperti Informatika, Matematika Lanjut, dan Fisika analitik.
+                </p>
               </div>
-              <h3 className="font-bold text-slate-900 text-sm">Kurikulum Merdeka (Fase E & F)</h3>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                Penerapan pembelajaran diferensiasi dengan mata pelajaran peminatan mendalam seperti Informatika, Matematika Lanjut, dan Fisika analitik.
-              </p>
-            </div>
+            </RevealOnScroll>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-              <div className="w-10 h-10 rounded-lg bg-[#EAF0F8] text-[#142B50] flex items-center justify-center mb-4">
-                <Award className="w-5 h-5" />
+            <RevealOnScroll delay={120} className="h-full">
+              <div className="h-full bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div className="w-10 h-10 rounded-lg bg-[#EAF0F8] text-[#142B50] flex items-center justify-center mb-4">
+                  <Award className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-slate-900 text-sm">Laboratorium Komputer & CBT Center</h3>
+                <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                  Asesmen sumatif dan formatif berbasis komputer yang adil, transparan, dan dilengkapi pembahasan soal langsung setelah ujian selesai.
+                </p>
               </div>
-              <h3 className="font-bold text-slate-900 text-sm">Laboratorium Komputer & CBT Center</h3>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                Asesmen sumatif dan formatif berbasis komputer yang adil, transparan, dan dilengkapi pembahasan soal langsung setelah ujian selesai.
-              </p>
-            </div>
+            </RevealOnScroll>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-              <div className="w-10 h-10 rounded-lg bg-[#EAF0F8] text-[#142B50] flex items-center justify-center mb-4">
-                <Sparkles className="w-5 h-5" />
+            <RevealOnScroll delay={240} className="h-full">
+              <div className="h-full bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div className="w-10 h-10 rounded-lg bg-[#EAF0F8] text-[#142B50] flex items-center justify-center mb-4">
+                  <Sparkles className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-slate-900 text-sm">Pendamping Belajar Terpadu</h3>
+                <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                  Fasilitas asistensi konsep belajar mandiri bagi siswa serta alat bantu perancangan perangkat ajar bagi bapak/ibu guru.
+                </p>
               </div>
-              <h3 className="font-bold text-slate-900 text-sm">Pendamping Belajar Terpadu</h3>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                Fasilitas asistensi konsep belajar mandiri bagi siswa serta alat bantu perancangan perangkat ajar bagi bapak/ibu guru.
-              </p>
-            </div>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -500,99 +523,103 @@ export const LandingPage: React.FC = () => {
       <section id="perpustakaan" className="py-16 sm:py-24 bg-white border-y border-[#E2E8F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-1.5 bg-slate-100 text-slate-800 text-[11px] font-bold px-3 py-1 rounded-full mb-3 border border-slate-200">
-                <Library className="w-3.5 h-3.5 text-[#142B50]" />
-                <span>Perpustakaan Literasi Digital</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-snug">
-                Koleksi Buku Teks Utama Kemendikdasmen RI
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
-                Seluruh siswa dan guru SMA Techsoe memiliki akses penuh terhadap buku teks kurikulum nasional digital. Memudahkan proses belajar mandiri kapan saja dengan pembaca digital yang nyaman di ponsel maupun laptop.
-              </p>
+            <RevealOnScroll delay={0} direction="right">
+              <div>
+                <div className="inline-flex items-center gap-1.5 bg-slate-100 text-slate-800 text-[11px] font-bold px-3 py-1 rounded-full mb-3 border border-slate-200">
+                  <Library className="w-3.5 h-3.5 text-[#142B50]" />
+                  <span>Perpustakaan Literasi Digital</span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-snug">
+                  Koleksi Buku Teks Utama Kemendikdasmen RI
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
+                  Seluruh siswa dan guru SMA Techsoe memiliki akses penuh terhadap buku teks kurikulum nasional digital. Memudahkan proses belajar mandiri kapan saja dengan pembaca digital yang nyaman di ponsel maupun laptop.
+                </p>
 
-              <div className="mt-6 space-y-2.5 text-xs text-slate-700">
-                <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#142B50] shrink-0" />
-                  <span>Koleksi resmi terstandar SD, SMP, SMA, dan SMK.</span>
+                <div className="mt-6 space-y-2.5 text-xs text-slate-700">
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#142B50] shrink-0" />
+                    <span>Koleksi resmi terstandar SD, SMP, SMA, dan SMK.</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#142B50] shrink-0" />
+                    <span>Digital Book Reader dengan navigasi bab dan penanda bacaan.</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#142B50] shrink-0" />
+                    <span>Tersedia secara gratis untuk seluruh warga sekolah.</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#142B50] shrink-0" />
-                  <span>Digital Book Reader dengan navigasi bab dan penanda bacaan.</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#142B50] shrink-0" />
-                  <span>Tersedia secara gratis untuk seluruh warga sekolah.</span>
-                </div>
-              </div>
 
-              <div className="mt-8">
-                <Button
-                  variant="primary"
-                  size="md"
-                  onClick={() => navigate('/books')}
-                  rightIcon={<ArrowRight className="w-4 h-4" />}
-                >
-                  Buka Koleksi Buku Digital SMA Techsoe
-                </Button>
+                <div className="mt-8">
+                  <Button
+                    variant="primary"
+                    size="md"
+                    onClick={() => navigate('/books')}
+                    rightIcon={<ArrowRight className="w-4 h-4" />}
+                  >
+                    Buka Koleksi Buku Digital SMA Techsoe
+                  </Button>
+                </div>
               </div>
-            </div>
+            </RevealOnScroll>
 
             {/* Book Previews */}
-            <div className="bg-[#F5F7FB] p-6 rounded-2xl border border-slate-200 space-y-3">
-              <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">
-                Buku Teks Pembelajaran Semester Ini:
-              </span>
+            <RevealOnScroll delay={150} direction="left">
+              <div className="bg-[#F5F7FB] p-6 rounded-2xl border border-slate-200 space-y-3">
+                <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">
+                  Buku Teks Pembelajaran Semester Ini:
+                </span>
 
-              <div
-                onClick={() => navigate('/books/book-info-sma-11')}
-                className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#142B50] transition-colors flex items-center justify-between cursor-pointer"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-14 bg-[#142B50] rounded text-white font-bold text-xs flex items-center justify-center shrink-0">
-                    INF
+                <div
+                  onClick={() => navigate('/books/book-info-sma-11')}
+                  className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#142B50] transition-colors flex items-center justify-between cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-14 bg-[#142B50] rounded text-white font-bold text-xs flex items-center justify-center shrink-0">
+                      INF
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-900">Informatika SMA Kelas XI</h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5">Kemendikbudristek • Kurikulum Merdeka</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900">Informatika SMA Kelas XI</h4>
-                    <p className="text-[11px] text-slate-500 mt-0.5">Kemendikbudristek • Kurikulum Merdeka</p>
-                  </div>
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
                 </div>
-                <ChevronRight className="w-4 h-4 text-slate-400" />
-              </div>
 
-              <div
-                onClick={() => navigate('/books/book-mat-sma-11')}
-                className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#142B50] transition-colors flex items-center justify-between cursor-pointer"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-14 bg-[#142B50] rounded text-white font-bold text-xs flex items-center justify-center shrink-0">
-                    MAT
+                <div
+                  onClick={() => navigate('/books/book-mat-sma-11')}
+                  className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#142B50] transition-colors flex items-center justify-between cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-14 bg-[#142B50] rounded text-white font-bold text-xs flex items-center justify-center shrink-0">
+                      MAT
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-900">Matematika Tingkat Lanjut SMA Kelas XI</h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5">Kemendikbudristek • Kurikulum Merdeka</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900">Matematika Tingkat Lanjut SMA Kelas XI</h4>
-                    <p className="text-[11px] text-slate-500 mt-0.5">Kemendikbudristek • Kurikulum Merdeka</p>
-                  </div>
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
                 </div>
-                <ChevronRight className="w-4 h-4 text-slate-400" />
-              </div>
 
-              <div
-                onClick={() => navigate('/books/book-fis-sma-11')}
-                className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#142B50] transition-colors flex items-center justify-between cursor-pointer"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-14 bg-[#142B50] rounded text-white font-bold text-xs flex items-center justify-center shrink-0">
-                    FIS
+                <div
+                  onClick={() => navigate('/books/book-fis-sma-11')}
+                  className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#142B50] transition-colors flex items-center justify-between cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-14 bg-[#142B50] rounded text-white font-bold text-xs flex items-center justify-center shrink-0">
+                      FIS
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-900">Fisika untuk SMA/MA Kelas XI</h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5">Kemendikbudristek • Kurikulum Merdeka</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900">Fisika untuk SMA/MA Kelas XI</h4>
-                    <p className="text-[11px] text-slate-500 mt-0.5">Kemendikbudristek • Kurikulum Merdeka</p>
-                  </div>
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
                 </div>
-                <ChevronRight className="w-4 h-4 text-slate-400" />
               </div>
-            </div>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -620,35 +647,34 @@ export const LandingPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {newsItems.map((item, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between text-[11px] text-slate-400 mb-3">
-                    <span className="font-semibold text-[#142B50] bg-blue-100/60 px-2.5 py-0.5 rounded">
-                      {item.tag}
-                    </span>
-                    <span>{item.date}</span>
+              <RevealOnScroll key={idx} delay={idx * 120} className="h-full">
+                <div className="h-full p-6 rounded-2xl border border-slate-200 bg-[#F5F7FB] flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between text-[11px] text-slate-400 mb-3">
+                      <span className="font-semibold text-[#142B50] bg-blue-100/60 px-2.5 py-0.5 rounded">
+                        {item.tag}
+                      </span>
+                      <span>{item.date}</span>
+                    </div>
+                    <h3 className="font-bold text-slate-900 text-sm leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                      {item.desc}
+                    </p>
                   </div>
-                  <h3 className="font-bold text-slate-900 text-sm leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
 
-                <div className="mt-6 pt-3 border-t border-slate-200/60">
-                  <button
-                    type="button"
-                    onClick={() => navigate('/notifications')}
-                    className="text-xs font-semibold text-[#142B50] hover:underline flex items-center gap-1 cursor-pointer"
-                  >
-                    Baca Informasi Lengkap →
-                  </button>
+                  <div className="mt-6 pt-3 border-t border-slate-200/60">
+                    <button
+                      type="button"
+                      onClick={() => navigate('/notifications')}
+                      className="text-xs font-semibold text-[#142B50] hover:underline flex items-center gap-1 cursor-pointer"
+                    >
+                      Baca Informasi Lengkap →
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </RevealOnScroll>
             ))}
           </div>
         </div>

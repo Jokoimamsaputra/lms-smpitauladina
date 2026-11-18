@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { Button } from '../../components/common/Button';
 import { Badge } from '../../components/common/Badge';
+import { RevealOnScroll } from '../../components/common/RevealOnScroll';
 import { useStore } from '../../store/useStore';
 import { UserRole } from '../../types';
 
@@ -311,22 +312,33 @@ export const AboutLMSPage: React.FC = () => {
 
             {/* Quick Metrics Bar (Clean Monochromatic) */}
             <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto text-left">
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                <div className="text-2xl font-black text-[#142B50]">5 Peran</div>
-                <div className="text-xs text-slate-500 font-medium mt-0.5">Portal Khusus Terpadu</div>
-              </div>
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                <div className="text-2xl font-black text-[#142B50]">70%</div>
-                <div className="text-xs text-slate-500 font-medium mt-0.5">Efisiensi Administrasi Guru</div>
-              </div>
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                <div className="text-2xl font-black text-[#142B50]">AI Copilot</div>
-                <div className="text-xs text-slate-500 font-medium mt-0.5">Asisten Guru & Siswa</div>
-              </div>
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                <div className="text-2xl font-black text-[#142B50]">320+ Buku</div>
-                <div className="text-xs text-slate-500 font-medium mt-0.5">Buku Teks Resmi Kemendikdasmen</div>
-              </div>
+              <RevealOnScroll delay={0} className="h-full">
+                <div className="h-full bg-slate-50 p-4 rounded-xl border border-slate-200">
+                  <div className="text-2xl font-black text-[#142B50]">5 Peran</div>
+                  <div className="text-xs text-slate-500 font-medium mt-0.5">Portal Khusus Terpadu</div>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={80} className="h-full">
+                <div className="h-full bg-slate-50 p-4 rounded-xl border border-slate-200">
+                  <div className="text-2xl font-black text-[#142B50]">70%</div>
+                  <div className="text-xs text-slate-500 font-medium mt-0.5">Efisiensi Administrasi Guru</div>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={160} className="h-full">
+                <div className="h-full bg-slate-50 p-4 rounded-xl border border-slate-200">
+                  <div className="text-2xl font-black text-[#142B50]">AI Copilot</div>
+                  <div className="text-xs text-slate-500 font-medium mt-0.5">Asisten Guru & Siswa</div>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={240} className="h-full">
+                <div className="h-full bg-slate-50 p-4 rounded-xl border border-slate-200">
+                  <div className="text-2xl font-black text-[#142B50]">320+ Buku</div>
+                  <div className="text-xs text-slate-500 font-medium mt-0.5">Buku Teks Resmi Kemendikdasmen</div>
+                </div>
+              </RevealOnScroll>
             </div>
 
             {/* Hero CTAs */}
@@ -393,51 +405,52 @@ export const AboutLMSPage: React.FC = () => {
 
         {/* Feature Cards Grid (Clean Slate & Navy Only) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filteredPillars.map((pillar) => (
-            <div
-              key={pillar.id}
-              className="bg-white rounded-xl border border-slate-200 shadow-2xs hover:border-[#142B50]/40 transition p-5 sm:p-6 flex flex-col justify-between space-y-4"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0">
-                    {pillar.icon}
-                  </div>
-                  <span className="px-2.5 py-0.5 rounded-md text-[10px] font-semibold bg-slate-100 text-slate-700 border border-slate-200">
-                    {pillar.badge}
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="text-base font-bold text-slate-900 tracking-tight">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                    {pillar.desc}
-                  </p>
-                </div>
-
-                <div className="space-y-2 pt-2 border-t border-slate-100">
-                  {pillar.features.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
-                      <Check className="w-3.5 h-3.5 text-[#142B50] shrink-0 mt-0.5" />
-                      <span className="leading-snug">{item}</span>
+          {filteredPillars.map((pillar, idx) => (
+            <RevealOnScroll key={pillar.id} delay={(idx % 3) * 100} className="h-full">
+              <div
+                className="h-full bg-white rounded-xl border border-slate-200 shadow-2xs hover:border-[#142B50]/40 transition p-5 sm:p-6 flex flex-col justify-between space-y-4"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0">
+                      {pillar.icon}
                     </div>
-                  ))}
+                    <span className="px-2.5 py-0.5 rounded-md text-[10px] font-semibold bg-slate-100 text-slate-700 border border-slate-200">
+                      {pillar.badge}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 tracking-tight">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                      {pillar.desc}
+                    </p>
+                  </div>
+
+                  <div className="space-y-2 pt-2 border-t border-slate-100">
+                    {pillar.features.map((item, fIdx) => (
+                      <div key={fIdx} className="flex items-start gap-2 text-xs text-slate-700">
+                        <Check className="w-3.5 h-3.5 text-[#142B50] shrink-0 mt-0.5" />
+                        <span className="leading-snug">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-slate-100">
+                  <button
+                    type="button"
+                    onClick={() => handleLaunchRoleDemo(pillar.role, pillar.demoLink)}
+                    className="w-full py-2 px-3.5 bg-slate-50 hover:bg-slate-100 text-[#142B50] rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer border border-slate-200"
+                  >
+                    <span>{pillar.demoLabel}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
               </div>
-
-              <div className="pt-3 border-t border-slate-100">
-                <button
-                  type="button"
-                  onClick={() => handleLaunchRoleDemo(pillar.role, pillar.demoLink)}
-                  className="w-full py-2 px-3.5 bg-slate-50 hover:bg-slate-100 text-[#142B50] rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer border border-slate-200"
-                >
-                  <span>{pillar.demoLabel}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
+            </RevealOnScroll>
           ))}
         </div>
       </section>
@@ -459,53 +472,54 @@ export const AboutLMSPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {roleExperiences.map((exp, idx) => (
-              <div
-                key={idx}
-                className="bg-slate-50/70 rounded-xl border border-slate-200 p-5 sm:p-6 flex flex-col justify-between space-y-4 hover:border-slate-300 transition"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-white text-slate-800 border border-slate-200">
-                      {exp.badge}
-                    </span>
-                    <span className="text-[11px] font-mono text-slate-400">
-                      Role: {exp.role}
-                    </span>
+              <RevealOnScroll key={idx} delay={(idx % 3) * 100} className="h-full">
+                <div
+                  className="h-full bg-slate-50/70 rounded-xl border border-slate-200 p-5 sm:p-6 flex flex-col justify-between space-y-4 hover:border-slate-300 transition"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-white text-slate-800 border border-slate-200">
+                        {exp.badge}
+                      </span>
+                      <span className="text-[11px] font-mono text-slate-400">
+                        Role: {exp.role}
+                      </span>
+                    </div>
+
+                    <div>
+                      <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-tight">
+                        {exp.title}
+                      </h3>
+                      <p className="text-xs font-semibold text-[#142B50] mt-0.5">
+                        {exp.subtitle}
+                      </p>
+                      <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                        {exp.desc}
+                      </p>
+                    </div>
+
+                    <div className="space-y-1.5 pt-2 border-t border-slate-200/60">
+                      {exp.benefits.map((b, bIdx) => (
+                        <div key={bIdx} className="flex items-start gap-2 text-xs text-slate-700">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#142B50] shrink-0 mt-0.5" />
+                          <span>{b}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  <div>
-                    <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-tight">
-                      {exp.title}
-                    </h3>
-                    <p className="text-xs font-semibold text-[#142B50] mt-0.5">
-                      {exp.subtitle}
-                    </p>
-                    <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                      {exp.desc}
-                    </p>
-                  </div>
-
-                  <div className="space-y-1.5 pt-2 border-t border-slate-200/60">
-                    {exp.benefits.map((b, bIdx) => (
-                      <div key={bIdx} className="flex items-start gap-2 text-xs text-slate-700">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#142B50] shrink-0 mt-0.5" />
-                        <span>{b}</span>
-                      </div>
-                    ))}
+                  <div className="pt-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleLaunchRoleDemo(exp.role, exp.targetPath)}
+                      className="w-full justify-center text-xs font-bold rounded-lg bg-white border-slate-300 text-[#142B50] hover:bg-slate-100"
+                    >
+                      Buka Portal {exp.badge} →
+                    </Button>
                   </div>
                 </div>
-
-                <div className="pt-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleLaunchRoleDemo(exp.role, exp.targetPath)}
-                    className="w-full justify-center text-xs font-bold rounded-lg bg-white border-slate-300 text-[#142B50] hover:bg-slate-100"
-                  >
-                    Buka Portal {exp.badge} →
-                  </Button>
-                </div>
-              </div>
+              </RevealOnScroll>
             ))}
           </div>
         </div>
@@ -562,41 +576,47 @@ export const AboutLMSPage: React.FC = () => {
       <section className="py-10 bg-[#0D1B33] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div className="flex items-start gap-3.5 p-4 rounded-xl bg-white/5 border border-white/10">
-              <div className="p-2.5 bg-white/10 text-white rounded-lg shrink-0">
-                <ShieldCheck className="w-5 h-5" />
+            <RevealOnScroll delay={0} className="h-full">
+              <div className="h-full flex items-start gap-3.5 p-4 rounded-xl bg-white/5 border border-white/10">
+                <div className="p-2.5 bg-white/10 text-white rounded-lg shrink-0">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-xs sm:text-sm text-white">Privasi Data Peserta Didik</h4>
+                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                    Perlindungan data pribadi. Siswa hanya dapat melihat presensi dan nilainya sendiri tanpa kebocoran catatan teman sekelas.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-bold text-xs sm:text-sm text-white">Privasi Data Peserta Didik</h4>
-                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  Perlindungan data pribadi. Siswa hanya dapat melihat presensi dan nilainya sendiri tanpa kebocoran catatan teman sekelas.
-                </p>
-              </div>
-            </div>
+            </RevealOnScroll>
 
-            <div className="flex items-start gap-3.5 p-4 rounded-xl bg-white/5 border border-white/10">
-              <div className="p-2.5 bg-white/10 text-white rounded-lg shrink-0">
-                <Smartphone className="w-5 h-5" />
+            <RevealOnScroll delay={100} className="h-full">
+              <div className="h-full flex items-start gap-3.5 p-4 rounded-xl bg-white/5 border border-white/10">
+                <div className="p-2.5 bg-white/10 text-white rounded-lg shrink-0">
+                  <Smartphone className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-xs sm:text-sm text-white">Responsif di Semua Perangkat</h4>
+                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                    Dapat diakses lancar dari smartphone orang tua siswa, laptop guru pengampu, tablet belajar, hingga komputer laboratorium.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-bold text-xs sm:text-sm text-white">Responsif di Semua Perangkat</h4>
-                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  Dapat diakses lancar dari smartphone orang tua siswa, laptop guru pengampu, tablet belajar, hingga komputer laboratorium.
-                </p>
-              </div>
-            </div>
+            </RevealOnScroll>
 
-            <div className="flex items-start gap-3.5 p-4 rounded-xl bg-white/5 border border-white/10">
-              <div className="p-2.5 bg-white/10 text-white rounded-lg shrink-0">
-                <Award className="w-5 h-5" />
+            <RevealOnScroll delay={200} className="h-full">
+              <div className="h-full flex items-start gap-3.5 p-4 rounded-xl bg-white/5 border border-white/10">
+                <div className="p-2.5 bg-white/10 text-white rounded-lg shrink-0">
+                  <Award className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-xs sm:text-sm text-white">Standar Akreditasi Nasional</h4>
+                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                    Format cetak jurnal mengajar harian, e-rapor, dan bank soal memenuhi standar instrumen penilaian BAN-S/M Kemendikdasmen.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-bold text-xs sm:text-sm text-white">Standar Akreditasi Nasional</h4>
-                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  Format cetak jurnal mengajar harian, e-rapor, dan bank soal memenuhi standar instrumen penilaian BAN-S/M Kemendikdasmen.
-                </p>
-              </div>
-            </div>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
