@@ -1,0 +1,951 @@
+import {
+  User,
+  SchoolClass,
+  Subject,
+  LearningMaterial,
+  NationalBook,
+  Assignment,
+  AssignmentSubmission,
+  CBTExam,
+  GradeRecord,
+  AttendanceRecord,
+  TeacherAttendanceRecord,
+  NotificationItem,
+  SchoolProfile,
+} from '../types';
+
+export const INITIAL_SCHOOL_PROFILE: SchoolProfile = {
+  name: 'SMA Techsoe',
+  npsn: '20104592',
+  address: 'Jl. Pendidikan Techsoe No. 45, Jakarta Selatan',
+  accreditation: 'A (Unggul)',
+  principalName: 'Dr. H. Hendro Utomo, M.Ed.',
+  activeAcademicYear: '2026/2027',
+  activeSemester: 'Ganjil',
+};
+
+export const INITIAL_USERS: User[] = [
+  {
+    id: 'user-admin-1',
+    name: 'Bambang Setiawan, S.Pd.',
+    email: 'admin@demo.id',
+    role: 'admin',
+    identifierNumber: 'NIP 198204152006041002',
+    status: 'active',
+    phoneNumber: '0812-3456-7890',
+  },
+  {
+    id: 'user-guru-1',
+    name: 'Siti Rahmawati, M.Pd.',
+    email: 'guru@demo.id',
+    role: 'guru',
+    identifierNumber: 'NIP 198711032010012015',
+    subjectSpecialization: 'Informatika & Matematika',
+    status: 'active',
+    phoneNumber: '0813-9876-5432',
+  },
+  {
+    id: 'user-guru-2',
+    name: 'Drs. Agus Haryanto, M.Si.',
+    email: 'agus.haryanto@demo.id',
+    role: 'guru',
+    identifierNumber: 'NIP 197906202005011004',
+    subjectSpecialization: 'Fisika',
+    status: 'active',
+    phoneNumber: '0811-2233-4455',
+  },
+  {
+    id: 'user-guru-3',
+    name: 'Dewi Lestari, S.Pd.',
+    email: 'dewi.lestari@demo.id',
+    role: 'guru',
+    identifierNumber: 'NIP 199108152014022003',
+    subjectSpecialization: 'Bahasa Indonesia',
+    status: 'active',
+    phoneNumber: '0812-9988-7766',
+  },
+  {
+    id: 'user-siswa-1',
+    name: 'Ahmad Rizky Pratama',
+    email: 'siswa@demo.id',
+    role: 'siswa',
+    identifierNumber: 'NISN 0081234567',
+    className: 'XI MIPA 1',
+    classId: 'class-xi-mipa-1',
+    status: 'active',
+    phoneNumber: '0857-1122-3344',
+  },
+  {
+    id: 'user-siswa-2',
+    name: 'Nabila Zahra Putri',
+    email: 'nabila.zahra@demo.id',
+    role: 'siswa',
+    identifierNumber: 'NISN 0081234568',
+    className: 'XI MIPA 1',
+    classId: 'class-xi-mipa-1',
+    status: 'active',
+    phoneNumber: '0857-2233-4455',
+  },
+  {
+    id: 'user-siswa-3',
+    name: 'Kevin Jonathan',
+    email: 'kevin.j@demo.id',
+    role: 'siswa',
+    identifierNumber: 'NISN 0081234569',
+    className: 'XI MIPA 1',
+    classId: 'class-xi-mipa-1',
+    status: 'active',
+    phoneNumber: '0857-3344-5566',
+  },
+  {
+    id: 'user-siswa-4',
+    name: 'Farhan Maulana',
+    email: 'farhan.m@demo.id',
+    role: 'siswa',
+    identifierNumber: 'NISN 0081234570',
+    className: 'XI MIPA 1',
+    classId: 'class-xi-mipa-1',
+    status: 'active',
+    phoneNumber: '0857-4455-6677',
+  },
+  {
+    id: 'user-kepala-1',
+    name: 'Dr. H. Hendro Utomo, M.Ed.',
+    email: 'kepala@demo.id',
+    role: 'kepala',
+    identifierNumber: 'NIP 197103121998021001',
+    status: 'active',
+    phoneNumber: '0811-8899-0011',
+  },
+  {
+    id: 'user-orangtua-1',
+    name: 'Ir. Gunawan Pratama',
+    email: 'orangtua@demo.id',
+    role: 'orangtua',
+    identifierNumber: 'ID-WALI-4491',
+    childStudentId: 'user-siswa-1',
+    status: 'active',
+    phoneNumber: '0812-7788-9900',
+  },
+];
+
+export const INITIAL_CLASSES: SchoolClass[] = [
+  {
+    id: 'class-x-mipa-1',
+    name: 'X MIPA 1',
+    grade: '10',
+    educationLevel: 'SMA',
+    homeroomTeacherId: 'user-guru-3',
+    homeroomTeacherName: 'Dewi Lestari, S.Pd.',
+    studentCount: 36,
+    academicYearId: 'ay-2026',
+  },
+  {
+    id: 'class-xi-mipa-1',
+    name: 'XI MIPA 1',
+    grade: '11',
+    educationLevel: 'SMA',
+    homeroomTeacherId: 'user-guru-1',
+    homeroomTeacherName: 'Siti Rahmawati, M.Pd.',
+    studentCount: 36,
+    academicYearId: 'ay-2026',
+  },
+  {
+    id: 'class-xi-mipa-2',
+    name: 'XI MIPA 2',
+    grade: '11',
+    educationLevel: 'SMA',
+    homeroomTeacherId: 'user-guru-2',
+    homeroomTeacherName: 'Drs. Agus Haryanto, M.Si.',
+    studentCount: 34,
+    academicYearId: 'ay-2026',
+  },
+  {
+    id: 'class-xii-mipa-1',
+    name: 'XII MIPA 1',
+    grade: '12',
+    educationLevel: 'SMA',
+    homeroomTeacherId: 'user-guru-1',
+    homeroomTeacherName: 'Siti Rahmawati, M.Pd.',
+    studentCount: 35,
+    academicYearId: 'ay-2026',
+  },
+];
+
+export const INITIAL_SUBJECTS: Subject[] = [
+  {
+    id: 'subj-info-xi',
+    name: 'Informatika',
+    code: 'INF-XI',
+    educationLevel: 'SMA',
+    grade: '11',
+    teacherId: 'user-guru-1',
+    teacherName: 'Siti Rahmawati, M.Pd.',
+    classId: 'class-xi-mipa-1',
+    className: 'XI MIPA 1',
+    description: 'Konsep dasar berpikir komputasional, algoritma pencarian & sorting, struktur data, dan analisis data menggunakan Python.',
+    bannerColor: 'from-blue-600 to-indigo-800',
+    scheduleDays: 'Senin, 08.00 : 09.30 WIB',
+    room: 'Lab Komputer 2',
+  },
+  {
+    id: 'subj-mat-xi',
+    name: 'Matematika Tingkat Lanjut',
+    code: 'MAT-XI',
+    educationLevel: 'SMA',
+    grade: '11',
+    teacherId: 'user-guru-1',
+    teacherName: 'Siti Rahmawati, M.Pd.',
+    classId: 'class-xi-mipa-1',
+    className: 'XI MIPA 1',
+    description: 'Polinomial, matriks, transformasi geometri, fungsi trigonometri, dan pengantar kalkulus diferensial.',
+    bannerColor: 'from-emerald-600 to-teal-800',
+    scheduleDays: 'Selasa, 10.00 : 11.30 WIB',
+    room: 'Ruang 204',
+  },
+  {
+    id: 'subj-fis-xi',
+    name: 'Fisika',
+    code: 'FIS-XI',
+    educationLevel: 'SMA',
+    grade: '11',
+    teacherId: 'user-guru-2',
+    teacherName: 'Drs. Agus Haryanto, M.Si.',
+    classId: 'class-xi-mipa-1',
+    className: 'XI MIPA 1',
+    description: 'Kinematika gerak lurus dan melingkar, dinamika rotasi, termodinamika, fluida dinamis, dan gelombang bunyi.',
+    bannerColor: 'from-violet-600 to-purple-800',
+    scheduleDays: 'Rabu, 07.30 : 09.00 WIB',
+    room: 'Lab Fisika',
+  },
+  {
+    id: 'subj-bindo-xi',
+    name: 'Bahasa Indonesia',
+    code: 'BIN-XI',
+    educationLevel: 'SMA',
+    grade: '11',
+    teacherId: 'user-guru-3',
+    teacherName: 'Dewi Lestari, S.Pd.',
+    classId: 'class-xi-mipa-1',
+    className: 'XI MIPA 1',
+    description: 'Penyusunan teks argumentasi, karya ilmiah, teks resensi sastra, dan presentasi publik yang efektif.',
+    bannerColor: 'from-amber-600 to-orange-800',
+    scheduleDays: 'Kamis, 08.00 : 09.30 WIB',
+    room: 'Ruang 204',
+  },
+];
+
+export const INITIAL_MATERIALS: LearningMaterial[] = [
+  {
+    id: 'mat-info-1',
+    subjectId: 'subj-info-xi',
+    subjectName: 'Informatika',
+    classId: 'class-xi-mipa-1',
+    title: 'Pertemuan 1: Algoritma Pencarian Linear & Binary Search',
+    chapter: 'Bab 1: Berpikir Komputasional dan Algoritma',
+    meetingNumber: 1,
+    type: 'article',
+    summary: 'Memahami prinsip komputasional dalam pencarian data terurut dan tidak terurut beserta kompleksitas waktu O(log n).',
+    content: `### Pendahuluan Algoritma Pencarian
+Pencarian (searching) adalah proses fundamental dalam sains komputer untuk menemukan elemen tertentu dalam sekumpulan data.
+
+#### 1. Linear Search (Pencarian Sekuensial)
+Linear search memeriksa setiap elemen data satu per satu dari indeks awal hingga akhir.
+- **Kelebihan**: Bekerja pada array yang acak (tidak perlu diurutkan terlebih dahulu).
+- **Kekurangan**: Waktu eksekusi lambat pada data skala besar.
+- **Kompleksitas Waktu**: O(n) pada skenario terburuk (worst-case).
+
+#### 2. Binary Search (Pencarian Biner)
+Binary search bekerja dengan prinsip divide-and-conquer pada array yang sudah terurut.
+1. Temukan elemen tengah (mid).
+2. Jika nilai target sama dengan mid, pencarian selesai.
+3. Jika target lebih kecil dari mid, ulangi pencarian di setengah bagian kiri.
+4. Jika target lebih besar dari mid, ulangi pencarian di setengah bagian kanan.
+- **Kompleksitas Waktu**: O(log n). Jauh lebih cepat untuk data berukuran jutaan baris.
+
+#### Contoh Kode Python:
+\`\`\`python
+def binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+    
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+\`\`\`
+
+Simak video penjelasan dan kerjakan kuis latihan untuk memperdalam pemahaman logika algoritma ini.`,
+    durationMinutes: 45,
+    publishedAt: '2026-08-10T08:00:00Z',
+    isCompletedByStudent: true,
+    comments: [
+      {
+        id: 'comm-1',
+        authorId: 'user-siswa-1',
+        authorName: 'Ahmad Rizky Pratama',
+        authorRole: 'siswa',
+        content: 'Izin bertanya Bu Siti, apakah binary search bisa digunakan untuk tipe data string (kata)?',
+        createdAt: '2026-08-10T10:15:00Z',
+      },
+      {
+        id: 'comm-2',
+        authorId: 'user-guru-1',
+        authorName: 'Siti Rahmawati, M.Pd.',
+        authorRole: 'guru',
+        content: 'Bagus sekali pertanyaannya Ahmad! Tentu bisa, asalkan kumpulan kata tersebut sudah terurut secara alfabetis (A sampai Z). Python membandingkan karakter berdasarkan nilai kode ASCII / Unicode.',
+        createdAt: '2026-08-10T10:30:00Z',
+      },
+    ],
+  },
+  {
+    id: 'mat-info-2',
+    subjectId: 'subj-info-xi',
+    subjectName: 'Informatika',
+    classId: 'class-xi-mipa-1',
+    title: 'Pertemuan 2: Algoritma Pengurutan (Bubble & Merge Sort)',
+    chapter: 'Bab 1: Berpikir Komputasional dan Algoritma',
+    meetingNumber: 2,
+    type: 'video',
+    summary: 'Visualisasi proses sorting data serta perbandingan efisiensi antara bubble sort dan merge sort rekursif.',
+    content: `### Algoritma Pengurutan (Sorting)
+
+Pengurutan adalah proses menyusun elemen-elemen data dalam urutan tertentu (menaik atau menurun).
+
+#### 1. Bubble Sort
+Metode pengurutan dengan menukarkan dua elemen berdekatan secara berulang jika urutannya salah.
+- Kompleksitas: O(n^2). Sederhana diimplementasikan namun kurang efisien untuk dataset besar.
+
+#### 2. Merge Sort
+Menggunakan pendekatan rekursif divide and conquer: membagi data menjadi dua bagian sama besar, mengurutkan masing-masing bagian, lalu menggabungkannya kembali (merge).
+- Kompleksitas: O(n log n). Sangat stabil dan efisien untuk dataset berukuran besar.
+
+Simak video demonstrasi simulasi gerak kartu bilangan di platform ini.`,
+    videoUrl: 'https://www.youtube.com/embed/demo-sorting',
+    durationMinutes: 60,
+    publishedAt: '2026-08-17T08:00:00Z',
+    isCompletedByStudent: true,
+    comments: [],
+  },
+  {
+    id: 'mat-mat-1',
+    subjectId: 'subj-mat-xi',
+    subjectName: 'Matematika Tingkat Lanjut',
+    classId: 'class-xi-mipa-1',
+    title: 'Pertemuan 1: Konsep Polinomial & Operasi Aljabar Suku Banyak',
+    chapter: 'Bab 1: Polinomial',
+    meetingNumber: 1,
+    type: 'article',
+    summary: 'Pengertian suku banyak polinomial, derajat polinomial, penjumlahan, pengurangan, dan perkalian suku banyak.',
+    content: `### Polinomial (Suku Banyak)
+Bentuk umum polinomial satu variabel x berderajat n adalah:
+P(x) = a_n * x^n + a_{n-1} * x^{n-1} + ... + a_1 * x + a_0
+di mana a_n tidak sama dengan 0 dan n adalah bilangan cacah.
+
+#### Pembagian Suku Banyak
+Pembagian polinomial dapat diselesaikan dengan dua metode:
+1. Cara bersusun panjang (algoritma pembagian standar).
+2. Metode skema Horner (sangat efisien untuk pembagi berbentuk linear x - k).`,
+    durationMinutes: 50,
+    publishedAt: '2026-08-11T09:00:00Z',
+    isCompletedByStudent: false,
+    comments: [],
+  },
+];
+
+export const INITIAL_BOOKS: NationalBook[] = [
+  {
+    id: 'book-info-sma-11',
+    title: 'Informatika untuk SMA Kelas XI',
+    authors: ['Paulina H. Prima Rosa', 'Ira Pelitawati', 'Maria V. C. Natalia'],
+    publisher: 'Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi RI',
+    educationLevel: 'SMA',
+    grade: '11',
+    subject: 'Informatika',
+    curriculum: 'Kurikulum Merdeka',
+    publishYear: 2021,
+    edition: 'Edisi Pertama 2021',
+    coverImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&auto=format&fit=crop&q=80',
+    synopsis: 'Buku teks utama mata pelajaran Informatika Kelas XI jenjang SMA yang disusun selaras dengan Capaian Pembelajaran Kurikulum Merdeka. Memuat materi Berpikir Komputasional, Teknologi Informasi dan Komunikasi, Sistem Komputer, Jaringan Komputer, Analisis Data, Algoritma Pemrograman, Dampak Sosial Informatika, dan Proyek Praktik Lintas Bidang.',
+    isDigitalAvailable: true,
+    totalPages: 248,
+    officialSourceUrl: 'https://buku.kemdikbud.go.id/katalog/buku-informatika-kelas-xi',
+    chapters: [
+      { id: 'ch-1', chapterNumber: 1, title: 'Informatika untuk Masa Depan', pageNumber: 1, previewSummary: 'Pengantar peranan informatika dalam peradaban revolusi industri 4.0 dan masyarakat 5.0.' },
+      { id: 'ch-2', chapterNumber: 2, title: 'Strategi Algoritmik dan Pemrograman', pageNumber: 25, previewSummary: 'Membahas rekursi, algoritma greedy, dynamic programming, dan pengurutan data.' },
+      { id: 'ch-3', chapterNumber: 3, title: 'Kritis Berpikir Komputasional', pageNumber: 73, previewSummary: 'Penyelesaian masalah kontekstual dengan teknik abstraksi, dekomposisi, dan pengenalan pola.' },
+      { id: 'ch-4', chapterNumber: 4, title: 'Jaringan Komputer dan Internet', pageNumber: 115, previewSummary: 'Topologi, konfigurasi routing, protokol TCP/IP, dan keamanan cyber.' },
+      { id: 'ch-5', chapterNumber: 5, title: 'Pengolahan dan Visualisasi Data', pageNumber: 160, previewSummary: 'Pipelines analisis data dan visualisasi grafik statistik dengan pustaka Python.' },
+    ],
+    samplePagesContent: [
+      {
+        pageNumber: 25,
+        title: 'Bab 2: Strategi Algoritmik dan Pemrograman',
+        content: `A. Algoritma Rekursi
+Rekursi adalah sebuah teknik pemrograman di mana suatu fungsi memanggil dirinya sendiri secara langsung atau tidak langsung untuk menyelesaikan masalah yang lebih kecil dari jenis yang sama.
+
+Setiap fungsi rekursif wajib memiliki dua komponen esensial:
+1. Base Case (Kondisi Dasar): Syarat penghenti rekursi agar program tidak mengalami infinite recursion (stack overflow).
+2. Recursive Step (Langkah Rekursif): Pemanggilan kembali fungsi dengan argumen yang nilainya semakin mendekati base case.
+
+Contoh Klasik: Faktorial Bilangan
+n! = n * (n - 1)! untuk n > 1
+1! = 1 dan 0! = 1 (Kondisi dasar).`,
+      },
+      {
+        pageNumber: 26,
+        title: 'Bab 2: Analisis Kompleksitas Algoritma (Big-O)',
+        content: `B. Notasi Big-O (Asymptotic Notation)
+Notasi Big-O digunakan untuk mengukur seberapa efisien suatu algoritma saat ukuran input (n) bertumbuh secara eksponensial.
+
+1. O(1) - Waktu Konstan: Waktu eksekusi tetap tidak terpengaruh ukuran data (misalnya mengakses indeks array).
+2. O(log n) - Waktu Logaritmik: Ukuran masalah dipotong setengah setiap langkah (misalnya Binary Search).
+3. O(n) - Waktu Linear: Waktu bertambah sebanding dengan jumlah data (misalnya perulangan for mencari nilai maksimum).
+4. O(n^2) - Waktu Kuadratik: Umum terjadi pada perulangan bersarang (nested loop), seperti pada Bubble Sort.`,
+      },
+      {
+        pageNumber: 27,
+        title: 'Bab 2: Algoritma Greedy',
+        content: `C. Algoritma Greedy (Tamak)
+Prinsip utama pendekatan greedy adalah "mengambil pilihan lokal terbaik pada setiap langkah dengan harapan menghasilkan solusi global yang optimal".
+
+Pendekatan ini sangat efektif pada masalah:
+- Penukaran koin mata uang (Coin Change Problem pada sistem mata uang tertentu).
+- Penjadwalan aktivitas (Activity Selection Problem).
+- Pencarian jalur terpendek (Algoritma Dijkstra).`,
+      },
+    ],
+  },
+  {
+    id: 'book-mat-sma-11',
+    title: 'Matematika Tingkat Lanjut untuk SMA Kelas XI',
+    authors: ['Al Azhary Masta', 'Hermanto', 'Kiki A. Sugeng'],
+    publisher: 'Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi RI',
+    educationLevel: 'SMA',
+    grade: '11',
+    subject: 'Matematika Tingkat Lanjut',
+    curriculum: 'Kurikulum Merdeka',
+    publishYear: 2021,
+    edition: 'Edisi Pertama 2021',
+    coverImage: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&auto=format&fit=crop&q=80',
+    synopsis: 'Buku panduan siswa mata pelajaran Matematika Tingkat Lanjut kelas XI SMA fase F. Membahas secara mendalam aljabar tingkat lanjut mencakup polinomial, matriks, transformasi geometri, fungsi dan grafik, serta trigonometri analitik.',
+    isDigitalAvailable: true,
+    totalPages: 312,
+    officialSourceUrl: 'https://buku.kemdikbud.go.id/katalog/buku-matematika-tingkat-lanjut-kelas-xi',
+    chapters: [
+      { id: 'ch-m-1', chapterNumber: 1, title: 'Polinomial dan Teorema Sisa', pageNumber: 1, previewSummary: 'Operasi hitung suku banyak dan pembagian dengan Horner.' },
+      { id: 'ch-m-2', chapterNumber: 2, title: 'Matriks dan Operasinya', pageNumber: 65, previewSummary: 'Determinan, invers matriks ordo 2x2 dan 3x3, serta penerapannya pada SPLDV.' },
+      { id: 'ch-m-3', chapterNumber: 3, title: 'Transformasi Geometri', pageNumber: 130, previewSummary: 'Translasi, refleksi, rotasi, dan dilatasi dengan representasi matriks.' },
+    ],
+    samplePagesContent: [
+      {
+        pageNumber: 1,
+        title: 'Bab 1: Teorema Sisa dan Teorema Faktor',
+        content: `Teorema Sisa menyatakan bahwa jika polinomial f(x) berderajat n dibagi oleh (x - k), maka sisa pembagiannya adalah S = f(k).
+
+Jika pembaginya berbentuk (ax + b), maka sisa pembagiannya adalah S = f(-b / a).
+
+Teorema Faktor:
+(x - k) merupakan faktor dari f(x) jika dan hanya jika f(k) = 0. Artinya tidak ada sisa pembagian (sisa = 0).`,
+      },
+    ],
+  },
+  {
+    id: 'book-fis-sma-11',
+    title: 'Fisika untuk SMA/MA Kelas XI',
+    authors: ['Marianna Magdalena Radjah', 'Lia Laela Sarah'],
+    publisher: 'Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi RI',
+    educationLevel: 'SMA',
+    grade: '11',
+    subject: 'Fisika',
+    curriculum: 'Kurikulum Merdeka',
+    publishYear: 2022,
+    edition: 'Edisi Pertama 2022',
+    coverImage: 'https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=500&auto=format&fit=crop&q=80',
+    synopsis: 'Membimbing siswa memahami fenomena fisis alam melalui penalaran saintifik, eksperimen interaktif, gerak partikel, hukum kekekalan energi, termodinamika, dan fluida dinamis.',
+    isDigitalAvailable: true,
+    totalPages: 280,
+    officialSourceUrl: 'https://buku.kemdikbud.go.id/katalog/fisika-sma-kelas-xi',
+    chapters: [
+      { id: 'ch-f-1', chapterNumber: 1, title: 'Vektor dan Kinematika Gerak', pageNumber: 1, previewSummary: 'Analisis gerak dua dimensi dan gerak parabola dengan vektor posisi.' },
+      { id: 'ch-f-2', chapterNumber: 2, title: 'Hukum Dinamika dan Gravitasi', pageNumber: 48, previewSummary: 'Penerapan Hukum Newton pada gerak melingkar dan orbit satelit.' },
+      { id: 'ch-f-3', chapterNumber: 3, title: 'Fluida Dinamis dan Hukum Bernoulli', pageNumber: 110, previewSummary: 'Prinsip kontinuitas dan aplikasi daya angkat pesawat terbang.' },
+    ],
+    samplePagesContent: [
+      {
+        pageNumber: 110,
+        title: 'Bab 3: Asas Kontinuitas dan Hukum Bernoulli',
+        content: `Asas Kontinuitas:
+Pada fluida ideal yang mengalir melalui pipa dengan luas penampang berbeda, debit aliran (Q) selalu bernilai konstan di setiap titik.
+Q = A1 * v1 = A2 * v2
+
+Hukum Bernoulli:
+Jumlah dari tekanan (P), energi kinetik per satuan volume, dan energi potensial per satuan volume memiliki nilai yang sama pada setiap titik di sepanjang garis arus.
+P + 0.5 * rho * v^2 + rho * g * h = konstan.`,
+      },
+    ],
+  },
+  {
+    id: 'book-ipa-smp-8',
+    title: 'Ilmu Pengetahuan Alam SMP Kelas VIII',
+    authors: ['Okky Fajar Tri Maryana', 'Budiyanti Dwi Hardanie'],
+    publisher: 'Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi RI',
+    educationLevel: 'SMP',
+    grade: '8',
+    subject: 'Ilmu Pengetahuan Alam',
+    curriculum: 'Kurikulum Merdeka',
+    publishYear: 2021,
+    edition: 'Edisi Revisi',
+    coverImage: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&auto=format&fit=crop&q=80',
+    synopsis: 'Pembelajaran sains terpadu yang memadukan biologi sel, sistem pencernaan, getaran dan gelombang, serta struktur bumi dan tata surya.',
+    isDigitalAvailable: true,
+    totalPages: 260,
+    officialSourceUrl: 'https://buku.kemdikbud.go.id/katalog/ipa-smp-kelas-viii',
+    chapters: [
+      { id: 'ch-ipa-1', chapterNumber: 1, title: 'Pengenalan Sel dan Mikroskop', pageNumber: 1, previewSummary: 'Mempelajari perbedaan sel tumbuhan dan sel hewan serta bagian-bagian organel.' },
+    ],
+    samplePagesContent: [],
+  },
+  {
+    id: 'book-ipas-sd-4',
+    title: 'Ilmu Pengetahuan Alam dan Sosial (IPAS) SD Kelas IV',
+    authors: ['Amalia Fitri', 'Anggayudha A. Rasa'],
+    publisher: 'Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi RI',
+    educationLevel: 'SD',
+    grade: '4',
+    subject: 'IPAS',
+    curriculum: 'Kurikulum Merdeka',
+    publishYear: 2021,
+    edition: 'Edisi Pertama',
+    coverImage: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&auto=format&fit=crop&q=80',
+    synopsis: 'Mengenal bagian tubuh tumbuhan, fotosintesis, wujud zat materi, transformasi energi, dan kearifan lokal daerah.',
+    isDigitalAvailable: true,
+    totalPages: 224,
+    officialSourceUrl: 'https://buku.kemdikbud.go.id/katalog/ipas-sd-kelas-iv',
+    chapters: [
+      { id: 'ch-ipas-1', chapterNumber: 1, title: 'Tumbuhan, Sumber Kehidupan di Bumi', pageNumber: 1, previewSummary: 'Fotosintesis dan perkembangbiakan tanaman berbunga.' },
+    ],
+    samplePagesContent: [],
+  },
+];
+
+export const INITIAL_ASSIGNMENTS: Assignment[] = [
+  {
+    id: 'asg-info-1',
+    subjectId: 'subj-info-xi',
+    subjectName: 'Informatika',
+    classId: 'class-xi-mipa-1',
+    className: 'XI MIPA 1',
+    teacherId: 'user-guru-1',
+    title: 'Tugas Praktik 1: Implementasi Binary Search dengan Visualisasi Langkah',
+    description: 'Buat program Python yang mengimplementasikan algoritma Binary Search dengan kemampuan mencetak setiap pergeseran indeks (low, mid, high) pada terminal.',
+    instructions: [
+      'Gunakan bahasa pemrograman Python 3.',
+      'Sediakan dataset list angka minimal 15 elemen yang telah terurut.',
+      'Cetak variabel low, mid, dan high di setiap iterasi perulangan.',
+      'Lampirkan file kode sumber format .py atau screenshot eksekusi dalam format PDF.',
+      'Kumpulkan sebelum batas waktu yang ditentukan.',
+    ],
+    dueDate: '2026-11-25T23:59:00Z',
+    createdAt: '2026-11-15T08:00:00Z',
+    maxScore: 100,
+    status: 'published',
+  },
+  {
+    id: 'asg-mat-1',
+    subjectId: 'subj-mat-xi',
+    subjectName: 'Matematika Tingkat Lanjut',
+    classId: 'class-xi-mipa-1',
+    className: 'XI MIPA 1',
+    teacherId: 'user-guru-1',
+    title: 'Latihan Mandiri: Pembagian Polinomial dengan Metode Horner',
+    description: 'Selesaikan 5 soal pembagian suku banyak derajat 4 dan tentukan sisa serta hasil baginya secara terperinci.',
+    instructions: [
+      'Tuliskan langkah pengerjaan Horner secara rapi pada lembar kerja bergaris.',
+      'Foto lembar jawaban atau pindai (scan) menjadi 1 file PDF yang terbaca jelas.',
+    ],
+    dueDate: '2026-11-28T16:00:00Z',
+    createdAt: '2026-11-16T10:00:00Z',
+    maxScore: 100,
+    status: 'published',
+  },
+  {
+    id: 'asg-fis-1',
+    subjectId: 'subj-fis-xi',
+    subjectName: 'Fisika',
+    classId: 'class-xi-mipa-1',
+    className: 'XI MIPA 1',
+    teacherId: 'user-guru-2',
+    title: 'Laporan Eksperimen Virtual: Asas Bernoulli & Venturimeter',
+    description: 'Lakukan pengamatan virtual simulasi PhET Colorado mengenai aliran fluida dan catat hubungan kelajuan fluida terhadap penurunan tekanan.',
+    instructions: [
+      'Unduh lembar panduan praktikum virtual dari tautan materi pertemuan 3.',
+      'Sertakan tabel data hasil 5 variasi diameter pipa.',
+      'Tuliskan analisis grafik hubungan kecepatan kuadrat dengan beda tekanan.',
+    ],
+    dueDate: '2026-12-02T23:59:00Z',
+    createdAt: '2026-11-17T09:00:00Z',
+    maxScore: 100,
+    status: 'published',
+  },
+];
+
+export const INITIAL_SUBMISSIONS: AssignmentSubmission[] = [
+  {
+    id: 'subm-1',
+    assignmentId: 'asg-info-1',
+    studentId: 'user-siswa-1',
+    studentName: 'Ahmad Rizky Pratama',
+    studentNis: '0081234567',
+    submittedAt: '2026-11-17T14:30:00Z',
+    status: 'graded',
+    fileAttachment: {
+      name: 'Ahmad_Rizky_BinarySearch_Implementation.pdf',
+      size: '1.4 MB',
+      url: '#demo-download',
+    },
+    studentNotes: 'Tugas sudah selesai saya kerjakan lengkap dengan fungsi input dinamis dari pengguna.',
+    score: 95,
+    feedback: 'Implementasi algoritma sangat rapi dan logis. Visualisasi pergeseran indeks di terminal sangat jelas. Pertahankan prestasimu, Ahmad!',
+    gradedAt: '2026-11-17T16:45:00Z',
+    gradedByTeacherName: 'Siti Rahmawati, M.Pd.',
+  },
+  {
+    id: 'subm-2',
+    assignmentId: 'asg-info-1',
+    studentId: 'user-siswa-2',
+    studentName: 'Nabila Zahra Putri',
+    studentNis: '0081234568',
+    submittedAt: '2026-11-17T15:10:00Z',
+    status: 'submitted',
+    fileAttachment: {
+      name: 'Nabila_Zahra_Tugas1_Informatika.pdf',
+      size: '2.1 MB',
+      url: '#demo-download',
+    },
+    studentNotes: 'Mohon bimbingan Bu Siti apabila masih ada kekurangan pada penanganan kasus data ganjil.',
+  },
+  {
+    id: 'subm-3',
+    assignmentId: 'asg-info-1',
+    studentId: 'user-siswa-3',
+    studentName: 'Kevin Jonathan',
+    studentNis: '0081234569',
+    submittedAt: '2026-11-17T18:20:00Z',
+    status: 'submitted',
+    fileAttachment: {
+      name: 'Kevin_J_BinarySearch.py',
+      size: '4.2 KB',
+      url: '#demo-download',
+    },
+    studentNotes: 'File source code python sudah diupload.',
+  },
+];
+
+export const INITIAL_EXAMS: CBTExam[] = [
+  {
+    id: 'exam-cbt-info-uts',
+    subjectId: 'subj-info-xi',
+    subjectName: 'Informatika',
+    classId: 'class-xi-mipa-1',
+    className: 'XI MIPA 1',
+    title: 'Penilaian Sumatif Tengah Semester: Informatika & Algoritma',
+    description: 'Ujian Computer-Based Test (CBT) menguji penguasaan konsep algoritma pencarian, pengurutan data, efisiensi komputasi Big-O, dan logika rekursif.',
+    durationMinutes: 45,
+    totalQuestions: 5,
+    passingScore: 75,
+    startTime: '2026-11-18T07:00:00Z',
+    endTime: '2026-11-20T23:59:00Z',
+    isRandomized: true,
+    questions: [
+      {
+        id: 'q-1',
+        number: 1,
+        type: 'multiple_choice',
+        questionText: 'Manakah dari syarat berikut yang mutlak harus dipenuhi agar algoritma Binary Search dapat dijalankan secara benar pada sebuah array?',
+        options: [
+          { key: 'A', text: 'Jumlah elemen array harus bernilai genap.' },
+          { key: 'B', text: 'Seluruh elemen array harus sudah terurut secara konsisten (ascending atau descending).' },
+          { key: 'C', text: 'Tipe data array harus selalu berupa bilangan bulat positif.' },
+          { key: 'D', text: 'Array tidak boleh memiliki lebih dari 100 elemen.' },
+        ],
+        correctAnswer: 'B',
+        explanation: 'Binary search bekerja dengan membagi dua area pencarian berdasarkan perbandingan target dengan nilai tengah (mid). Prinsip ini hanya valid jika himpunan data sudah berada dalam kondisi terurut.',
+        points: 20,
+      },
+      {
+        id: 'q-2',
+        number: 2,
+        type: 'multiple_choice',
+        questionText: 'Sebuah daftar memiliki 1.024 elemen yang sudah terurut. Berapakah jumlah perbandingan maksimum yang diperlukan oleh Binary Search untuk menemukan atau memastikan bahwa sebuah data tidak ada dalam daftar tersebut?',
+        options: [
+          { key: 'A', text: '1.024 kali perbandingan' },
+          { key: 'B', text: '512 kali perbandingan' },
+          { key: 'C', text: '10 kali perbandingan' },
+          { key: 'D', text: '11 kali perbandingan' },
+        ],
+        correctAnswer: 'D',
+        explanation: 'Kompleksitas Binary Search adalah O(log2 n). Untuk n = 1.024, log2(1024) = 10 langkah perbandingan. Pada skenario terburuk pembulatan lantai/atap, maksimal 11 kali perbandingan untuk memastikan data absen.',
+        points: 20,
+      },
+      {
+        id: 'q-3',
+        number: 3,
+        type: 'multiple_choice',
+        questionText: 'Perhatikan algoritma pengurutan: memecah array menjadi dua bagian sama besar, mengurutkan masing-masing bagian secara rekursif, lalu menggabungkannya kembali. Algoritma ini dikenal sebagai:',
+        options: [
+          { key: 'A', text: 'Bubble Sort' },
+          { key: 'B', text: 'Insertion Sort' },
+          { key: 'C', text: 'Merge Sort' },
+          { key: 'D', text: 'Selection Sort' },
+        ],
+        correctAnswer: 'C',
+        explanation: 'Merge sort mengadopsi paradigma Divide and Conquer yang membagi problem menjadi sub-problem independen, mengurutkan, kemudian menggabungkannya (merging) dengan kompleksitas O(n log n).',
+        points: 20,
+      },
+      {
+        id: 'q-4',
+        number: 4,
+        type: 'multiple_choice',
+        questionText: 'Dalam teknik fungsi rekursif, komponen yang berfungsi sebagai batas penghenti pemanggilan fungsi dirinya sendiri agar tidak terjadi memory leak (stack overflow) disebut:',
+        options: [
+          { key: 'A', text: 'Base Case' },
+          { key: 'B', text: 'Recursive Step' },
+          { key: 'C', text: 'Infinite Loop' },
+          { key: 'D', text: 'Dynamic Variable' },
+        ],
+        correctAnswer: 'A',
+        explanation: 'Base case adalah kondisi terminasi yang mengevaluasi apakah perulangan rekursif harus berhenti dan segera mengembalikan nilai konkret.',
+        points: 20,
+      },
+      {
+        id: 'q-5',
+        number: 5,
+        type: 'multiple_choice',
+        questionText: 'Notasi Big-O yang merepresentasikan kompleksitas waktu konstan (tidak terpengaruh oleh seberapa besar dataset input) adalah:',
+        options: [
+          { key: 'A', text: 'O(n)' },
+          { key: 'B', text: 'O(log n)' },
+          { key: 'C', text: 'O(1)' },
+          { key: 'D', text: 'O(n^2)' },
+        ],
+        correctAnswer: 'C',
+        explanation: 'O(1) menunjukkan operasi berdurasi tetap (konstan), misalnya mengakses indeks spesifik pada array berindeks langsung (seperti arr[3]).',
+        points: 20,
+      },
+    ],
+  },
+];
+
+export const INITIAL_GRADES: GradeRecord[] = [
+  {
+    id: 'grd-1',
+    studentId: 'user-siswa-1',
+    studentName: 'Ahmad Rizky Pratama',
+    studentNis: '0081234567',
+    classId: 'class-xi-mipa-1',
+    subjectId: 'subj-info-xi',
+    subjectName: 'Informatika',
+    assignmentsAverage: 92,
+    quizAverage: 88,
+    midtermExam: 94,
+    finalExam: 90,
+    finalScore: 91,
+    letterGrade: 'A',
+    teacherNotes: 'Sangat aktif dalam pemecahan algoritma dan penguasaan konsep komputasi tingkat lanjut.',
+  },
+  {
+    id: 'grd-2',
+    studentId: 'user-siswa-1',
+    studentName: 'Ahmad Rizky Pratama',
+    studentNis: '0081234567',
+    classId: 'class-xi-mipa-1',
+    subjectId: 'subj-mat-xi',
+    subjectName: 'Matematika Tingkat Lanjut',
+    assignmentsAverage: 86,
+    quizAverage: 84,
+    midtermExam: 88,
+    finalExam: 85,
+    finalScore: 86,
+    letterGrade: 'A',
+    teacherNotes: 'Kemampuan analisis suku banyak dan matriks sangat baik, teliti dalam perhitungan Horner.',
+  },
+  {
+    id: 'grd-3',
+    studentId: 'user-siswa-1',
+    studentName: 'Ahmad Rizky Pratama',
+    studentNis: '0081234567',
+    classId: 'class-xi-mipa-1',
+    subjectId: 'subj-fis-xi',
+    subjectName: 'Fisika',
+    assignmentsAverage: 84,
+    quizAverage: 80,
+    midtermExam: 85,
+    finalExam: 82,
+    finalScore: 83,
+    letterGrade: 'B',
+    teacherNotes: 'Penguasaan konsep fluida dinamis sudah baik, perlu diperdalam pada turunan rumus Bernoulli.',
+  },
+  {
+    id: 'grd-4',
+    studentId: 'user-siswa-1',
+    studentName: 'Ahmad Rizky Pratama',
+    studentNis: '0081234567',
+    classId: 'class-xi-mipa-1',
+    subjectId: 'subj-bindo-xi',
+    subjectName: 'Bahasa Indonesia',
+    assignmentsAverage: 90,
+    quizAverage: 88,
+    midtermExam: 89,
+    finalExam: 91,
+    finalScore: 90,
+    letterGrade: 'A',
+    teacherNotes: 'Penulisan esai argumentasi terstruktur dengan pilihan diksi formal yang sangat baik.',
+  },
+  {
+    id: 'grd-5',
+    studentId: 'user-siswa-2',
+    studentName: 'Nabila Zahra Putri',
+    studentNis: '0081234568',
+    classId: 'class-xi-mipa-1',
+    subjectId: 'subj-info-xi',
+    subjectName: 'Informatika',
+    assignmentsAverage: 88,
+    quizAverage: 85,
+    midtermExam: 87,
+    finalExam: 89,
+    finalScore: 87,
+    letterGrade: 'A',
+    teacherNotes: 'Teliti dalam mendokumentasikan kode program dan aktif dalam diskusi kelompok.',
+  },
+  {
+    id: 'grd-6',
+    studentId: 'user-siswa-3',
+    studentName: 'Kevin Jonathan',
+    studentNis: '0081234569',
+    classId: 'class-xi-mipa-1',
+    subjectId: 'subj-info-xi',
+    subjectName: 'Informatika',
+    assignmentsAverage: 82,
+    quizAverage: 78,
+    midtermExam: 80,
+    finalExam: 84,
+    finalScore: 81,
+    letterGrade: 'B',
+    teacherNotes: 'Dapat menyelesaikan tugas dengan baik, tingkatkan pemahaman pada kompleksitas Big-O.',
+  },
+];
+
+export const INITIAL_ATTENDANCE: AttendanceRecord[] = [
+  { id: 'att-1', date: '2026-11-18', classId: 'class-xi-mipa-1', className: 'XI MIPA 1', studentId: 'user-siswa-1', studentName: 'Ahmad Rizky Pratama', studentNis: '0081234567', status: 'hadir', checkInTime: '06.45 WIB' },
+  { id: 'att-2', date: '2026-11-18', classId: 'class-xi-mipa-1', className: 'XI MIPA 1', studentId: 'user-siswa-2', studentName: 'Nabila Zahra Putri', studentNis: '0081234568', status: 'hadir', checkInTime: '06.48 WIB' },
+  { id: 'att-3', date: '2026-11-18', classId: 'class-xi-mipa-1', className: 'XI MIPA 1', studentId: 'user-siswa-3', studentName: 'Kevin Jonathan', studentNis: '0081234569', status: 'hadir', checkInTime: '06.52 WIB' },
+  { id: 'att-4', date: '2026-11-18', classId: 'class-xi-mipa-1', className: 'XI MIPA 1', studentId: 'user-siswa-4', studentName: 'Farhan Maulana', studentNis: '0081234570', status: 'sakit', notes: 'Surat dokter terlampir' },
+  { id: 'att-5', date: '2026-11-17', classId: 'class-xi-mipa-1', className: 'XI MIPA 1', studentId: 'user-siswa-1', studentName: 'Ahmad Rizky Pratama', studentNis: '0081234567', status: 'hadir', checkInTime: '06.40 WIB' },
+  { id: 'att-6', date: '2026-11-17', classId: 'class-xi-mipa-1', className: 'XI MIPA 1', studentId: 'user-siswa-2', studentName: 'Nabila Zahra Putri', studentNis: '0081234568', status: 'hadir', checkInTime: '06.45 WIB' },
+];
+
+export const INITIAL_TEACHER_ATTENDANCE: TeacherAttendanceRecord[] = [
+  {
+    id: 't-att-1',
+    date: '2026-11-18',
+    teacherId: 'user-guru-1',
+    teacherName: 'Siti Rahmawati, M.Pd.',
+    teacherNip: 'NIP 198711032010012015',
+    subjectSpecialization: 'Informatika & Matematika',
+    status: 'hadir',
+    checkInTime: '06.38 WIB',
+    checkOutTime: '15.30 WIB',
+  },
+  {
+    id: 't-att-2',
+    date: '2026-11-18',
+    teacherId: 'user-guru-2',
+    teacherName: 'Drs. Agus Haryanto, M.Si.',
+    teacherNip: 'NIP 197906202005011004',
+    subjectSpecialization: 'Fisika',
+    status: 'hadir',
+    checkInTime: '06.45 WIB',
+    checkOutTime: '15.30 WIB',
+  },
+  {
+    id: 't-att-3',
+    date: '2026-11-18',
+    teacherId: 'user-guru-3',
+    teacherName: 'Dewi Lestari, S.Pd.',
+    teacherNip: 'NIP 199108152014022003',
+    subjectSpecialization: 'Bahasa Indonesia',
+    status: 'hadir',
+    checkInTime: '06.32 WIB',
+    checkOutTime: '15.30 WIB',
+  },
+  {
+    id: 't-att-4',
+    date: '2026-11-18',
+    teacherId: 'user-admin-1',
+    teacherName: 'Bambang Setiawan, S.Pd.',
+    teacherNip: 'NIP 198204152006041002',
+    subjectSpecialization: 'Administrasi & Guru',
+    status: 'hadir',
+    checkInTime: '06.28 WIB',
+    checkOutTime: '16.00 WIB',
+  },
+];
+
+export const INITIAL_NOTIFICATIONS: NotificationItem[] = [
+  {
+    id: 'notif-1',
+    title: 'Ujian Sumatif Tengah Semester Dibuka',
+    message: 'CBT Informatika telah dimulai. Silakan persiapkan diri Anda dan kerjakan sebelum 20 November 2026.',
+    category: 'exam',
+    timestamp: '2026-11-18T07:30:00Z',
+    isRead: false,
+    linkUrl: '/exams/exam-cbt-info-uts',
+  },
+  {
+    id: 'notif-2',
+    title: 'Nilai Tugas 1 Informatika Telah Dirilis',
+    message: 'Ibu Siti Rahmawati telah memeriksa dan memberi feedback pada Tugas Implementasi Binary Search Anda.',
+    category: 'assignment',
+    timestamp: '2026-11-17T17:00:00Z',
+    isRead: false,
+    linkUrl: '/assignments/asg-info-1',
+  },
+  {
+    id: 'notif-3',
+    title: 'Pembaruan Katalog Buku Kurikulum Merdeka',
+    message: 'Tersedia 12 buku digital teks utama baru untuk jenjang SMA Kelas XI rilisan Kemendikdasmen.',
+    category: 'academic',
+    timestamp: '2026-11-16T09:15:00Z',
+    isRead: true,
+    linkUrl: '/books',
+  },
+  {
+    id: 'notif-4',
+    title: 'Pengumuman Rapat Orang Tua dan Evaluasi Belajar',
+    message: 'Undangan pertemuan virtual evaluasi tengah semester bersama Kepala Sekolah pada hari Sabtu, 28 November 2026.',
+    category: 'announcement',
+    timestamp: '2026-11-15T11:00:00Z',
+    isRead: true,
+  },
+];
+
+export const INITIAL_AI_CHAT_STUDENT = [
+  {
+    id: 'msg-1',
+    sender: 'assistant' as const,
+    content: 'Halo Ahmad! Saya pendamping belajarmu di LMS Techsoe (SMA Techsoe). Ada materi atau konsep buku pelajaran yang ingin kita bahas bersama hari ini?',
+    timestamp: '2026-11-18T08:00:00Z',
+    suggestedFollowUps: [
+      'Jelaskan perbedaan Linear Search dan Binary Search dengan contoh analogi',
+      'Buatkan 3 kartu belajar (flashcard) ringkas bab Polinomial',
+      'Bagaimana langkah membuktikan rumus kontinuitas fluida?',
+      'Bantu saya menyusun rencana belajar persiapan ujian tengah semester',
+    ],
+  },
+];
