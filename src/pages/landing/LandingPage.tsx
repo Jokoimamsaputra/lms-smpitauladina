@@ -80,23 +80,18 @@ export const LandingPage: React.FC = () => {
               : 'w-full bg-[#F5F7FB] border-b border-slate-200/70 shadow-none rounded-none px-6 sm:px-10 lg:px-12 h-16'
           }`}
         >
-          {/* School Brand Identity (Pure Typography) */}
+          {/* School Brand Identity (Logo) */}
           <div
-            className="flex flex-col cursor-pointer select-none shrink-0"
+            className="flex items-center cursor-pointer select-none shrink-0"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <span
-              className={`font-black tracking-tight text-[#142B50] block transition-all duration-300 whitespace-nowrap ${
-                isScrolled ? 'text-sm sm:text-base' : 'text-base sm:text-xl'
+            <img
+              src="/logo.png"
+              alt="TechSoe LMS"
+              className={`transition-all duration-300 w-auto object-contain ${
+                isScrolled ? 'h-8 sm:h-9' : 'h-9 sm:h-10'
               }`}
-            >
-              SMA TECHSOE
-            </span>
-            {!isScrolled && (
-              <span className="text-[10px] text-slate-500 font-semibold tracking-wider uppercase block -mt-0.5 whitespace-nowrap hidden xs:block">
-                LMS & Portal Akademik Resmi
-              </span>
-            )}
+            />
           </div>
 
           {/* Desktop Links */}
@@ -686,8 +681,12 @@ export const LandingPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div>
               <div className="mb-4">
-                <span className="font-bold text-lg text-white block tracking-tight">SMA TECHSOE</span>
-                <span className="text-[10px] text-blue-200">Terakreditasi A (Unggul)</span>
+                <img
+                  src="/logo-white.png"
+                  alt="TechSoe LMS"
+                  className="h-9 sm:h-10 w-auto object-contain mb-2"
+                />
+                <span className="text-[10px] text-blue-200 block">Terakreditasi A (Unggul)</span>
               </div>
               <p className="text-xs text-blue-200 leading-relaxed max-w-sm">
                 Membina generasi cendekia yang berakhlak mulia, menguasai ilmu pengetahuan, dan siap bersaing di kancah global.

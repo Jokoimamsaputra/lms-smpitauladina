@@ -100,13 +100,15 @@ export const LoginPage: React.FC = () => {
       {/* Wide Landscape Login Card (Dibuat lebar dan responsif mobile-friendly) */}
       <div className="max-w-4xl w-full mx-auto bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-2xl shadow-[#142B50]/10 overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-12 min-h-[460px]">
-          {/* Left Panel: Pure Font Branding & 1-Click Role Switcher */}
+          {/* Left Panel: Branding & 1-Click Role Switcher */}
           <div className="bg-[#142B50] p-5 sm:p-8 text-white flex flex-col justify-between md:col-span-5">
             <div>
-              <span className="font-black text-xl sm:text-2xl tracking-tight text-white block">
-                LMS Techsoe
-              </span>
-              <p className="text-xs text-blue-200 mt-1">
+              <img
+                src="/logo-white.png"
+                alt="TechSoe LMS"
+                className="h-10 sm:h-11 w-auto object-contain mb-2"
+              />
+              <p className="text-xs text-blue-200">
                 Portal Pembelajaran Digital SMA Techsoe
               </p>
 

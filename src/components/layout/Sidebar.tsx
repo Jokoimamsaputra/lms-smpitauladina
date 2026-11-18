@@ -211,14 +211,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
         )}
       >
         {/* Brand header */}
-        <div className="h-16 flex items-center justify-between px-5 border-b border-white/10 shrink-0">
-          <div>
-            <span className="font-extrabold text-lg tracking-tight text-white block leading-tight">
-              LMS Techsoe
-            </span>
-            <span className="text-[10px] text-blue-200/80 font-medium tracking-wide">
-              SMA Techsoe Portal
-            </span>
+        <div className="h-16 flex items-center justify-between px-4 border-b border-white/10 shrink-0">
+          <div className="flex items-center">
+            <img
+              src="/logo-white.png"
+              alt="TechSoe LMS"
+              className="h-8 w-auto object-contain"
+            />
           </div>
           <button
             type="button"
