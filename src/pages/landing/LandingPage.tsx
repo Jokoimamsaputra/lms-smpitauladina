@@ -85,14 +85,22 @@ export const LandingPage: React.FC = () => {
             className="flex items-center cursor-pointer select-none shrink-0"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img
-              src="/logo.png"
-              alt="Auladina LMS"
-              className={`transition-all duration-300 w-auto object-contain ${
-                isScrolled ? 'h-8 sm:h-9' : 'h-9 sm:h-10'
-              }`}
-            />
-          </div>
+            <div
+  className="flex items-center gap-2.5 cursor-pointer select-none shrink-0"
+  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+>
+  <div className={`rounded-lg bg-[#142B50] flex items-center justify-center transition-all duration-300 ${
+    isScrolled ? 'w-8 h-8' : 'w-9 h-9'
+  }`}>
+    <GraduationCap className="text-white w-5 h-5" />
+  </div>
+  <div className="flex flex-col leading-tight">
+    <span className={`font-extrabold text-[#142B50] tracking-tight transition-all duration-300 ${
+      isScrolled ? 'text-sm' : 'text-base'
+    }`}>Auladina</span>
+    <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">LMS</span>
+  </div>
+</div>
 
           {/* Desktop Links */}
           <div
@@ -681,11 +689,15 @@ export const LandingPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div>
               <div className="mb-4">
-                <img
-                  src="/logo-white.png"
-                  alt="Auladina LMS"
-                  className="h-9 sm:h-10 w-auto object-contain mb-2"
-                />
+                <div className="flex items-center gap-2.5 mb-2">
+  <div className="w-9 h-9 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
+    <GraduationCap className="w-5 h-5 text-blue-300" />
+  </div>
+  <div className="flex flex-col leading-tight">
+    <span className="text-sm font-extrabold text-white tracking-tight">Auladina</span>
+    <span className="text-[9px] font-bold text-blue-300 uppercase tracking-widest">LMS</span>
+  </div>
+</div>
                 <span className="text-[10px] text-blue-200 block">Terakreditasi B</span>
               </div>
               <p className="text-xs text-blue-200 leading-relaxed max-w-sm">
