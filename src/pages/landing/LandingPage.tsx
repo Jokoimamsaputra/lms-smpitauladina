@@ -49,25 +49,25 @@ export const LandingPage: React.FC = () => {
       date: '18 November 2026',
       tag: 'Akademik',
       title: 'Pelaksanaan Ujian Sumatif Tengah Semester Ganjil T.A. 2026/2027 Berbasis Komputer Dimulai',
-      desc: 'Seluruh peserta didik kelas X, XI, dan XII diimbau memeriksa jadwal sesi pada portal LMS dan memastikan akun telah siap.',
+      desc: 'Seluruh peserta didik kelas VII, VIII, dan IX diimbau memeriksa jadwal sesi pada portal LMS dan memastikan akun telah siap.',
     },
     {
       date: '16 November 2026',
       tag: 'Perpustakaan',
       title: 'Pembaruan Koleksi Buku Teks Kurikulum Merdeka Kemendikdasmen di Perpustakaan Digital',
-      desc: 'Tersedia 320 judul buku teks utama dan referensi pendukung yang dapat diakses langsung oleh siswa dan bapak/ibu guru.',
+      desc: 'Tersedia 3 judul buku teks utama untuk jenjang SMP (PAI, Informatika, Matematika) yang dapat diakses langsung oleh siswa dan guru.',
     },
     {
       date: '12 November 2026',
       tag: 'Pengumuman',
       title: 'Undangan Pertemuan Evaluasi Pembelajaran Bersama Komite Orang Tua / Wali Siswa',
-      desc: 'Sesi konsultasi perkembangan akademik putra-putri bersama Kepala Sekolah dan para Wali Kelas pada akhir pekan ini.',
+      desc: 'Sesi konsultasi perkembangan akademik putra-putri bersama Kepala Sekolah, Bapak Joko Imam Saputra, M.Ag., MCE. pada akhir pekan ini.',
     },
   ];
 
   return (
     <div className="min-h-screen bg-white text-slate-800">
-      {/* Dynamic Animated Navbar (Seamless #F5F7FB background with hero, slim elegant floating capsule on scroll) */}
+      {/* Dynamic Animated Navbar */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
           isScrolled ? 'pt-2.5 sm:pt-3.5 px-2.5 sm:px-4 pointer-events-none' : 'pt-0 px-0'
@@ -87,7 +87,7 @@ export const LandingPage: React.FC = () => {
           >
             <img
               src="/logo.png"
-              alt="TechSoe LMS"
+              alt="Auladina LMS"
               className={`transition-all duration-300 w-auto object-contain ${
                 isScrolled ? 'h-8 sm:h-9' : 'h-9 sm:h-10'
               }`}
@@ -144,7 +144,7 @@ export const LandingPage: React.FC = () => {
             </Button>
           </div>
 
-          {/* Mobile hamburger (Touch-friendly 44x44px target) */}
+          {/* Mobile hamburger */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -155,7 +155,7 @@ export const LandingPage: React.FC = () => {
           </button>
         </nav>
 
-        {/* Mobile dropdown menu (Comfortable 44px touch targets) */}
+        {/* Mobile dropdown menu */}
         {mobileMenuOpen && (
           <div
             className={`md:hidden transition-all duration-300 ${
@@ -197,7 +197,7 @@ export const LandingPage: React.FC = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="min-h-[44px] flex items-center px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#142B50] hover:bg-slate-100 active:bg-slate-200 transition-colors"
             >
-              Kontak Kampus
+              Kontak Sekolah
             </a>
             <button
               type="button"
@@ -237,13 +237,13 @@ export const LandingPage: React.FC = () => {
         )}
       </header>
 
-      {/* Hero Section: Selamat Datang di SMA Techsoe (Responsive mobile-friendly spacing) */}
+      {/* Hero Section */}
       <section className="relative overflow-hidden pt-24 sm:pt-32 pb-14 sm:pb-20 lg:pt-36 lg:pb-28 bg-gradient-to-b from-[#F5F7FB] via-white to-white border-b border-[#E2E8F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-[#EAF0F8] text-[#142B50] px-3.5 py-1.5 rounded-full text-xs font-bold mb-5 border border-blue-200/60">
               <GraduationCap className="w-4 h-4 text-[#142B50]" />
-              <span>Portal Resmi Pendidikan Digital SMA Techsoe</span>
+              <span>Portal Resmi Pendidikan Digital SMP IT Auladina Indonesia QIIBS</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#142B50] tracking-tight leading-tight">
@@ -251,7 +251,7 @@ export const LandingPage: React.FC = () => {
             </h1>
 
             <p className="mt-5 text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
-              Selamat datang di portal pembelajaran resmi SMA Techsoe. Lingkungan akademik terpadu yang memfasilitasi kegiatan belajar mengajar, kurikulum nasional Kemendikdasmen, ujian berbasis komputer, dan evaluasi hasil belajar bagi seluruh civitas sekolah.
+              Selamat datang di portal pembelajaran resmi SMP IT Auladina Indonesia QIIBS. Lingkungan akademik terpadu yang memfasilitasi kegiatan belajar mengajar, kurikulum nasional Kemendikdasmen, ujian berbasis komputer, dan evaluasi hasil belajar bagi seluruh civitas sekolah.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -279,15 +279,15 @@ export const LandingPage: React.FC = () => {
           <div className="mt-14 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
             <RevealOnScroll delay={0} className="h-full">
               <div className="h-full bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center">
-                <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">1.248</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">58</div>
                 <p className="text-xs font-semibold text-slate-500 mt-1">Siswa Aktif</p>
-                <span className="text-[10px] text-slate-400 block mt-0.5">36 Rombel (Fase E & F)</span>
+                <span className="text-[10px] text-slate-400 block mt-0.5">4 Rombel (Fase D)</span>
               </div>
             </RevealOnScroll>
 
             <RevealOnScroll delay={90} className="h-full">
               <div className="h-full bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center">
-                <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">86</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">4</div>
                 <p className="text-xs font-semibold text-slate-500 mt-1">Guru & Tenaga Pendidik</p>
                 <span className="text-[10px] text-slate-400 block mt-0.5">Kualifikasi S1 & S2</span>
               </div>
@@ -295,7 +295,7 @@ export const LandingPage: React.FC = () => {
 
             <RevealOnScroll delay={180} className="h-full">
               <div className="h-full bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center">
-                <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">320+</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#142B50]">3</div>
                 <p className="text-xs font-semibold text-slate-500 mt-1">Koleksi Buku Teks Resmi</p>
                 <span className="text-[10px] text-slate-400 block mt-0.5">Kurikulum Merdeka RI</span>
               </div>
@@ -312,7 +312,7 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Pintu Masuk Civitas Akademika (Direct Role Gateways) */}
+      {/* Pintu Masuk Civitas Akademika */}
       <section id="pintu-portal" className="py-16 sm:py-24 bg-white border-b border-[#E2E8F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
@@ -320,7 +320,7 @@ export const LandingPage: React.FC = () => {
               Akses Layanan Akademik
             </Badge>
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
-              Pintu Masuk Civitas Akademika SMA Techsoe
+              Pintu Masuk Civitas Akademika SMP IT Auladina
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 mt-2">
               Pilih portal sesuai peran Anda untuk mengakses ruang pembelajaran dan administrasi akademik sekolah.
@@ -467,10 +467,10 @@ export const LandingPage: React.FC = () => {
               Keunggulan Akademik
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
-              Layanan Pembelajaran Modern SMA Techsoe
+              Layanan Pembelajaran Modern SMP IT Auladina
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 mt-2">
-              Memadukan kurikulum nasional dengan infrastruktur teknologi digital untuk mendukung eksplorasi keilmuan siswa.
+              Memadukan kurikulum nasional dengan infrastruktur teknologi digital untuk mendukung eksplorasi keilmuan siswa jenjang SMP.
             </p>
           </div>
 
@@ -480,9 +480,9 @@ export const LandingPage: React.FC = () => {
                 <div className="w-10 h-10 rounded-lg bg-[#EAF0F8] text-[#142B50] flex items-center justify-center mb-4">
                   <FileText className="w-5 h-5" />
                 </div>
-                <h3 className="font-bold text-slate-900 text-sm">Kurikulum Merdeka (Fase E & F)</h3>
+                <h3 className="font-bold text-slate-900 text-sm">Kurikulum Merdeka (Fase D)</h3>
                 <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                  Penerapan pembelajaran diferensiasi dengan mata pelajaran peminatan mendalam seperti Informatika, Matematika Lanjut, dan Fisika analitik.
+                  Penerapan pembelajaran diferensiasi dengan mata pelajaran wajib seperti PAI, Matematika, Bahasa Inggris, dan Informatika untuk jenjang SMP.
                 </p>
               </div>
             </RevealOnScroll>
@@ -528,13 +528,13 @@ export const LandingPage: React.FC = () => {
                   Koleksi Buku Teks Utama Kemendikdasmen RI
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
-                  Seluruh siswa dan guru SMA Techsoe memiliki akses penuh terhadap buku teks kurikulum nasional digital. Memudahkan proses belajar mandiri kapan saja dengan pembaca digital yang nyaman di ponsel maupun laptop.
+                  Seluruh siswa dan guru SMP IT Auladina Indonesia QIIBS memiliki akses penuh terhadap buku teks kurikulum nasional digital. Memudahkan proses belajar mandiri kapan saja dengan pembaca digital yang nyaman di ponsel maupun laptop.
                 </p>
 
                 <div className="mt-6 space-y-2.5 text-xs text-slate-700">
                   <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-[#142B50] shrink-0" />
-                    <span>Koleksi resmi terstandar SD, SMP, SMA, dan SMK.</span>
+                    <span>Koleksi resmi terstandar untuk jenjang SMP.</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-[#142B50] shrink-0" />
@@ -553,7 +553,7 @@ export const LandingPage: React.FC = () => {
                     onClick={() => navigate('/books')}
                     rightIcon={<ArrowRight className="w-4 h-4" />}
                   >
-                    Buka Koleksi Buku Digital SMA Techsoe
+                    Buka Koleksi Buku Digital SMP IT Auladina
                   </Button>
                 </div>
               </div>
@@ -567,7 +567,23 @@ export const LandingPage: React.FC = () => {
                 </span>
 
                 <div
-                  onClick={() => navigate('/books/book-info-sma-11')}
+                  onClick={() => navigate('/books/book-pai-smp-7')}
+                  className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#142B50] transition-colors flex items-center justify-between cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-14 bg-[#142B50] rounded text-white font-bold text-xs flex items-center justify-center shrink-0">
+                      PAI
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-900">PAI & Budi Pekerti SMP Kelas VII</h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5">Kementerian Agama • Kurikulum Merdeka</p>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
+                </div>
+
+                <div
+                  onClick={() => navigate('/books/book-info-smp-9')}
                   className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#142B50] transition-colors flex items-center justify-between cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
@@ -575,7 +591,7 @@ export const LandingPage: React.FC = () => {
                       INF
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-slate-900">Informatika SMA Kelas XI</h4>
+                      <h4 className="text-xs font-bold text-slate-900">Informatika SMP Kelas IX</h4>
                       <p className="text-[11px] text-slate-500 mt-0.5">Kemendikbudristek • Kurikulum Merdeka</p>
                     </div>
                   </div>
@@ -583,7 +599,7 @@ export const LandingPage: React.FC = () => {
                 </div>
 
                 <div
-                  onClick={() => navigate('/books/book-mat-sma-11')}
+                  onClick={() => navigate('/books/book-mat-smp-8')}
                   className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#142B50] transition-colors flex items-center justify-between cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
@@ -591,23 +607,7 @@ export const LandingPage: React.FC = () => {
                       MAT
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-slate-900">Matematika Tingkat Lanjut SMA Kelas XI</h4>
-                      <p className="text-[11px] text-slate-500 mt-0.5">Kemendikbudristek • Kurikulum Merdeka</p>
-                    </div>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-slate-400" />
-                </div>
-
-                <div
-                  onClick={() => navigate('/books/book-fis-sma-11')}
-                  className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#142B50] transition-colors flex items-center justify-between cursor-pointer"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-14 bg-[#142B50] rounded text-white font-bold text-xs flex items-center justify-center shrink-0">
-                      FIS
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-bold text-slate-900">Fisika untuk SMA/MA Kelas XI</h4>
+                      <h4 className="text-xs font-bold text-slate-900">Matematika SMP Kelas VIII</h4>
                       <p className="text-[11px] text-slate-500 mt-0.5">Kemendikbudristek • Kurikulum Merdeka</p>
                     </div>
                   </div>
@@ -683,10 +683,10 @@ export const LandingPage: React.FC = () => {
               <div className="mb-4">
                 <img
                   src="/logo-white.png"
-                  alt="TechSoe LMS"
+                  alt="Auladina LMS"
                   className="h-9 sm:h-10 w-auto object-contain mb-2"
                 />
-                <span className="text-[10px] text-blue-200 block">Terakreditasi A (Unggul)</span>
+                <span className="text-[10px] text-blue-200 block">Terakreditasi B</span>
               </div>
               <p className="text-xs text-blue-200 leading-relaxed max-w-sm">
                 Membina generasi cendekia yang berakhlak mulia, menguasai ilmu pengetahuan, dan siap bersaing di kancah global.
@@ -695,20 +695,20 @@ export const LandingPage: React.FC = () => {
 
             <div>
               <h3 className="text-xs font-bold uppercase text-white tracking-wider mb-3">
-                Sekretariat & Lokasi Kampus
+                Sekretariat & Lokasi Sekolah
               </h3>
               <div className="space-y-2 text-xs text-blue-200">
                 <div className="flex items-start gap-2">
                   <MapPin className="w-4 h-4 text-blue-300 shrink-0 mt-0.5" />
-                  <span>Jl. Pendidikan Techsoe No. 45, Kebayoran Baru, Jakarta Selatan</span>
+                  <span>Jalan Cemara Raya, Kompleks Cemara Indah, No. 34, RT. 08, Kel. Labuhan Ratu, Kec. Labuhan Ratu, Kota Bandar Lampung</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-blue-300 shrink-0" />
-                  <span>(021) 7890-1234 / 0812-3456-7890</span>
+                  <span>0813-6725-2329 / 0852-2007-2005</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-blue-300 shrink-0" />
-                  <span>sekretariat@smatechsoe.sch.id</span>
+                  <span>auladina.indonesia@gmail.com</span>
                 </div>
               </div>
             </div>
@@ -722,7 +722,7 @@ export const LandingPage: React.FC = () => {
                 <p>Jumat: 07.00 : 15.30 WIB</p>
                 <p>Sabtu : Minggu: Libur / Kegiatan Ekstrakurikuler Terjadwal</p>
                 <p className="text-[11px] text-blue-300/70 pt-2">
-                  Portal Pembelajaran LMS Techsoe dapat diakses 24 jam setiap hari.
+                  Portal Pembelajaran LMS Auladina dapat diakses 24 jam setiap hari.
                 </p>
               </div>
             </div>
@@ -734,7 +734,7 @@ export const LandingPage: React.FC = () => {
       <footer className="bg-[#0D1B33] text-slate-400 text-xs py-8 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[11px] text-slate-400">
-            © 2026 SMA Techsoe. Seluruh hak cipta dilindungi. Portal Pembelajaran LMS Techsoe.
+            © 2026 SMP IT Auladina Indonesia QIIBS. Seluruh hak cipta dilindungi. Portal Pembelajaran LMS Auladina.
           </p>
           <div className="flex items-center gap-4 text-[11px] text-slate-400">
             <a href="#pintu-portal" className="hover:text-white">Portal Siswa</a>
