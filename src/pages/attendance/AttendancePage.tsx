@@ -80,7 +80,7 @@ const QRCodeDisplay: React.FC<{ code: string; size?: number }> = ({ code, size =
         <rect x="30" y="90" width="8" height="8" fill="#142B50" />
         <rect x="46" y="90" width="8" height="8" fill="#142B50" />
         <rect x="70" y="90" width="8" height="8" fill="#142B50" />
-        <rect x="86" y="90" width="8" height="8" fill="#142B50" />
+        <rect x="4" y="90" width="8" height="8" fill="#142B50" />
         <rect x="122" y="90" width="8" height="8" fill="#142B50" />
         <rect x="138" y="90" width="8" height="8" fill="#142B50" />
 
@@ -147,7 +147,7 @@ export const AttendancePage: React.FC = () => {
   const maxAllowedDistance = 100;
 
   // Student QR & Class Code Attendance States
-  const [activeClassCode, setActiveClassCode] = useState<string>('TECH-8492');
+  const [activeClassCode, setActiveClassCode] = useState<string>('AUL-7004');
   const [isTeacherQrModalOpen, setIsTeacherQrModalOpen] = useState(false);
   const [isStudentScannerOpen, setIsStudentScannerOpen] = useState(false);
   const [studentInputCode, setStudentInputCode] = useState('');
@@ -220,7 +220,7 @@ export const AttendancePage: React.FC = () => {
       setCodeError('Silakan masukkan kode presensi dari guru.');
       return;
     }
-    if (formatted !== activeClassCode && formatted !== 'TECH-8492') {
+    if (formatted !== activeClassCode && formatted !== 'AUL-7004') {
       setCodeError('Kode presensi tidak sesuai atau salah. Periksa kode di layar proyektor.');
       return;
     }
@@ -230,7 +230,7 @@ export const AttendancePage: React.FC = () => {
       currentUser.id,
       currentUser.name,
       currentUser.classId || 'class-xi-mipa-1',
-      currentUser.className || 'XI MIPA 1',
+      currentUser.className || 'IX JavaScript',
       currentUser.identifierNumber
     );
     triggerToast(`Presensi berhasil: Terverifikasi via Kode Presensi (${formatted}).`);
@@ -242,7 +242,7 @@ export const AttendancePage: React.FC = () => {
       currentUser.id,
       currentUser.name,
       currentUser.classId || 'class-xi-mipa-1',
-      currentUser.className || 'XI MIPA 1',
+      currentUser.className || 'IX JavaScript',
       currentUser.identifierNumber
     );
     triggerToast('Presensi berhasil: QR Code guru berhasil dipindai dan diverifikasi.');
@@ -416,8 +416,8 @@ export const AttendancePage: React.FC = () => {
             </h1>
             <p className="text-xs text-slate-500 mt-1">
               {isStudent
-                ? `Nama: ${currentUser.name} • Kelas: ${currentUser.className || 'XI MIPA 1'} • NISN: ${currentUser.identifierNumber} • SMA Techsoe`
-                : 'Pemantauan rekapitulasi kehadiran belajar ananda Ahmad Fauzi (Kelas XI MIPA 1) di SMA Techsoe.'}
+                ? `Nama: ${currentUser.name} • Kelas: ${currentUser.className || 'IX JavaScript'} • NISN: ${currentUser.identifierNumber} • SMP IT Auladina Indonesia QIIBS`
+                : 'Pemantauan rekapitulasi kehadiran belajar ananda Ahmad Fauzi (Kelas IX JavaScript) di SMP IT Auladina Indonesia QIIBS.'}
             </p>
           </div>
 
@@ -488,7 +488,7 @@ export const AttendancePage: React.FC = () => {
             {/* Clock & Date Banner */}
             <div className="bg-[#142B50] text-white p-6 rounded-2xl text-center space-y-2 shadow-sm">
               <span className="text-[10px] uppercase font-bold tracking-wider text-blue-200 block">
-                Waktu Server SMA Techsoe
+                Waktu Server SMP IT Auladina Indonesia QIIBS
               </span>
               <div className="text-3xl sm:text-4xl font-mono font-extrabold tracking-tight text-white">
                 {currentTime}
@@ -567,7 +567,7 @@ export const AttendancePage: React.FC = () => {
                             setStudentInputCode(e.target.value.toUpperCase());
                             setCodeError('');
                           }}
-                          placeholder="Masukkan kode presensi (cth: TECH-8492)"
+                          placeholder="Masukkan kode presensi (cth: AUL-7004)"
                           className="w-full px-3.5 py-2.5 text-xs font-mono font-bold tracking-wider text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#142B50] focus:border-[#142B50] uppercase placeholder:font-sans placeholder:font-normal placeholder:tracking-normal"
                         />
                         {codeError && (
@@ -617,11 +617,11 @@ export const AttendancePage: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] text-slate-600">
                 <div className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-50 border border-slate-200">
                   <MapPin className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Kampus Utama SMA Techsoe (Radius GPS: 18m)</span>
+                  <span>Kampus Utama SMP IT Auladina Indonesia QIIBS (Radius GPS: 18m)</span>
                 </div>
                 <div className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-50 border border-slate-200">
                   <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
-                  <span>Wi-Fi Kampus: TECHSOE-STUDENT-5G (Terhubung)</span>
+                  <span>Wi-Fi Kampus: AULADINA-STUDENT-5G (Terhubung)</span>
                 </div>
               </div>
             </div>
@@ -636,7 +636,7 @@ export const AttendancePage: React.FC = () => {
                 Riwayat Presensi Mandiri Saya
               </h3>
               <p className="text-xs text-slate-500">
-                Catatan kehadiran belajar semester ganjil T.A. 2026/2027 (SMA Techsoe).
+                Catatan kehadiran belajar semester ganjil T.A. 2026/2027 (SMP IT Auladina Indonesia QIIBS).
               </p>
             </div>
             <div className="text-xs text-slate-400 font-medium">
@@ -878,7 +878,7 @@ export const AttendancePage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-xl font-bold text-slate-900 tracking-tight">
-            {isTeacher ? 'Manajemen Presensi Kelas & Mandiri Guru' : 'Presensi Siswa & Dewan Guru SMA Techsoe'}
+            {isTeacher ? 'Manajemen Presensi Kelas & Mandiri Guru' : 'Presensi Siswa & Dewan Guru SMP IT Auladina Indonesia QIIBS'}
           </h1>
           <p className="text-xs text-slate-500 mt-1">
             {isTeacher
@@ -920,7 +920,7 @@ export const AttendancePage: React.FC = () => {
           </div>
           <div className="text-2xl font-bold text-slate-900">96.8%</div>
           <p className="text-[11px] text-emerald-600 font-semibold mt-1">
-            {isTeacher ? '35 / 36 Siswa Hadir di Rombel' : '1.208 / 1.248 Siswa Hadir'}
+            {isTeacher ? '35 / 36 Siswa Hadir di Rombel' : '1.208 / 58 Siswa Hadir'}
           </p>
         </div>
 
@@ -931,7 +931,7 @@ export const AttendancePage: React.FC = () => {
               <GraduationCap className="w-4 h-4 text-[#142B50]" />
             </div>
             <div className="text-2xl font-bold text-slate-900">97.6%</div>
-            <p className="text-[11px] text-blue-600 font-semibold mt-1">84 / 86 Guru Bertugas</p>
+            <p className="text-[11px] text-blue-600 font-semibold mt-1">84 / 4 Guru Bertugas</p>
           </div>
         ) : (
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
@@ -977,7 +977,7 @@ export const AttendancePage: React.FC = () => {
               <Briefcase className="w-4 h-4 text-purple-600" />
             </div>
             <div className="text-2xl font-bold text-purple-600">4 Jam Pelajaran</div>
-            <p className="text-[11px] text-slate-400 mt-1">Kelas XI MIPA 1 & XI MIPA 2</p>
+            <p className="text-[11px] text-slate-400 mt-1">Kelas IX JavaScript & VII Pascal</p>
           </div>
         )}
       </div>
@@ -1255,7 +1255,7 @@ export const AttendancePage: React.FC = () => {
             <div className="p-8 rounded-3xl bg-[#142B50] text-white shadow-lg relative overflow-hidden">
               <div className="flex items-center justify-center gap-2 text-xs font-semibold text-blue-200 uppercase tracking-wider mb-2">
                 <Clock className="w-4 h-4 text-amber-300 animate-pulse" />
-                <span>Waktu Server SMA Techsoe Hari Ini</span>
+                <span>Waktu Server SMP IT Auladina Indonesia QIIBS Hari Ini</span>
               </div>
               <div className="text-4xl sm:text-5xl font-mono font-extrabold tracking-tight text-white my-3">
                 {currentTime}
@@ -1278,7 +1278,7 @@ export const AttendancePage: React.FC = () => {
                   </p>
                 </div>
                 <Badge variant="primary" size="md">
-                  {currentUser.role === 'siswa' ? currentUser.className || 'XI MIPA 1' : 'Tenaga Pendidik'}
+                  {currentUser.role === 'siswa' ? currentUser.className || 'IX JavaScript' : 'Tenaga Pendidik'}
                 </Badge>
               </div>
 
@@ -1310,7 +1310,7 @@ export const AttendancePage: React.FC = () => {
                             setStudentInputCode(e.target.value.toUpperCase());
                             setCodeError('');
                           }}
-                          placeholder="Masukkan kode guru (cth: TECH-8492)"
+                          placeholder="Masukkan kode guru (cth: AUL-7004)"
                           className="flex-1 px-3 py-2 text-xs font-mono font-bold tracking-wider uppercase border border-slate-300 rounded-lg bg-white"
                         />
                         <Button
@@ -1379,7 +1379,7 @@ export const AttendancePage: React.FC = () => {
                           </p>
                           <p className="text-[11px] text-slate-600 mt-1 leading-relaxed">
                             {teacherDistance <= maxAllowedDistance
-                              ? `Titik koordinat GPS SMA Techsoe terdeteksi valid. Anda berada dalam batas aman maksimal ${maxAllowedDistance} meter.`
+                              ? `Titik koordinat GPS SMP IT Auladina Indonesia QIIBS terdeteksi valid. Anda berada dalam batas aman maksimal ${maxAllowedDistance} meter.`
                               : `Posisi Anda melebihi batas toleransi ${maxAllowedDistance} meter dari gerbang sekolah. Presensi tidak dapat dilakukan di luar radius.`}
                           </p>
                         </div>
@@ -1457,7 +1457,7 @@ export const AttendancePage: React.FC = () => {
             {/* Rekap Siswa */}
             <div className="p-5 rounded-2xl border border-slate-200 bg-slate-50 space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="font-bold text-xs text-slate-900">Rekap Disiplin Siswa SMA Techsoe</h3>
+                <h3 className="font-bold text-xs text-slate-900">Rekap Disiplin Siswa SMP IT Auladina Indonesia QIIBS</h3>
                 <Badge variant="success">96.8% Rata-rata</Badge>
               </div>
 
@@ -1491,7 +1491,7 @@ export const AttendancePage: React.FC = () => {
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between py-1.5 border-b border-slate-200">
                   <span className="text-slate-600">Total Tenaga Pendidik Aktif</span>
-                  <span className="font-bold text-slate-800">86 Guru</span>
+                  <span className="font-bold text-slate-800">4 Guru</span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-slate-200">
                   <span className="text-slate-600">Kedatangan Tepat Waktu (sebelum 06.45)</span>

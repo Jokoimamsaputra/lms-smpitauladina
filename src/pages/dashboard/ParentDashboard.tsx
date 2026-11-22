@@ -34,7 +34,7 @@ export const ParentDashboard: React.FC = () => {
             Selamat Datang, Bapak {currentUser.name}
           </h1>
           <p className="text-xs sm:text-sm text-blue-200 mt-2 leading-relaxed">
-            Memantau perkembangan belajar putra Anda: <strong>Ahmad Rizky Pratama</strong> (Kelas XI MIPA 1 • SMA Techsoe).
+            Memantau perkembangan belajar putra Anda: <strong>Muhammad Al Kayyis</strong> (Kelas IX JavaScript • SMP IT Auladina Indonesia QIIBS).
           </p>
 
           <div className="mt-5 flex flex-wrap gap-2.5">
@@ -158,7 +158,7 @@ export const ParentDashboard: React.FC = () => {
         <div className="bg-white p-5 rounded-xl border border-[#E2E8F0] shadow-sm flex flex-col justify-between">
           <div>
             <h2 className="text-sm font-semibold text-slate-800 mb-1">
-              Wali Kelas XI MIPA 1
+              Wali Kelas IX JavaScript
             </h2>
             <p className="text-xs text-slate-500 mb-4">
               Informasi kontak untuk konsultasi bimbingan akademik
@@ -170,7 +170,7 @@ export const ParentDashboard: React.FC = () => {
                   SR
                 </div>
                 <div>
-                  <p className="font-bold text-xs">Siti Rahmawati, M.Pd.</p>
+                  <p className="font-bold text-xs">Miryati, S.Kom.</p>
                   <p className="text-[11px] text-blue-900/80">Guru Informatika & Wali Kelas</p>
                 </div>
               </div>

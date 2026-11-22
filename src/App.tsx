@@ -41,7 +41,7 @@ import { LearningAnalyticsPage } from './pages/analytics/LearningAnalyticsPage';
 import { NotificationPage } from './pages/notifications/NotificationPage';
 import { SettingsPage } from './pages/settings/SettingsPage';
 
-// School Operational Pages (Adopted from lms-techsoe-sdn9 for real daily school use)
+// School Operational Pages (Adopted from lms-auladina-sdn9 for real daily school use)
 import { TeacherJournalPage } from './pages/journal/TeacherJournalPage';
 import { CounselingPage } from './pages/counseling/CounselingPage';
 import { SchedulePage } from './pages/schedule/SchedulePage';

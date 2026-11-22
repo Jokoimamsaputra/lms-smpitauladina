@@ -44,7 +44,7 @@ export const PrincipalDashboard: React.FC = () => {
     { subject: 'B. Indonesia', score: 87.2 },
     { subject: 'Matematika', score: 82.4 },
     { subject: 'Fisika', score: 81.0 },
-    { subject: 'B. Inggris', score: 86.8 },
+    { subject: 'B. Inggris', score: 4.8 },
   ];
 
   return (
@@ -97,7 +97,7 @@ export const PrincipalDashboard: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           title="Total Siswa Aktif"
-          value="1.248"
+          value="58"
           subtitle="Tingkat kelulusan target: 100%"
           icon={<Users className="w-5 h-5" />}
           colorTheme="navy"

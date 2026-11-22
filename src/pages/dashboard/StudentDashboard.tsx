@@ -40,7 +40,7 @@ export const StudentDashboard: React.FC = () => {
             Semangat Belajar, {currentUser.name}!
           </h1>
           <p className="text-xs sm:text-sm text-blue-200 mt-2 leading-relaxed">
-            Kelas: {currentUser.className || 'XI MIPA 1'} • NISN: {currentUser.identifierNumber}. Ada 1 ujian CBT tengah semester aktif dan materi baru yang dapat kamu pelajari hari ini.
+            Kelas: {currentUser.className || 'IX JavaScript'} • NISN: {currentUser.identifierNumber}. Ada 1 ujian CBT tengah semester aktif dan materi baru yang dapat kamu pelajari hari ini.
           </p>
 
           <div className="mt-5 flex flex-wrap gap-2.5">

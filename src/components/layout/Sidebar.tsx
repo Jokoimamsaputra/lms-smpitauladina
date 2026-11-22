@@ -215,7 +215,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
           <div className="flex items-center">
             <img
               src="/logo-white.png"
-              alt="TechSoe LMS"
+              alt="Auladina LMS"
               className="h-8 w-auto object-contain"
             />
           </div>

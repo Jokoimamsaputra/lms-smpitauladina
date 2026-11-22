@@ -97,7 +97,7 @@ export const SchedulePage: React.FC = () => {
       day: formDay,
       period: formPeriod,
       classId: formClassId,
-      className: selClass?.name || 'XI MIPA 1',
+      className: selClass?.name || 'IX JavaScript',
       subjectId: formSubjectId,
       subjectName: selSub?.name || 'Mata Pelajaran',
       teacherId: formTeacherId,

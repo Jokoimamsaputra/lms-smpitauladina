@@ -54,7 +54,7 @@ export const TeacherJournalPage: React.FC = () => {
   // Form State
   const [formData, setFormData] = useState({
     classId: classes[0]?.id || 'class-xi-mipa-1',
-    className: classes[0]?.name || 'XI MIPA 1',
+    className: classes[0]?.name || 'IX JavaScript',
     subjectId: subjects[0]?.id || 'subj-info-xi',
     subjectName: subjects[0]?.name || 'Informatika',
     journalDate: '2026-11-18',
@@ -79,7 +79,7 @@ export const TeacherJournalPage: React.FC = () => {
     setEditingJournalId(null);
     setFormData({
       classId: classes[0]?.id || 'class-xi-mipa-1',
-      className: classes[0]?.name || 'XI MIPA 1',
+      className: classes[0]?.name || 'IX JavaScript',
       subjectId: subjects[0]?.id || 'subj-info-xi',
       subjectName: subjects[0]?.name || 'Informatika',
       journalDate: '2026-11-18',
@@ -202,7 +202,7 @@ export const TeacherJournalPage: React.FC = () => {
             Jurnal Mengajar Guru & Agenda Kelas
           </h1>
           <p className="text-xs text-slate-500 mt-1">
-            Pencatatan resmi kegiatan belajar mengajar harian, ketercapaian silabus, dan presensi rombel di SMA Techsoe.
+            Pencatatan resmi kegiatan belajar mengajar harian, ketercapaian silabus, dan presensi rombel di SMP IT Auladina Indonesia QIIBS.
           </p>
         </div>
 
@@ -703,7 +703,7 @@ export const TeacherJournalPage: React.FC = () => {
           <div className="pt-3 border-t border-slate-200 grid grid-cols-2 text-center text-xs">
             <div>
               <span className="text-slate-500 text-[10px]">Mengetahui,</span>
-              <p className="font-semibold text-slate-800 mt-1">Kepala SMA Techsoe</p>
+              <p className="font-semibold text-slate-800 mt-1">Kepala SMP IT Auladina Indonesia QIIBS</p>
               <div className="h-12 flex items-center justify-center text-slate-400 italic text-[10px]">
                 (Tanda Tangan Digital)
               </div>

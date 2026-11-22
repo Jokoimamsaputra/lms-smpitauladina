@@ -43,10 +43,10 @@ export const AdminDashboard: React.FC = () => {
   ];
 
   const classPerformanceData = [
-    { name: 'X MIPA 1', avg: 84 },
-    { name: 'XI MIPA 1', avg: 89 },
-    { name: 'XI MIPA 2', avg: 82 },
-    { name: 'XII MIPA 1', avg: 91 },
+    { name: 'VII Rubby', avg: 84 },
+    { name: 'IX JavaScript', avg: 89 },
+    { name: 'VII Pascal', avg: 82 },
+    { name: 'IX JavaScript', avg: 91 },
   ];
 
   return (
@@ -98,22 +98,22 @@ export const AdminDashboard: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           title="Total Siswa Terdaftar"
-          value="1.248"
-          subtitle="36 Rombongan Belajar"
+          value="58"
+          subtitle="4 Rombongan Belajar"
           icon={<Users className="w-5 h-5" />}
           trend={{ value: '+4.2% tahun ini', isPositive: true }}
           colorTheme="navy"
         />
         <StatCard
           title="Tenaga Pendidik (Guru)"
-          value="86"
-          subtitle="18 Mata Pelajaran Aktif"
+          value="4"
+          subtitle="6 Mata Pelajaran Aktif"
           icon={<GraduationCap className="w-5 h-5" />}
           colorTheme="blue"
         />
         <StatCard
           title="Buku Referensi Nasional"
-          value="320"
+          value="3"
           subtitle="Kurikulum Merdeka & K13"
           icon={<Library className="w-5 h-5" />}
           colorTheme="emerald"

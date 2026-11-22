@@ -35,7 +35,7 @@ export const UserManagementPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [role, setRole] = useState<UserRole>('siswa');
   const [identifierNumber, setIdentifierNumber] = useState('');
-  const [className, setClassName] = useState('XI MIPA 1');
+  const [className, setClassName] = useState('IX JavaScript');
   const [subjectSpecialization, setSubjectSpecialization] = useState('');
 
   const triggerToast = (msg: string) => {
@@ -57,7 +57,7 @@ export const UserManagementPage: React.FC = () => {
     setEmail('');
     setRole('siswa');
     setIdentifierNumber('NISN 008' + Math.floor(1000000 + Math.random() * 9000000));
-    setClassName('XI MIPA 1');
+    setClassName('IX JavaScript');
     setSubjectSpecialization('');
     setIsAddModalOpen(true);
   };
@@ -87,7 +87,7 @@ export const UserManagementPage: React.FC = () => {
     setEmail(user.email);
     setRole(user.role);
     setIdentifierNumber(user.identifierNumber);
-    setClassName(user.className || 'XI MIPA 1');
+    setClassName(user.className || 'IX JavaScript');
     setSubjectSpecialization(user.subjectSpecialization || '');
     setIsEditModalOpen(true);
   };
@@ -120,15 +120,15 @@ export const UserManagementPage: React.FC = () => {
     // Add two simulated users
     addUser({
       name: 'Rian Hidayat (Import)',
-      email: 'rian.hidayat@demo.id',
+      email: 'rian.hidayat@auladina.sch.id',
       role: 'siswa',
       identifierNumber: 'NISN 0089991122',
-      className: 'XI MIPA 1',
+      className: 'IX JavaScript',
       status: 'active',
     });
     addUser({
       name: 'Dr. Maria Ulfah, M.Sc. (Import)',
-      email: 'maria.ulfah@demo.id',
+      email: 'maria.ulfah@auladina.sch.id',
       role: 'guru',
       identifierNumber: 'NIP 198503112009022008',
       subjectSpecialization: 'Biologi',
@@ -282,7 +282,7 @@ export const UserManagementPage: React.FC = () => {
                     </td>
                     <td className="py-3.5 px-4 text-slate-600">
                       {user.role === 'siswa'
-                        ? user.className || 'XI MIPA 1'
+                        ? user.className || 'IX JavaScript'
                         : user.role === 'guru'
                         ? user.subjectSpecialization || 'Pendidik'
                         : 'Administrasi'}
@@ -360,7 +360,7 @@ export const UserManagementPage: React.FC = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="email@demo.id"
+                placeholder="email@auladina.sch.id"
                 required
                 className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#142B50] focus:outline-none"
               />
@@ -407,7 +407,7 @@ export const UserManagementPage: React.FC = () => {
                   type="text"
                   value={className}
                   onChange={(e) => setClassName(e.target.value)}
-                  placeholder="XI MIPA 1"
+                  placeholder="IX JavaScript"
                   className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#142B50] focus:outline-none"
                 />
               </div>

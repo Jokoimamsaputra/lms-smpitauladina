@@ -59,7 +59,7 @@ export const CurriculumPage: React.FC = () => {
             Kurikulum & Capaian Pembelajaran (CP)
           </h1>
           <p className="text-xs text-slate-500 mt-1">
-            Penetapan silabus standar nasional Kemendikdasmen RI untuk SMA Techsoe.
+            Penetapan silabus standar nasional Kemendikdasmen RI untuk SMP IT Auladina Indonesia QIIBS.
           </p>
         </div>
 

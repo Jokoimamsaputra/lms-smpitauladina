@@ -59,7 +59,7 @@ export const AboutLMSPage: React.FC = () => {
       category: 'akademik',
       badge: 'Kurikulum Merdeka',
       title: 'Kelas Virtual & Perpustakaan Digital Nasional',
-      desc: 'Pusat pembelajaran digital terintegrasi dengan akses langsung ke 320+ judul buku teks utama kurikulum merdeka dari Kemendikdasmen.',
+      desc: 'Pusat pembelajaran digital terintegrasi dengan akses langsung ke 3+ judul buku teks utama kurikulum merdeka dari Kemendikdasmen.',
       icon: <BookOpen className="w-5 h-5 text-[#142B50]" />,
       features: [
         'Manajemen kelas virtual berbasis mata pelajaran dan capaian pembelajaran',
@@ -175,7 +175,7 @@ export const AboutLMSPage: React.FC = () => {
       badge: 'Pelajar',
       desc: 'Akses gratis ke seluruh koleksi buku pelajaran resmi Kemendikdasmen, pengerjaan tugas dan ujian CBT terjadwal, pendamping belajar mandiri AI, dan pemantauan piagam prestasi.',
       benefits: [
-        'Akses 320+ buku teks digital kurikulum merdeka langsung di gawai',
+        'Akses 3+ buku teks digital kurikulum merdeka langsung di gawai',
         'Ujian CBT terjadwal dengan KKM dan pembahasan nilai transparan',
         'Privasi presensi terlindungi dan ruang aman konsultasi BK',
       ],
@@ -228,7 +228,7 @@ export const AboutLMSPage: React.FC = () => {
     {
       aspect: 'Koleksi Buku Pegangan Siswa',
       traditional: 'Beban biaya cetak buku tinggi dan tas sekolah berat membawa banyak buku fisik.',
-      lmsTechsoe: 'Perpustakaan digital 320+ judul buku kurikulum merdeka resmi langsung di gawai.',
+      lmsTechsoe: 'Perpustakaan digital 3+ judul buku kurikulum merdeka resmi langsung di gawai.',
     },
     {
       aspect: 'Buku Tata Tertib & Prestasi Siswa',
@@ -257,7 +257,7 @@ export const AboutLMSPage: React.FC = () => {
           >
             <img
               src="/logo.png"
-              alt="TechSoe LMS"
+              alt="Auladina LMS"
               className="h-9 sm:h-10 w-auto object-contain"
             />
             <span className="text-[11px] text-slate-500 font-semibold border-l border-slate-200 pl-3 py-1 hidden sm:inline-block">
@@ -335,7 +335,7 @@ export const AboutLMSPage: React.FC = () => {
 
               <RevealOnScroll delay={240} className="h-full">
                 <div className="h-full bg-slate-50 p-4 rounded-xl border border-slate-200">
-                  <div className="text-2xl font-black text-[#142B50]">320+ Buku</div>
+                  <div className="text-2xl font-black text-[#142B50]">3+ Buku</div>
                   <div className="text-xs text-slate-500 font-medium mt-0.5">Buku Teks Resmi Kemendikdasmen</div>
                 </div>
               </RevealOnScroll>

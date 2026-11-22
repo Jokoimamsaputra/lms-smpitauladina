@@ -46,7 +46,7 @@ export const LearningAnalyticsPage: React.FC = () => {
     { week: 'Mgg 1', nilai: 81 },
     { week: 'Mgg 2', nilai: 83 },
     { week: 'Mgg 3', nilai: 79 },
-    { week: 'Mgg 4', nilai: 86 },
+    { week: 'Mgg 4', nilai: 4 },
     { week: 'Mgg 5', nilai: 85 },
     { week: 'Mgg 6', nilai: 89 },
   ];
@@ -61,7 +61,7 @@ export const LearningAnalyticsPage: React.FC = () => {
     {
       name: 'Farhan Maulana',
       nisn: '0081234570',
-      class: 'XI MIPA 1',
+      class: 'IX JavaScript',
       attendanceRate: '78%',
       avgScore: 68,
       issue: 'Kehadiran rendah karena izin sakit & tugas 2 belum selesai.',
@@ -69,7 +69,7 @@ export const LearningAnalyticsPage: React.FC = () => {
     {
       name: 'Dimas Aditya',
       nisn: '0081234572',
-      class: 'XI MIPA 2',
+      class: 'VII Pascal',
       attendanceRate: '82%',
       avgScore: 71,
       issue: 'Capaian ujian matematika belum mencapai KKM 75.',

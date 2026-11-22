@@ -29,14 +29,14 @@ export const SubjectDetailPage: React.FC = () => {
   const [forumPosts, setForumPosts] = useState([
     {
       id: 'post-1',
-      author: 'Siti Rahmawati, M.Pd.',
+      author: 'Miryati, S.Kom.',
       role: 'Guru',
       time: 'Kemarin, 09.00 WIB',
       content: 'Selamat pagi siswa sekalian! Jangan lupa pelajari materi Pertemuan 1 mengenai Binary Search sebelum mengikuti Ujian CBT tengah semester.',
     },
     {
       id: 'post-2',
-      author: 'Ahmad Rizky Pratama',
+      author: 'Muhammad Al Kayyis',
       role: 'Siswa',
       time: 'Kemarin, 10.30 WIB',
       content: 'Baik Bu Siti, apakah materi modul bab 2 strategi algoritmik juga masuk kisi-kisi ujian?',

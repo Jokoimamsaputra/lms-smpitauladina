@@ -83,7 +83,7 @@ export const DigitalReportPage: React.FC = () => {
           <div className="space-y-1.5">
             <div className="flex">
               <span className="w-32 text-slate-500">Nama Siswa</span>
-              <span className="font-bold text-slate-900">: Ahmad Rizky Pratama</span>
+              <span className="font-bold text-slate-900">: Muhammad Al Kayyis</span>
             </div>
             <div className="flex">
               <span className="w-32 text-slate-500">Nomor Induk / NISN</span>
@@ -91,7 +91,7 @@ export const DigitalReportPage: React.FC = () => {
             </div>
             <div className="flex">
               <span className="w-32 text-slate-500">Fase / Kelas</span>
-              <span className="font-semibold text-slate-900">: Fase F / XI MIPA 1</span>
+              <span className="font-semibold text-slate-900">: Fase F / IX JavaScript</span>
             </div>
           </div>
 
@@ -106,7 +106,7 @@ export const DigitalReportPage: React.FC = () => {
             </div>
             <div className="flex">
               <span className="w-32 text-slate-500">Wali Kelas</span>
-              <span className="font-semibold text-slate-900">: Siti Rahmawati, M.Pd.</span>
+              <span className="font-semibold text-slate-900">: Miryati, S.Kom.</span>
             </div>
           </div>
         </div>
@@ -204,15 +204,15 @@ export const DigitalReportPage: React.FC = () => {
             <p>Mengetahui,</p>
             <p>Orang Tua / Wali Siswa</p>
             <div className="h-16" />
-            <p className="font-bold underline">Ir. Gunawan Pratama</p>
+            <p className="font-bold underline">Heri Yusmargana, S.Pt</p>
           </div>
 
           <div>
             <p>Jakarta, 20 November 2026</p>
-            <p>Wali Kelas XI MIPA 1</p>
+            <p>Wali Kelas IX JavaScript</p>
             <div className="h-16" />
-            <p className="font-bold underline">Siti Rahmawati, M.Pd.</p>
-            <p className="text-[10px] text-slate-500">NIP 198711032010012015</p>
+            <p className="font-bold underline">Miryati, S.Kom.</p>
+            <p className="text-[10px] text-slate-500">NIP 1987110310012015</p>
           </div>
 
           <div>

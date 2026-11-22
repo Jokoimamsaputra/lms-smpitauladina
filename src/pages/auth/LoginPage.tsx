@@ -17,39 +17,39 @@ export const LoginPage: React.FC = () => {
   const { switchRole } = useStore();
 
   const [selectedRole, setSelectedRole] = useState<UserRole>('admin');
-  const [email, setEmail] = useState('admin@demo.id');
-  const [password, setPassword] = useState('demo123');
+  const [email, setEmail] = useState('admin@auladina.sch.id');
+  const [password, setPassword] = useState('auladina2024');
   const [errorMsg, setErrorMsg] = useState('');
 
   const roleCredentials: Record<UserRole, { email: string; label: string; desc: string; target: string }> = {
     admin: {
-      email: 'admin@demo.id',
+      email: 'admin@auladina.sch.id',
       label: 'Admin Sekolah',
-      desc: 'Bambang Setiawan, S.Pd. (Manajemen Sistem & Pengguna)',
+      desc: 'Anisa Widayati (Manajemen Sistem & Pengguna)',
       target: '/admin/dashboard',
     },
     guru: {
-      email: 'guru@demo.id',
+      email: 'guru@auladina.sch.id',
       label: 'Guru Pengampu',
-      desc: 'Siti Rahmawati, M.Pd. (Informatika & Matematika)',
+      desc: 'Miryati, S.Kom. (Informatika & Matematika)',
       target: '/teacher/dashboard',
     },
     siswa: {
-      email: 'siswa@demo.id',
+      email: 'siswa@auladina.sch.id',
       label: 'Siswa',
-      desc: 'Ahmad Rizky Pratama (Kelas XI MIPA 1)',
+      desc: 'Muhammad Al Kayyis (Kelas IX JavaScript)',
       target: '/student/dashboard',
     },
     kepala: {
-      email: 'kepala@demo.id',
+      email: 'kepala@auladina.sch.id',
       label: 'Kepala Sekolah',
-      desc: 'Dr. H. Hendro Utomo, M.Ed. (Executive Monitoring)',
+      desc: 'Joko Imam Saputra, M.Ag., MCE. (Executive Monitoring)',
       target: '/principal/dashboard',
     },
     orangtua: {
-      email: 'orangtua@demo.id',
+      email: 'orangtua@auladina.sch.id',
       label: 'Orang Tua / Wali',
-      desc: 'Ir. Gunawan Pratama (Orang tua Ahmad Rizky)',
+      desc: 'Heri Yusmargana, S.Pt (Orang tua Ahmad Rizky)',
       target: '/parent/dashboard',
     },
   };
@@ -57,7 +57,7 @@ export const LoginPage: React.FC = () => {
   const handleSelectRole = (role: UserRole) => {
     setSelectedRole(role);
     setEmail(roleCredentials[role].email);
-    setPassword('demo123');
+    setPassword('auladina2024');
     setErrorMsg('');
   };
 
@@ -105,11 +105,11 @@ export const LoginPage: React.FC = () => {
             <div>
               <img
                 src="/logo-white.png"
-                alt="TechSoe LMS"
+                alt="Auladina LMS"
                 className="h-10 sm:h-11 w-auto object-contain mb-2"
               />
               <p className="text-xs text-blue-200">
-                Portal Pembelajaran Digital SMA Techsoe
+                Portal Pembelajaran Digital SMP IT Auladina Indonesia QIIBS
               </p>
 
               <div className="mt-5 sm:mt-6">
@@ -140,7 +140,7 @@ export const LoginPage: React.FC = () => {
             </div>
 
             <div className="mt-5 pt-3 sm:pt-4 border-t border-white/10 text-[10px] sm:text-[11px] text-blue-200/80">
-              NPSN: 20104592 • Akreditasi A Unggul (Jakarta Selatan)
+              NPSN: 70042877 • Akreditasi A Unggul (Jakarta Selatan)
             </div>
           </div>
 
@@ -153,7 +153,7 @@ export const LoginPage: React.FC = () => {
                     Masuk ke Portal Akademik
                   </h3>
                   <p className="text-[11px] sm:text-xs text-slate-500">
-                    Akses terpadu seluruh civitas sekolah SMA Techsoe
+                    Akses terpadu seluruh civitas sekolah SMP IT Auladina Indonesia QIIBS
                   </p>
                 </div>
                 <span className="text-[10px] sm:text-[11px] bg-[#EAF0F8] text-[#142B50] px-2.5 sm:px-3 py-1 rounded-full font-bold shrink-0">
@@ -191,7 +191,7 @@ export const LoginPage: React.FC = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="block w-full pl-9 pr-3 py-2.5 text-base sm:text-xs border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#142B50] focus:border-[#142B50] bg-white min-h-[44px] sm:min-h-0"
-                      placeholder="nama@demo.id"
+                      placeholder="nama@auladina.sch.id"
                       required
                     />
                   </div>
@@ -210,7 +210,7 @@ export const LoginPage: React.FC = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       className="block w-full pl-9 pr-3 py-2.5 text-base sm:text-xs border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#142B50] focus:border-[#142B50] bg-white min-h-[44px] sm:min-h-0"
-                      placeholder="demo123"
+                      placeholder="auladina2024"
                       required
                     />
                   </div>
@@ -229,7 +229,7 @@ export const LoginPage: React.FC = () => {
             </div>
 
             <div className="mt-4 pt-3 border-t border-slate-100 text-center text-[10px] sm:text-[11px] text-slate-400">
-              Password bawaan seluruh akun demo: <span className="font-mono font-bold text-slate-600">demo123</span>
+              Password bawaan seluruh akun demo: <span className="font-mono font-bold text-slate-600">auladina2024</span>
             </div>
           </div>
         </div>

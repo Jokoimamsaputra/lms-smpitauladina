@@ -126,7 +126,7 @@ export const INITIAL_USERS: User[] = [
     name: 'Farhan Maulana',
     email: 'farhan.m@auladina.sch.id',
     role: 'siswa',
-    identifierNumber: 'NISN 0081234570',
+    identifierNumber: 'NIS 2024004',
     className: 'VII Pascal',
     classId: 'class-VII-Pascal',
     status: 'active',

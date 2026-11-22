@@ -114,7 +114,7 @@ export const TeacherDashboard: React.FC = () => {
         <StatCard
           title="Kelas Diampu"
           value={mySubjects.length > 0 ? mySubjects.length : '2'}
-          subtitle="Kelas XI MIPA 1 & XI MIPA 2"
+          subtitle="Kelas IX JavaScript & VII Pascal"
           icon={<BookOpen className="w-5 h-5" />}
           colorTheme="navy"
         />
@@ -163,7 +163,7 @@ export const TeacherDashboard: React.FC = () => {
           <div className="space-y-3">
             <div className="p-3.5 rounded-lg border border-blue-200 bg-blue-50/50">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-semibold text-[#142B50]">Informatika (XI MIPA 1)</span>
+                <span className="font-semibold text-[#142B50]">Informatika (IX JavaScript)</span>
                 <span className="text-[11px] bg-[#142B50] text-white px-2 py-0.5 rounded font-medium">
                   08.00 : 09.30 WIB
                 </span>

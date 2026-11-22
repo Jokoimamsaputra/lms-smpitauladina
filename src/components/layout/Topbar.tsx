@@ -50,11 +50,11 @@ export const Topbar: React.FC<TopbarProps> = ({ onToggleMobileSidebar }) => {
   };
 
   const roleLabels: Record<UserRole, { label: string; desc: string }> = {
-    admin: { label: 'Admin Sekolah', desc: 'Bambang Setiawan, S.Pd.' },
-    guru: { label: 'Guru Pengampu', desc: 'Siti Rahmawati, M.Pd.' },
-    siswa: { label: 'Siswa', desc: 'Ahmad Rizky Pratama (XI MIPA 1)' },
-    kepala: { label: 'Kepala Sekolah', desc: 'Dr. H. Hendro Utomo, M.Ed.' },
-    orangtua: { label: 'Orang Tua / Wali', desc: 'Ir. Gunawan Pratama' },
+    admin: { label: 'Admin Sekolah', desc: 'Anisa Widayati' },
+    guru: { label: 'Guru Pengampu', desc: 'Miryati, S.Kom.' },
+    siswa: { label: 'Siswa', desc: 'Muhammad Al Kayyis (IX JavaScript)' },
+    kepala: { label: 'Kepala Sekolah', desc: 'Joko Imam Saputra, M.Ag., MCE.' },
+    orangtua: { label: 'Orang Tua / Wali', desc: 'Heri Yusmargana, S.Pt' },
   };
 
   return (
@@ -266,7 +266,7 @@ export const Topbar: React.FC<TopbarProps> = ({ onToggleMobileSidebar }) => {
       >
         <p className="text-xs text-slate-600 leading-relaxed">
           Tindakan ini akan mengosongkan perubahan lokal (tugas baru, soal baru, riwayat chat AI,
-          dan absensi yang ditambahkan) lalu memulihkan data bawaan sekolah SMA Techsoe.
+          dan absensi yang ditambahkan) lalu memulihkan data bawaan sekolah SMP IT Auladina Indonesia QIIBS.
         </p>
       </Modal>
     </>

@@ -233,7 +233,7 @@ export const SettingsPage: React.FC = () => {
         }
       >
         <p className="text-xs text-slate-600 leading-relaxed">
-          Seluruh data di localStorage browser akan dipulihkan ke data standar SMA Techsoe. Anda akan diarahkan kembali ke Dashboard Administrator.
+          Seluruh data di localStorage browser akan dipulihkan ke data standar SMP IT Auladina Indonesia QIIBS. Anda akan diarahkan kembali ke Dashboard Administrator.
         </p>
       </Modal>
     </div>

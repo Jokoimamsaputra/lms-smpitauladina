@@ -68,7 +68,7 @@ export const CounselingPage: React.FC = () => {
   const [counselingForm, setCounselingForm] = useState({
     studentId: isStudent ? currentUser.id : students[0]?.id || '',
     studentName: isStudent ? currentUser.name : students[0]?.name || '',
-    className: isStudent ? (currentUser.classId || 'XI MIPA 1') : 'XI MIPA 1',
+    className: isStudent ? (currentUser.classId || 'IX JavaScript') : 'IX JavaScript',
     counselorName: 'Dra. Endang Sulastri (Koordinator BK)',
     date: new Date().toISOString().split('T')[0],
     category: 'akademik' as 'akademik' | 'karir_kuliah' | 'pribadi' | 'sosial',
@@ -82,7 +82,7 @@ export const CounselingPage: React.FC = () => {
   const [violationForm, setViolationForm] = useState({
     studentId: students[0]?.id || '',
     studentName: students[0]?.name || '',
-    className: 'XI MIPA 1',
+    className: 'IX JavaScript',
     date: new Date().toISOString().split('T')[0],
     violationType: '',
     category: 'ringan' as 'ringan' | 'sedang' | 'berat',
@@ -96,7 +96,7 @@ export const CounselingPage: React.FC = () => {
   const [achievementForm, setAchievementForm] = useState({
     studentId: students[0]?.id || '',
     studentName: students[0]?.name || '',
-    className: 'XI MIPA 1',
+    className: 'IX JavaScript',
     date: new Date().toISOString().split('T')[0],
     title: '',
     category: 'akademik' as 'akademik' | 'olahraga' | 'seni_budaya' | 'teknologi',
@@ -173,7 +173,7 @@ export const CounselingPage: React.FC = () => {
     setCounselingForm({
       studentId: students[0]?.id || '',
       studentName: students[0]?.name || '',
-      className: 'XI MIPA 1',
+      className: 'IX JavaScript',
       counselorName: 'Dra. Endang Sulastri (Koordinator BK)',
       date: new Date().toISOString().split('T')[0],
       category: 'akademik',
@@ -203,7 +203,7 @@ export const CounselingPage: React.FC = () => {
     setViolationForm({
       studentId: students[0]?.id || '',
       studentName: students[0]?.name || '',
-      className: 'XI MIPA 1',
+      className: 'IX JavaScript',
       date: new Date().toISOString().split('T')[0],
       violationType: '',
       category: 'ringan',
@@ -233,7 +233,7 @@ export const CounselingPage: React.FC = () => {
     setAchievementForm({
       studentId: students[0]?.id || '',
       studentName: students[0]?.name || '',
-      className: 'XI MIPA 1',
+      className: 'IX JavaScript',
       date: new Date().toISOString().split('T')[0],
       title: '',
       category: 'akademik',
@@ -271,7 +271,7 @@ export const CounselingPage: React.FC = () => {
                 : 'Bimbingan Konseling, Disiplin & Prestasi'}
             </h1>
             <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#142B50]/10 text-[#142B50]">
-              SMA Techsoe
+              SMP IT Auladina Indonesia QIIBS
             </span>
           </div>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
@@ -596,7 +596,7 @@ export const CounselingPage: React.FC = () => {
                   Buku Catatan Pelanggaran Tata Tertib & Akumulasi Poin
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Sistem monitoring kedisiplinan berkarakter untuk pembinaan peserta didik SMA Techsoe.
+                  Sistem monitoring kedisiplinan berkarakter untuk pembinaan peserta didik SMP IT Auladina Indonesia QIIBS.
                 </p>
               </div>
               <div className="text-xs font-semibold px-2.5 py-1 bg-rose-50 text-rose-700 border border-rose-200 rounded-lg">
@@ -775,14 +775,14 @@ export const CounselingPage: React.FC = () => {
                     ...counselingForm,
                     studentId: e.target.value,
                     studentName: s?.name || '',
-                    className: s?.classId || 'XI MIPA 1',
+                    className: s?.classId || 'IX JavaScript',
                   });
                 }}
                 className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#142B50]/20"
               >
                 {students.map((st) => (
                   <option key={st.id} value={st.id}>
-                    {st.name} ({st.classId || 'XI MIPA 1'})
+                    {st.name} ({st.classId || 'IX JavaScript'})
                   </option>
                 ))}
               </select>
@@ -902,14 +902,14 @@ export const CounselingPage: React.FC = () => {
                   ...violationForm,
                   studentId: e.target.value,
                   studentName: s?.name || '',
-                  className: s?.classId || 'XI MIPA 1',
+                  className: s?.classId || 'IX JavaScript',
                 });
               }}
               className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#142B50]/20"
             >
               {students.map((st) => (
                 <option key={st.id} value={st.id}>
-                  {st.name} ({st.classId || 'XI MIPA 1'})
+                  {st.name} ({st.classId || 'IX JavaScript'})
                 </option>
               ))}
             </select>
@@ -1018,14 +1018,14 @@ export const CounselingPage: React.FC = () => {
                   ...achievementForm,
                   studentId: e.target.value,
                   studentName: s?.name || '',
-                  className: s?.classId || 'XI MIPA 1',
+                  className: s?.classId || 'IX JavaScript',
                 });
               }}
               className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#142B50]/20"
             >
               {students.map((st) => (
                 <option key={st.id} value={st.id}>
-                  {st.name} ({st.classId || 'XI MIPA 1'})
+                  {st.name} ({st.classId || 'IX JavaScript'})
                 </option>
               ))}
             </select>

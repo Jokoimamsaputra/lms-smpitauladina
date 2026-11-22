@@ -63,7 +63,7 @@ export const ClassManagementPage: React.FC = () => {
       grade,
       educationLevel,
       homeroomTeacherId,
-      homeroomTeacherName: teacher ? teacher.name : 'Siti Rahmawati, M.Pd.',
+      homeroomTeacherName: teacher ? teacher.name : 'Miryati, S.Kom.',
       studentCount: Number(studentCount),
       academicYearId: 'ay-2026',
     });
