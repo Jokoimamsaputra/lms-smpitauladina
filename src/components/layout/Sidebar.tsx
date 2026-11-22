@@ -212,12 +212,16 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
       >
         {/* Brand header */}
         <div className="h-16 flex items-center justify-between px-4 border-b border-white/10 shrink-0">
-          <div className="flex items-center">
-            <img
-              src="/logo.png"
-              alt="Auladina LMS"
-              className="h-8 w-auto object-contain"
-            />
+          <div className="flex items-center gap-2.5">
+            {/* Ikon Topi Sekolah */}
+            <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center backdrop-blur-sm">
+              <GraduationCap className="w-5 h-5 text-blue-300" />
+            </div>
+            {/* Teks Nama Sekolah */}
+            <div className="flex flex-col leading-tight">
+              <span className="text-sm font-extrabold text-white tracking-tight">Auladina</span>
+              <span className="text-[9px] font-bold text-blue-300 uppercase tracking-widest">LMS</span>
+            </div>
           </div>
           <button
             type="button"
