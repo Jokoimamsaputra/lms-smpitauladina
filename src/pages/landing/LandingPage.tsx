@@ -247,7 +247,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#142B50] tracking-tight leading-tight">
-              Membentuk Generasi Cerdas, Berkarakter, dan Berdaya Saing Global.
+              Terwujudnya generasi peradaban berkarakter Quran, berjiwa leadership, berkeunggulan intelektual, berwawasan global, berintegritas high-minded, dan menguasai teknologi.
             </h1>
 
             <p className="mt-5 text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
