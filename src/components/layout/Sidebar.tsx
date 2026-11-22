@@ -214,7 +214,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
         <div className="h-16 flex items-center justify-between px-4 border-b border-white/10 shrink-0">
           <div className="flex items-center">
             <img
-              src="/logo-white.png"
+              src="/logo.png"
               alt="Auladina LMS"
               className="h-8 w-auto object-contain"
             />
